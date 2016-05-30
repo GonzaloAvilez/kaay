@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load thumbnail %}
+
+{% block title %}{{ block.super }}{{ show_user.profile.get_short_name }}{% endblock %}
+
+{% block container %}
+
+<!--======== Text over fullscreen carousel ===================-->
+<div class="overlay">  
+  <div class=" col-md-12 text-center">
+    <h1><font color="white">Qué es lo que trabajas?</font></h1>
+    <h3>descripcion</h3> 
+        <!--==== a button center for next times ====-->
+        <!-- <div class=" col-md-12">
+            {% if editable %}
+              <a href="{% url 'profiles:edit_self' %}" class="btn btn-default">Editar Perfil</a>
+              <a href="{% url 'profiles:edit_self' %}" class="btn btn-default">Editar Perfil</a>
+            {% endif %}
+        </div> -->
+        {% if editable %}
+            <div class="col-md-12">
+              <a href="{% url 'profiles:edit_self' %}" class="btn btn-default">Editar Perfil</a>
+            </div>
+  </div><!-- /col-md-12 text-center -->  
+        {% endif %}
+        <div class="row">
+        <div  class="col-xs-6 col-md-3">    
+            <div id="under">   
+            <h1 style="font-family:Lobster;" ><font color="white">{{ show_user.profile.get_short_name }}</font></h1>
+            <img title="profile picture" class="img-circle img-responsive img-thumbnail" src="{% thumbnail show_user.profile.picture|default:'default_profile.png' 150x150 crop %}">   
+            </div> 
+        </div>        
+        </div>
+        
+</div>  <!-- /overlay -->
+
+<!--================= fullscreen carousel ====================-->
+<div class="col-md-12">
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+          <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+      </ol>
+        <div class="carousel-inner">
+            <div class="item active">
+                <img class="slide-image" src="/static/site/img/bordado.jpg" alt="">
+            </div>
+            <div class="item">
+                <img class="slide-image" src="/static/site/img/merida.jpg" alt="">
+            </div>
+            <div class="item">
+                <img class="slide-image" src="/static/site/img/m.jpg" alt="">
+            </div>
+        </div>
+        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+    </div>
+</div>
+
+
+
+<div class="container profile-body" style="font-size:15px">
+  <div class="row">
+    <div class="col-sm-4">
+      <ul class="list-group">
+        <li class="list-group-item text-muted">Tu perfil</li>
+        <li class="list-group-item text-right"><span class="pull-left"><strong>Email:</strong></span> {{ show_user.email|default:"missing" }}
+
+    {% if editable %}
+        	{% if show_user.profile.email_verified %}
+        	    <span class="glyphicon glyphicon-ok-circle" aria-hidden="true" title="Correo electrónico verificado"></span>
+              <span class="sr-only">Verificado</span>
+        	{% else %}
+        	    <span class="glyphicon glyphicon-warning-sign" aria-hidden="true" title="Correo electrónico No verificado"></span>
+        	    <span class="sr-only">No Verificado</span>
+          {% endif %}
+      	      </li>
+              <li class="list-group-item text-right"> 
+                <span class="pull-left"><strong>Registrado desde:</strong></span> {{ show_user.date_joined }}
+              </li>
+              <li class="list-group-item text-right">
+                <span class="pull-left"><strong>Ultimo ingreso:</strong></span> {{ show_user.last_login }}
+              </li>
+      </ul>
+    {% endif %}
+    </div>
+    <div class="col-sm-8">
+      <div class="panel panel-default">
+        <div class="panel-heading" style="font-size:25px">{{ show_user.get_full_name }}'s Artesanías
+	  {% if show_user.profile.slug %}
+	    <a href="{% url 'profiles:show' show_user.profile.slug %}">
+	    	<span class="glyphicon glyphicon-link" aria-hidden="true" title="Profile permalink"></span>
+	    	<span class="sr-only">Permalink</span></a> {{ show_user.profile.get_absolute_url }}
+	  {% else %}
+		<a href="https://github.com/arocks/edge/issues/40" target="_blank"><span>No permalink. See this issue.</span></a>
+	  {% endif %}
+	</div>
+        <div class="panel-body">
+            <p>
+	          <strong>Nuestra tienda:</strong> {{ show_user.profile.get_short_name }} 
+            </p>
+            <p>
+            <strong>Nuestra historia:</strong> <li align="right"> {{ show_user.profile.bio }} </li> 
+            </p>
+        </div>
+	  
+        </div> 
+    </div>
+    <div id="sidebar">
+    <a href="{% url 'profiles:post_new' %}">
+  {% if editable %}
+    <h3>Categories</h3>
+        <ul>
+        <li {% if not category %}class="selected"{% endif %}>Nuevo producto</a>
+  {% endif  %}
+  </div>
+    
+  <a href="{% url 'shop:product_list' %}"> visitanos
+ 
+  </a>
+
+</div>
+
+{% endblock %}
+
+
