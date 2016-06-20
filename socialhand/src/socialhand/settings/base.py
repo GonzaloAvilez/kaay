@@ -58,7 +58,7 @@ if exists(env_file):
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # Raises ImproperlyConfigured exception if SECRET_KEY not in os.environ
-SECRET_KEY = env('SECRET_KEY')
+SECRET_KEY = 'mnj=llx*oe9sp_l^g5dz5!!cn_y4&w488f1q6l-eyl_)kirrm$'
 
 ALLOWED_HOSTS = []
 
@@ -86,7 +86,8 @@ INSTALLED_APPS = (
     'cart',
     'socialhand',
     
-
+    
+    
 )
 
 MIDDLEWARE_CLASSES = (
@@ -162,17 +163,16 @@ CART_SESSION_ID = 'cart'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 # DEFAULT_FROM_EMAIL = "g.avilez.ig@gmail.com"
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'g.avilez.ig@gmail.com'
-EMAIL_HOST_PASSWORD = 'aiig890905hgrvgn04'
 
-# SENDGRID_EMAIL_HOST = "smtp.sendgrid.net"
-# SENDGRID_EMAIL_HOST_USER = 'g.avilez.ig'
-# SENDGRID_EMAIL_HOST_PASSWORD = 'gonzalito'
-# SENDGRID_EMAIL_PORT = 587
-  
+# EMAIL_USE_TLS = True
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 587
+# EMAIL_HOST_USER = 'g.avilez.ig@gmail.com'
+# EMAIL_HOST_PASSWORD = 'aiig890905hgrvgn04'
+
+EMAIL_BACKEND = "sgbackend.SendGridBackend"
+SENDGRID_USER = "g.avilez.ig"
+SENDGRID_PASSWORD = "gonzalito"
 
 
 

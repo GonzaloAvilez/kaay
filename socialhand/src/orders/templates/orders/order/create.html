@@ -1,9 +1,9 @@
 {% extends "shop/home.html" %}
 {% load staticfiles %}
 {% load crispy_forms_tags %}
-{% block title %}
-Caja
-{% endblock %}
+	{% block title %}
+	Caja
+	{% endblock %}
 
 {% block content %}
 	<h1>Caja</h1>
@@ -12,7 +12,7 @@ Caja
 	<ul>
 		{% for item in cart %}
 		<li>
-			{{ item.quantity }}x {{ item.product.name }}
+			{{ item.quantity }} X {{ item.product.name }}
 			<span>${{ item.total_price }}</span>
 		</li>
 		{% endfor %}
@@ -22,9 +22,9 @@ Caja
 
 	<form action="." method="post" class="order-form">
 		{{ form.as_p }}
-		<p><input type="submit" value="Place order"></p>
+		<p><input type="submit" value="Hacer pedido"></p>
 		{% csrf_token %}
 	</form>
 
-	{% include "payment/process.html" %}
 {% endblock %}
+

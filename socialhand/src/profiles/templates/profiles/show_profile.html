@@ -22,10 +22,10 @@
             <div class="col-md-12">
               <a href="{% url 'profiles:edit_self' %}" class="btn btn-default">Editar Perfil</a>
             </div>
-  </div><!-- /col-md-12 text-center -->  
         {% endif %}
+  </div><!-- /col-md-12 text-center -->   
         <div class="row">
-        <div  class="col-xs-6 col-md-3">    
+        <div  class="col-xs-6 col-md-3">  
             <div id="under">   
             <h1 style="font-family:Lobster;" ><font color="white">{{ show_user.profile.get_short_name }}</font></h1>
             <img title="profile picture" class="img-circle img-responsive img-thumbnail" src="{% thumbnail show_user.profile.picture|default:'default_profile.png' 150x150 crop %}">   
@@ -36,12 +36,12 @@
 </div>  <!-- /overlay -->
 
 <!--================= fullscreen carousel ====================-->
-<div class="col-md-12">
-    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+<div>
+    <div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel" data-interval="7000">
       <ol class="carousel-indicators">
-          <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-          <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-          <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>
       </ol>
         <div class="carousel-inner">
             <div class="item active">
@@ -108,15 +108,14 @@
 	  
         </div> 
     </div>
-    <div id="sidebar">
-    <a href="{% url 'profiles:post_new' %}">
-  {% if editable %}
-    <h3>Categories</h3>
-        <ul>
-        <li {% if not category %}class="selected"{% endif %}>Nuevo producto</a>
-  {% endif  %}
-  </div>
+    <div class="col-md-9">
     
+
+  {% if editable %}
+        <a href="{% url 'profiles:edit_self' %}" class="btn btn-primary">Nuevo Producto</a>
+  {% endif  %}
+    </div>
+   
   <a href="{% url 'shop:product_list' %}"> visitanos
  
   </a>

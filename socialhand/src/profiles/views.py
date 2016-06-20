@@ -11,6 +11,7 @@ from django.utils import timezone
 from django.shortcuts import render
 from .models import Post
 from .forms import ShopFor,PostForm
+import shop.models  
 
 
 
@@ -66,34 +67,37 @@ class EditProfile(LoginRequiredMixin, generic.TemplateView):
         profile = profile_form.save(commit=False)
         profile.user = user
         profile.save()
-        messages.success(request, "Profile details saved!")
+        messages.success(request, "detalles de perfil almacenados")
         return redirect("profiles:show_self")
 
 
 
-#post add de ejemplo , seguro quitamos el el codigo
-def post_list(request):
-        posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-        return render(request, 'profiles/show_profile.html', {'posts':posts})
-
-def post_new(request):
-        form = PostForm()
-        return render(request, 'profiles/product_add.html', {'form': form})
 
 #add new product for sell
-def new_product(request):
-        productos = ShopFor()
-        return render(request, 'profiles/product_add.html', {'productos':productos})
-
 def post_new(request):
         if request.method == "POST":
-            form = PostForm(request.POST)
+            form = ShopFor(request.POST,
+                         request.FILES)
             if form.is_valid():
                 post = form.save(commit=False)
                 post.author = request.user
                 post.published_date = timezone.now()
                 post.save()
-                return redirect('/')
+                return redirect("profiles:show_self")
         else:
-            form = PostForm()
+            form = ShopFor()
         return render(request, 'profiles/product_add.html', {'form': form})
+
+# def post_new(request):
+#         if request.method == "POST":
+#             form = PostForm(request.POST)
+#             if form.is_valid():
+                
+#                 post = form.save(commit=False)
+#                 post.author = request.user
+#                 post.published_date = timezone.now()
+#                 post.save()
+#                 return redirect('/')
+#         else:
+#             form = PostForm()
+#         return render(request, 'profiles/product_add.html', {'form': form})
