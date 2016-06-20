@@ -10,7 +10,7 @@ from cart.cart import Cart
 from .tasks import order_created
 from django.conf import settings
 import weasyprint
-from .tasks import order_created
+
 
 
 

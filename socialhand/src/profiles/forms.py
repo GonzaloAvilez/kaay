@@ -58,7 +58,9 @@ class ShopFor(forms.ModelForm):
         self.helper = FormHelper()
         self.helper.form_tag = False
         self.helper.layout = Layout(
+            Field('category'),
             Field('name'),
+            Field('slug'),
             Field('image'),
             Field('description'),
             Field('price'),
@@ -73,10 +75,10 @@ class ShopFor(forms.ModelForm):
 
     class Meta:
         model = Product
-        fields = ('name', 'image', 'description', 'price','stock','available',)    
+        fields = ('name','slug', 'image', 'category', 'description', 'price','stock',)    
 
 class PostForm(forms.ModelForm):
 
         class Meta:
             model = Post
-            fields = ('title', 'text',)
+            fields = ('title','text','author',)

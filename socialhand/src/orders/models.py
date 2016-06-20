@@ -1,18 +1,20 @@
-from __future__ import unicode_literals
+# -*- coding: utf-8 -*-
+# from __future__ import unicode_literals
 from django.db import models
 from shop.models import Product
+from django.utils.translation import gettext_lazy as _
 
 
 class Order(models.Model):
-	first_name = models.CharField(max_length=50)
-	last_name = models.CharField(max_length=50)
-	email = models.EmailField()
-	address = models.CharField(max_length=250)
-	postal_code = models.CharField(max_length=20)
-	city = models.CharField(max_length=100)
-	created = models.DateTimeField(auto_now_add=True)
-	updated = models.DateTimeField(auto_now=True)
-	paid = models.BooleanField(default=False)
+	first_name = models.CharField(_('Nombre'),max_length=50)
+	last_name = models.CharField(_('Apellidos'),max_length=50)
+	email = models.EmailField(_('Email'),)
+	address = models.CharField(_('Dirección'), max_length=250)
+	postal_code = models.CharField(_('Código postal'), max_length=20)
+	city = models.CharField(_('Ciudad'), max_length=100)
+	created = models.DateTimeField( auto_now_add=True)
+	updated = models.DateTimeField( auto_now=True)
+	paid = models.BooleanField( default=False)
 
 	class Meta:
 		ordering = ('-created',)

@@ -375,11 +375,9 @@ transform: translate3d(0, 0, 0);
 
 
 
-/********************************/
-/*                              */
-/*            Video             */
-/*                              */
-/********************************/
+/*********************************************/
+/*                  Video                   */
+/*********************************************/
 .video-playing {
   
     position: absolute;
@@ -387,9 +385,10 @@ transform: translate3d(0, 0, 0);
     left:0; 
     right:0;  
     bottom: none;
-    width: 100%;
     height: auto;
     z-index: -1;
+    min-height: 100%;
+    min-width: 100%;
 }
 
 
@@ -508,6 +507,7 @@ form p label, form p input {
 form p label {
     font-size:14px;
     padding-bottom:4px;
+    padding-left: 20px;
 }
 
 form p input {
@@ -521,13 +521,14 @@ form p input {
     border-radius:4px;
 }
 
+/* display error field empty inside form "hacer pedido"*/
 ul.errorlist {
    float:left;
-   color:#ff0000;
+   color:#e50000;
    clear:both;
    font-size:13px;
    margin:0; 
-   padding:0;
+   padding:10px;
 }
 
 
@@ -661,6 +662,7 @@ ul.errorlist {
 
 .order-form {
     float:left;
+    padding-left: 20px;
 }
 
 .order-info {
