@@ -10,20 +10,8 @@
 		{% endif %}
 {% endblock %}
 
-
-
-
 	{% block content %}
-
-
-
-
-
-
-<!-- Page Content -->
-    <div class="container">
-
-        <!-- Page Header -->
+    <div>
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">{{ show_user.profile.get_short_name }} Tienda
@@ -32,10 +20,10 @@
             </div>
         </div>
         <!-- /.row -->
- 
+             <div class="row">
 <div class="col-sm-2">
-<div class="list-group">
-	<h3>Categorias</h3>
+    <div class="list-group">
+	   <h3>Categorias</h3>
 		<ul class="nav nav-pills nav-stacked">
 			<li {% if not category %}class="selected"{% endif %}>
 				<a href="{% url "shop:product_list" %}" class="list-group-item active">All</a>
@@ -48,17 +36,18 @@
 		</ul>
 	</div>
 </div>
-
+                </div>
         <!-- Projects Row -->
         
         <!-- /.row -->
-  <div class="row">
+ <!--  <div class="row"> -->
+ <div class="catalogue">
   {% for product in products %}
-    <div class="col-sm-4 col-lg-4 col-md-4">
+    <div class="col-sm-3 col-lg-3 col-md-3">
             <div class="thumbnail">
 
                <a href="{{ product.get_absolute_url }}">
-                    <img class="img-responsive" src="{% if product.image %}{{ product.image.url }}{%else %}{% static 'image/noimage.png' %}{% endif %}" alt="article"style="width: 300px;height: 300px;">
+                    <img  src="{% if product.image %}{{ product.image.url }}{%else %}{% static 'image/noimage.png' %}{% endif %}" alt="article" style="height:245px">
                 </a>
                 <div class="caption">
                     <h3 class="pull-right">${{ product.price }}</h3>
@@ -81,9 +70,9 @@
        </div>  
        {% endfor %}
 
-
-            
-        </div>	<!-- container -->
+         </div>
+         
+        <!-- </div>	 -->
         <!-- /.row -->
 
         <hr>
