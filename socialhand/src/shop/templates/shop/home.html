@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 {% load crispy_forms_tags %}
-
+ 
 
 
 {% block title %}{{ block.super }}{% endblock %}
@@ -9,31 +9,29 @@
 
 
 <!-- code for the shop -->
-
 <link href="{% static 'site/css/main.css' %}" rel="stylesheet">
 				
-	{% block container %}				
+{% block container %}				
 <div id="header">
-<a href="/productos" class="logo">Mi tienda</a>
+	<a href="/productos" class="logo">Mi tienda</a>
 </div>
 <div id="subheader">
 	<div class="cart">
 		{% with total_items=cart|length %}
 			{% if cart|length > 0 %}
-			Tu carrito:
-			<a href="{% url "cart:cart_detail" %}">
-				{{ total_items }} artículo{{ total_items|pluralize }},
-				${{ cart.get_total_price }}
-			</a>
+				Tu carrito:
+				<a href="{% url "cart:cart_detail" %}">
+					{{ total_items }} artículo{{ total_items|pluralize }},
+					${{ cart.get_total_price }}
+				</a>
 			{% else %}
 			Tu carrito aún esta vacío.
 			{% endif %}
 		{% endwith %}
-		</div>
-		</div>
-		<div id="container">
-		{% block content %}
-		{% endblock %}
 	</div>
+</div>
+		<div>
+			{% block content %}
+			{% endblock %}
+		</div>
 {% endblock %}
-</body>
