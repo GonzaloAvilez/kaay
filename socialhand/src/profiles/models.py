@@ -42,6 +42,10 @@ class Profile(BaseProfile):
 #creating post model for entries.
 
 class Post(models.Model):
+    STATUS_CHOICES = (
+        ('draft', 'Draft'),
+        ('published', 'Published'),
+    )
     author = models.ForeignKey('authtools.User')
     title = models.CharField(max_length=400)
     text = models.TextField()
@@ -49,9 +53,12 @@ class Post(models.Model):
             default=timezone.now)
     published_date = models.DateTimeField(
             blank=True, null=True)
+    status = models.CharField(max_length=10,
+                            choices=STATUS_CHOICES,
+                            default='draft')
 
 
-    def publish(self):
+    def published(self):
         self.published_date = timezone.now()
         self.save()
 
