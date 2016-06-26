@@ -85,6 +85,8 @@ INSTALLED_APPS = (
     'shop',    
     'cart',
     'socialhand',
+
+    'haystack',
     
     
     
@@ -181,3 +183,13 @@ SENDGRID_PASSWORD = "gonzalito"
 # django-paypal settings
 PAYPAL_RECEIVER_EMAIL = 'g.avilez.ig-facilitator@gmail.com'
 PAYPAL_TEST = True
+
+
+#search engine adquired via pip 
+
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.solr_backend.SolrEngine',
+        'URL': 'http://127.0.0.1:8983/solr/socialhand'
+        },
+}

@@ -5,9 +5,15 @@ html, body{
 
 }
 
-h1, h2, h3, h4, h5 , h6 { 
+h1,h3,h5{ 
     font-family: 'Lobster', sans-serif; font-weight:normal;
+    color:white;
 }
+h2,h4,h6{
+     font-family: 'Lobster', sans-serif; font-weight:normal;
+     color: black;
+}
+
  body{ 
 /*  background: url("/static/site/img/mexican_colors.jpg") no-repeat center center fixed; 
 */  -webkit-background-size: cover;
@@ -36,9 +42,7 @@ h1, h2, h3, h4, h5 , h6 {
        
 
 /*********************************************/
-/*                                           */
 /*          customize for navbar             */
-/*                                           */
 /*********************************************/
 
 body>.navbar-transparent {   
@@ -105,12 +109,8 @@ body>.navbar-transparent {
 
 }
 
-/***********end try custom something ***********/
-
 /*********************************************/
-/*                                           */
 /*     custom button_default bootstrap       */
-/*                                           */
 /*********************************************/
 .btn {
     background-image: none;
@@ -372,9 +372,7 @@ bottom: -200px;
 
 
 /***************************************/
-/*                                     */
 /*                SHOP                 */
-/*                                     */
 /***************************************/
 
 
@@ -510,7 +508,7 @@ ul.errorlist {
     float:right;
     padding-top:4px;
 }
-/*tienda principal headers  end  */
+/*tienda principal headers  end  *************/
 #content {
     padding:0 100px;
     overflow:hidden;
@@ -777,3 +775,7 @@ ul.errorlist {
     background-color: #fff;
     border-color: #fff;
 }
+
+/**********************************/
+/*      scrolling home_page       */
+/**********************************/
