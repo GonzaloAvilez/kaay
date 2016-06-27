@@ -85,8 +85,7 @@ INSTALLED_APPS = (
     'shop',    
     'cart',
     'socialhand',
-
-    'haystack',
+    'haystack'
     
     
     
@@ -189,7 +188,10 @@ PAYPAL_TEST = True
 
 HAYSTACK_CONNECTIONS = {
     'default': {
-        'ENGINE': 'haystack.backends.solr_backend.SolrEngine',
-        'URL': 'http://127.0.0.1:8983/solr/socialhand'
-        },
+        'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
+        'URL': 'http://127.0.0.1:9200/',
+        'INDEX_NAME': 'haystack',
+    },
 }
+# signal processor will enable signal processor that for every change in the models will run
+HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
