@@ -32,8 +32,8 @@
       <div class="carousel-inner" role="listbox">
         <div class="item active">
             <video loop="loop" preload="auto" id="sensi-video"autoplay class="video-playing" poster="/static/site/img/m.jpg">
-                <source src="{{ MEDIA_URL }}telar4.mp4" type="video/mp4">
-                <source src="{{ MEDIA_URL }}telar4.webm" type="video/webm">
+                <source src="{{ MEDIA_URL }}telar12.mp4" type="video/mp4">
+                <!-- <source src="{{ MEDIA_URL }}telar4.webm" type="video/webm"> -->
             </video>
           <!-- <img class="first-slide" src="/static/site/img/mexican_colors.jpg" alt="First slide"> -->
           <div class="container">
@@ -75,6 +75,21 @@
 
 <a name="about"></a>
 
+<hr class="featurette-divider">
+
+<a href="{% url 'search' %}">search page</a>
+
+  <form type="get" action=".">
+      <input type="text" name="q">
+      <button type="submit">Search</button>
+  </form>
+
+  {% for note in notes %}
+    <h1>{{ note.title }}</h1>
+    <p>
+        {{ note.body }}
+    </p>
+  {% endfor %}
   <!-- START THE FEATURETTES -->
 
       <hr class="featurette-divider">
@@ -145,11 +160,9 @@
 
              <!-- Marketing messaging and featurettes
     ================================================== -->
-    <!-- Wrap the rest of the page in another container to center all the content. -->
-
-   
+    <!-- Wrap the rest of the page in another container to center all the content. -->   
 <hr class="featurette-divider">
-    <section class="no-padding" id="portfolio">
+    <section class="no-padding" id="portafolio">
        <div class="container marketing">
         <!-- Three columns of text below the carousel -->
         <div class="row">
