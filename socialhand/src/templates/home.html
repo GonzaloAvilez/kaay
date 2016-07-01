@@ -4,11 +4,17 @@
 {% load crispy_forms_tags %}
 
 {% block title %}{{ block.super }}Mercado artesanal{% endblock %}
+{% block navbar-brand %}
+<a class="navbar-brand page-scroll" href="#presentation">
+<img src="{% static 'site/img/logo.png' %}" alt="logo">
+{% include "_brandname.html" %}
+</a>
+{% endblock %}
 
 {% block navbar-left %}
-  {% include "_navbar.html" with active_link="home" %}
-
-
+<li><a class="page-scroll" href="#about">Qué es?</a></li>
+<li><a class="page-scroll" href="#portafolio">Portafolio</a></li>
+{% include "_navbar.html" with active_link="home" %}
 {% endblock %}
 
 {% block navbar-right %}
@@ -20,23 +26,28 @@
   {% endif %}
 {% endblock %}
 
-{% block splash %}  
-
-   <div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel" data-interval="8000">
-      <!-- Indicators -->
-      <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
-        <li data-target="#myCarousel" data-slide-to="2"></li>
-      </ol>
-      <div class="carousel-inner" role="listbox">
-        <div class="item active">
-            <video loop="loop" preload="auto" id="sensi-video"autoplay class="video-playing" poster="/static/site/img/m.jpg">
+{% block splash %} 
+<!--===================================-->
+<!--              Carousel             -->
+<!--===================================-->
+<section id="presentation">
+   <div id="myCarousel" class="carousel fade-carousel slide" data-pause="click" >
+   <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+     <!-- Wrapper for slides -->  
+      <div class="carousel-inner">
+        <div class="item slides active">
+        <div class="slide-1"></div>
+            <video  loop="loop" preload="auto" id="sensi-video"autoplay class="video-playing" poster="/static/site/img/m.jpg">
                 <source src="{{ MEDIA_URL }}telar12.mp4" type="video/mp4">
                 <!-- <source src="{{ MEDIA_URL }}telar4.webm" type="video/webm"> -->
             </video>
           <!-- <img class="first-slide" src="/static/site/img/mexican_colors.jpg" alt="First slide"> -->
-          <div class="container">
+          <div class="container-fluid">
             <div class="carousel-caption">
               <h1 style="font-family:Lobster;"><font color="white">{% include "_brandname.html" %}</font></h1>
                <p> Hecho para ti... pensando en ti </p> 
@@ -44,7 +55,8 @@
             </div>
           </div>
         </div>
-        <div class="item">       
+        <div class="item slides">
+        <div class="slide-2"></div>      
           <img class="second-slide" src="/static/site/img/bordado.jpg" alt="Second slide">
           <div class="container">
             <div class="carousel-caption">
@@ -54,9 +66,9 @@
             </div>
           </div>
         </div>
-        <div class="item">
 
-
+        <div class="item slides">
+        <div class="slide-3"></div>
           <img class="third-slide" src="{% static "/static/site/img/barro.jpg" %}" alt="Third slide">
           <div class="container">
             <div class="carousel-caption">
@@ -68,133 +80,307 @@
         </div>
       </div>
     </div><!-- /.carousel -->
+</section>
 {% endblock splash %}
 
 {% block container %}
-<!-- Benefits of the Django application -->
+<!-- principal body container -->
+<div class="container-fluid">
+<section id="about">
+  <div class="background-white">
+            <div class="container">
+                    <div class="col-md-4 col-md-offset-4">
+                        <h2 class="text-center article-title" style="font-size:300%;">Bienvenido</h2>
+                        <p class="text-center">Käay es un lugar donde encontrarás una comunidad de artesanos que muestran su creatividad y comparten contigo un trozo de su trabajo, un trozo de su vida </p>
+                        <img class="img-responsive"  alt="" src="{% static "/static/site/img/creative.png" %}" style="display: block; margin-left: auto; margin-right: auto; margin-top: 40px;">
+                    </div>            
+            </div>
+  </div>
+</section>
 
-<a name="about"></a>
 
-<hr class="featurette-divider">
-
-<a href="{% url 'search' %}">search page</a>
-
-  <form type="get" action=".">
-      <input type="text" name="q">
-      <button type="submit">Search</button>
-  </form>
-
-  {% for note in notes %}
-    <h1>{{ note.title }}</h1>
-    <p>
-        {{ note.body }}
-    </p>
-  {% endfor %}
-  <!-- START THE FEATURETTES -->
-
-      <hr class="featurette-divider">
-
-      <div class="row featurette">
-        <div class="col-md-7">
-          <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It'll blow your mind.</span></h2>
-          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-        </div>
-        <div class="col-md-5">
-          <img class="featurette-image img-responsive center-block img-thumbnail"  src="{% static "/static/site/img/pcb01.jpg" %}"  alt="Generic placeholder image">
-        </div>
+<section class="no-padding parallax-bg1 background-primary" style="background-position: 50% 0%;" data-stellar-background-ratio="0.5">
+  <div class="container-fluid">
+    <div class="row no-gutter">
+     <!--  <div class="col-md-6 col-sm-6">
+        <a href="/" class="portfolio-box">
+          <img  src="{% static "/static/site/img/pcb02.jpg" %}" class="img-responsive" alt="Generic image">
+          <div class="portfolio-box-caption">
+            <div class="portfolio-box-caption-content">
+              <div class="project-category text-faded">
+              Category
+              </div>
+              <div class="project-name">
+              Project Name
+              </div>
+            </div>
+          </div>               
+        </a>
+      </div>   -->  
+      <div class="col-md-3 col-xs-6  ">
+        <a href="/" class="portfolio-box">
+          <img  src="{% static "/static/site/img/pcb02.jpg" %}" class="img-responsive" alt="Generic image">
+          <div class="portfolio-box-caption">
+            <div class="portfolio-box-caption-content">
+              <div class="project-category text-faded">
+              Category
+              </div>
+              <div class="project-name">
+              Project Name
+              </div>
+            </div>
+          </div>               
+        </a>
       </div>
-
-      <hr class="featurette-divider">
-
-      <div class="row featurette">
-        <div class="col-md-7 col-md-push-5">
-          <h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span></h2>
-          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-        </div>
-        <div class="col-md-5 col-md-pull-7">
-          <img class="featurette-image img-responsive center-block img-thumbnail"  src="{% static "/static/site/img/pcb.aretes.jpg" %}" alt="Generic placeholder image">
-        </div>
+      <div class="col-md-3 col-xs-6 col-md-offset-3 ">
+        <a href="/" class="portfolio-box">
+          <img  src="{% static "/static/site/img/pcb02.jpg" %}" class="img-responsive" alt="Generic image">
+          <div class="portfolio-box-caption">
+            <div class="portfolio-box-caption-content">
+              <div class="project-category text-faded">
+              Category
+              </div>
+              <div class="project-name">
+              Project Name
+              </div>
+            </div>
+          </div>               
+        </a>
+      </div>     
+      <div class="col-md-3 col-xs-6 col-md-offset-3 ">
+        <a href="/" class="portfolio-box">
+          <img  src="{% static "/static/site/img/pcb02.jpg" %}" class="img-responsive" alt="Generic image">
+          <div class="portfolio-box-caption">
+            <div class="portfolio-box-caption-content">
+              <div class="project-category text-faded">
+              Category
+              </div>
+              <div class="project-name">
+              Project Name
+              </div>
+            </div>
+          </div>               
+        </a>
       </div>
-
-      <hr class="featurette-divider">
-
-      <div class="row featurette">
-        <div class="col-md-7">
-          <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
-          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-        </div>
-        <div class="col-md-5">
-          <img class="featurette-image img-responsive center-block img-thumbnail"src="{% static "/static/site/img/pcb02.jpg" %}" alt="Generic placeholder image">
-        </div>
+      <div class="col-md-3 col-xs-6 col-md-offset-3 ">
+        <a href="/" class="portfolio-box">
+          <img  src="{% static "/static/site/img/pcb02.jpg" %}" class="img-responsive" alt="Generic image">
+          <div class="portfolio-box-caption">
+            <div class="portfolio-box-caption-content">
+              <div class="project-category text-faded">
+              Category
+              </div>
+              <div class="project-name">
+              Project Name
+              </div>
+            </div>
+          </div>               
+        </a>
       </div>
-
-      <hr class="featurette-divider">
-
-      <!-- /END THE FEATURETTES -->
-
-<a name="about"></a>
-
-<div class="container">
-  <div class="row">
-    <div class="col-lg-4">
-      <h2>Ejemplo_tienda1</h2>
-      <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-      <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
     </div>
-    <div class="col-lg-4">
-      <h2>Heading</h2>
-      <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-      <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
-    </div>
-    <div class="col-lg-4">
-      <h2>Heading</h2>
-      <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.</p>
-      <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
-    </div>
-    </div>
-    <div class="col-lg-8">
+  </div>
 
-    <iframe src="https://vine.co/v/Mzjg3LXAmIn/embed/simple" width="600" height="600" frameborder="0"></iframe><script src="https://platform.vine.co/static/scripts/embed.js"></script>
+  <div class=" container-fluid">
+    <div class="row no-gutter">
+      <div class="col-md-3 col-xs-6  ">
+        <a href="/" class="portfolio-box">
+          <img  src="{% static "/static/site/img/pcb02.jpg" %}" class="img-responsive" alt="Generic image">
+          <div class="portfolio-box-caption">
+            <div class="portfolio-box-caption-content">
+              <div class="project-category text-faded">
+              Category
+              </div>
+              <div class="project-name">
+              Project Name
+              </div>
+            </div>
+          </div>               
+        </a>
+      </div>
+      <div class="col-md-3 col-xs-6 col-md-offset-3 ">
+        <a href="/" class="portfolio-box">
+          <img  src="{% static "/static/site/img/pcb02.jpg" %}" class="img-responsive" alt="Generic image">
+          <div class="portfolio-box-caption">
+            <div class="portfolio-box-caption-content">
+              <div class="project-category text-faded">
+              Category
+              </div>
+              <div class="project-name">
+              Project Name
+              </div>
+            </div>
+          </div>               
+        </a>
+      </div>     
+      <div class="col-md-3 col-xs-6 col-md-offset-3 ">
+        <a href="/" class="portfolio-box">
+          <img  src="{% static "/static/site/img/pcb02.jpg" %}" class="img-responsive" alt="Generic image">
+          <div class="portfolio-box-caption">
+            <div class="portfolio-box-caption-content">
+              <div class="project-category text-faded">
+              Category
+              </div>
+              <div class="project-name">
+              Project Name
+              </div>
+            </div>
+          </div>               
+        </a>
+      </div>
+      <div class="col-md-3 col-xs-6 col-md-offset-3 ">
+        <a href="/" class="portfolio-box">
+          <img  src="{% static "/static/site/img/pcb02.jpg" %}" class="img-responsive" alt="Generic image">
+          <div class="portfolio-box-caption">
+            <div class="portfolio-box-caption-content">
+              <div class="project-category text-faded">
+              Category
+              </div>
+              <div class="project-name">
+              Project Name
+              </div>
+            </div>
+          </div>               
+        </a>
+      </div>
     </div>
-    </div>
+  </div>  <!-- container-fluid -->   
+</section>
 
-             <!-- Marketing messaging and featurettes
-    ================================================== -->
-    <!-- Wrap the rest of the page in another container to center all the content. -->   
-<hr class="featurette-divider">
-    <section class="no-padding" id="portafolio">
-       <div class="container marketing">
-        <!-- Three columns of text below the carousel -->
-        <div class="row">
-          <div class="col-lg-4">
-            <img class="img-circle" src="{% static "/static/site/img/kaay.jpg" %}" alt="Generic image" width="140" height="140">
-            <h2>Heading</h2>
-            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-            <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
-          </div><!-- /.col-lg-4 -->
-          <div class="col-lg-4">
-            <img class="img-circle" src="{% static "/static/site/img/kaay.jpg" %}"  alt="Generic image" width="140" height="140">
-            <h2>Heading</h2>
-            <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
-            <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
-          </div><!-- /.col-lg-4 -->
-          <div class="col-lg-4">
-            <img class="img-circle" src="{% static "/static/site/img/kaay.jpg" %}"  alt="Generic image" width="140" height="140">
-            <h2>Heading</h2>
-            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-            <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
-          </div><!-- /.col-lg-4 -->
-        </div><!-- /.row -->
-      </div>    
-    </section>
+<section id="aditional" class="no-padding parallax-bg2">
+ <div id="icons" style="background-position: 50% 0%;" data-stellar-background-ratio="0.5">
+            <div class="container">
+                <div class="row margin-vert-40">
+                    <!-- Icons -->
+                    <div class="col-md-4 text-center animate fadeInLeft">
+                        <i class="fa-crosshairs fa-3x color-primary-lighter"></i>
+                        <h2 class="padding-top-10">Innovación</h2>
+                        <p> a short description </p>
+                    </div>
+                    <div class="col-md-4 text-center animate fadeIn">
+                        <i class="fa-puzzle-piece fa-3x color-primary-lighter"></i>
+                        <h2 class="padding-top-10">Creatividad</h2>
+                        <p> a short description</p>
+                    </div>
+                    <div class="col-md-4 text-center animate fadeInRight">
+                        <i class="fa-music fa-3x color-primary-lighter"></i>
+                        <h2 class="padding-top-10">Inspiración</h2>
+                        <p>a short description</p>
+                    </div>
+                    <!-- End Icons -->
+                </div>
+            </div>
+        </div>
+</section>
 
+<section class="no-padding" id="portafolio">
+   <div class="container-fluid">
+    <div class="row no-gutter">
+      <div class="col-lg-4 col-sm-6">
+        <a href="/" class="portfolio-box">
+          <img  src="{% static "/static/site/img/pcb02.jpg" %}" class="img-responsive" alt="Generic image">
+          <div class="portfolio-box-caption">
+            <div class="portfolio-box-caption-content">
+              <div class="project-category text-faded">
+              Category
+              </div>
+              <div class="project-name">
+              Project Name
+              </div>
+            </div>
+          </div>               
+        </a>
+      </div>
+      <div class="col-lg-4 col-sm-6">
+        <a href="/" class="portfolio-box">
+          <img  src="{% static "/static/site/img/pcb02.jpg" %}" class="img-responsive" alt="Generic image">
+          <div class="portfolio-box-caption">
+            <div class="portfolio-box-caption-content">
+              <div class="project-category text-faded">
+              Category
+              </div>
+              <div class="project-name">
+              Project Name
+              </div>
+            </div>
+          </div>               
+        </a>
+      </div>
+      <div class="col-lg-4 col-sm-6">
+        <a href="/" class="portfolio-box">
+          <img  src="{% static "/static/site/img/pcb02.jpg" %}" class="img-responsive" alt="Generic image">
+          <div class="portfolio-box-caption">
+            <div class="portfolio-box-caption-content">
+              <div class="project-category text-faded">
+              Category
+              </div>
+              <div class="project-name">
+              Project Name
+              </div>
+            </div>
+          </div>               
+        </a>
+      </div>
+      <div class="col-lg-4 col-sm-6">
+        <a href="/" class="portfolio-box">
+          <img  src="{% static "/static/site/img/pcb02.jpg" %}" class="img-responsive" alt="Generic image">
+          <div class="portfolio-box-caption">
+            <div class="portfolio-box-caption-content">
+              <div class="project-category text-faded">
+              Category
+              </div>
+              <div class="project-name">
+              Project Name
+              </div>
+            </div>
+          </div>               
+        </a>
+      </div>
+      <div class="col-lg-4 col-sm-6">
+        <a href="/" class="portfolio-box">
+          <img  src="{% static "/static/site/img/pcb02.jpg" %}" class="img-responsive" alt="Generic image">
+          <div class="portfolio-box-caption">
+            <div class="portfolio-box-caption-content">
+              <div class="project-category text-faded">
+              Category
+              </div>
+              <div class="project-name">
+              Project Name
+              </div>
+            </div>
+          </div>               
+        </a>
+      </div>
+      <div class="col-lg-4 col-sm-6">
+        <a href="/" class="portfolio-box">
+          <img  src="{% static "/static/site/img/pcb02.jpg" %}" class="img-responsive" alt="Generic image">
+          <div class="portfolio-box-caption">
+            <div class="portfolio-box-caption-content">
+              <div class="project-category text-faded">
+              Category
+              </div>
+              <div class="project-name">
+              Project Name
+              </div>
+            </div>
+          </div>               
+        </a>
+      </div>
+    </div><!-- /.row -->
+   </div>    
+</section>
+
+
+
+</div><!-- /.end  principal div_container-fluid -->
 {% endblock container %}
 
 {% block scripts %}
+
 <script src="{% static 'site/js/site.js' %}"></script>
 <!-- add scripts for animate scrolling -->
 <script src="{% static 'site/js/scrolling-nav.js' %}"></script>
 <script src="{% static 'site/js/jquery.easing.min.js' %}"></script>
+
 
 {% endblock scripts %}
 

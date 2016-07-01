@@ -1,5 +1,5 @@
 @import "//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css";
-
+ 
 html, body{
     height:0%;		/* For full height images */
 
@@ -165,7 +165,7 @@ body>.navbar-transparent {
     background:url(/static/site/img/about.png) no-repeat;
     background-position: 50% center;
     background-attachment: fixed;
-    height: 50%;
+    height: 100%;
 }
 
 #sec3 {
@@ -238,26 +238,115 @@ body>.navbar-transparent {
 
 /* CUSTOMIZE THE CAROUSEL
 --------------------------------------------------------- */
+/********************************/
+/*       Fade Bs-carousel       */
+/********************************/
+.fade-carousel {
+    position: relative;
+    height: 100vh;
+}
+.fade-carousel .carousel-inner .item {
+    height: 100vh;
+}
+
+
+/********************************/
+/*          Hero Headers        */
+/********************************/
+
+.hero {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 3;
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 0 rgba(0,0,0,.75);
+      -webkit-transform: translate3d(-50%,-50%,0);
+         -moz-transform: translate3d(-50%,-50%,0);
+          -ms-transform: translate3d(-50%,-50%,0);
+           -o-transform: translate3d(-50%,-50%,0);
+              transform: translate3d(-50%,-50%,0);
+}
+.hero h1 {
+    font-size: 6em;    
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+}
+
+.fade-carousel .carousel-inner .item .hero {
+    opacity: 0;
+    -webkit-transition: 3s all ease-in-out .5s;
+       -moz-transition: 3s all ease-in-out .5s; 
+        -ms-transition: 3s all ease-in-out .5s; 
+         -o-transition: 3s all ease-in-out .5s; 
+            transition: 3s all ease-in-out .5s; 
+}
+.fade-carousel .carousel-inner .item.active .hero {
+    opacity: 1;
+    -webkit-transition: 3s all ease-in-out .5s;
+       -moz-transition: 3s all ease-in-out .5s; 
+        -ms-transition: 3s all ease-in-out .5s; 
+         -o-transition: 3s all ease-in-out .5s; 
+            transition: 3s all ease-in-out .5s;    
+}
+
+/********************************/
+/*            Overlay           */
+/********************************/
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+
+/********************************/
+/*       Slides backgrounds     */
+/********************************/
+.fade-carousel .slides .slide-1, 
+.fade-carousel .slides .slide-2,
+.fade-carousel .slides .slide-3 {
+  height: 100vh;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+.fade-carousel .slides .slide-1 {
+}
+.fade-carousel .slides .slide-2 {
+}
+.fade-carousel .slides .slide-3 {
+}
+
+/********************************/
+/*          Media Queries       */
+/********************************/
+@media screen and (min-width: 980px){
+    .hero { width: 980px; }    
+}
+@media screen and (max-width: 640px){
+    .hero h1 { font-size: 4em; }    
+}
 
 /* Carousel base class */
 
-.carousel {
+/*.carousel {
   height: 650px;
-  margin-bottom: 30px;
   background: transparent;
 
-}
+}*/
 
-/* Since positioning the image, we need to help out the caption */
 .carousel-caption {
   z-index: 10;
+ 
 }
 
-/* Declare heights because of positioning of img element */
 .carousel .item {
-  height: 650px;
+  /*height: 650px;*/
   background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9));
-      /*url("/static/site/img/mexican_colors.jpg"); */
       z-index: 1;
       
 }
@@ -266,7 +355,7 @@ body>.navbar-transparent {
   top: 0;
   left: 0;
   min-width: 100%;
-  height: 650px;
+  height: 100%;
   background-attachment: fixed;
 
 
@@ -278,51 +367,46 @@ body>.navbar-transparent {
   height: auto;
 }
 
-/**arrows**/
 .carousel-control .glyphicon-chevron-left, .carousel-control .glyphicon-chevron-right, .carousel-control .icon-prev, .carousel-control .icon-next {
 width: 25px;
 height: 25px;
 font-size: 25px;
 }
-.carousel-fade .carousel-inner .item {
+.fade-carousel .carousel-inner .item {
 opacity: 0;
 transition-property: opacity;
 }
-.carousel-fade .carousel-inner .active {
+.fade-carousel .carousel-inner .active {
 opacity: 1;
 }
-.carousel-fade .carousel-inner .active.left,
-.carousel-fade .carousel-inner .active.right {
+.fade-carousel .carousel-inner .active.left,
+.fade-carousel .carousel-inner .active.right {
 left: 0;
 opacity: 0;
 z-index: -10;
 }
-.carousel-fade .carousel-inner .next.left,
-.carousel-fade .carousel-inner .prev.right {
+.fade-carousel .carousel-inner .next.left,
+.fade-carousel .carousel-inner .prev.right {
 opacity: 1;
 }
-/* icon direction index*/
+
 .carousel-fade .carousel-control {
 z-index: -10;
 }
 
-/*WHAT'S NEW IN BS 3.3: Added transforms 
-to improve carousel performance in modern
- browsers. now override the 3.3 new styles 
- for modern browsers & apply opacity*/
 
 @media all and (transform-3d), (-webkit-transform-3d) {
-.carousel-fade .carousel-inner > .item.next, .carousel-fade .carousel-inner > .item.active.right {
+.fade-carousel .carousel-inner > .item.next, .fade-carousel .carousel-inner > .item.active.right {
 opacity: 0;
 -webkit-transform: translate3d(0, 0, 0);
 transform: translate3d(0, 0, 0);
 }
-.carousel-fade .carousel-inner > .item.prev, .carousel-fade .carousel-inner > .item.active.left {
+.fade-carousel .carousel-inner > .item.prev, .fade-carousel .carousel-inner > .item.active.left {
 opacity: 0;
 -webkit-transform: translate3d(0, 0, 0);
 transform: translate3d(0, 0, 0);
 }
-.carousel-fade .carousel-inner > .item.next.left, .carousel-fade .carousel-inner > .item.prev.right, .carousel-fade .carousel-inner > .item.active {
+.fade-carousel .carousel-inner > .item.next.left, .fade-carousel .carousel-inner > .item.prev.right, .carousel-fade .carousel-inner > .item.active {
 opacity: 1;
 -webkit-transform: translate3d(0, 0, 0);
 transform: translate3d(0, 0, 0);
@@ -367,7 +451,29 @@ bottom: -200px;
 }
 
 
+.parallax-bg1,
+.parallax-bg2,
+.parallax-bg3 {
+  background-attachment: fixed;
+  background-clip: border-box;
+  background-origin: padding-box;
+  background-position: 50% 0;
+  background-repeat: no-repeat;
+  background-size: cover !important;
+  margin-left: -15px;
+  margin-right: -15px;
+}
 
+
+.parallax-bg1 {
+  background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.02)),
+              url("/static/site/img/carpintero.jpg") no-repeat fixed 0 0 rgba(0, 0, 0, 0);
+}
+
+.parallax-bg2 {
+  background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.02)),
+
+}
 
 
 
@@ -779,3 +885,259 @@ ul.errorlist {
 /**********************************/
 /*      scrolling home_page       */
 /**********************************/
+
+.no-padding {
+    height: 100%;
+    padding: 0;
+    margin-right: -15px;
+    margin-left: -15px;
+    /*padding-bottom: 200px;*/
+    /*background: rgba(3, 6, 16, 0.92);*/
+
+}
+
+.no-gutter > [class*=col-] {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.portfolio-box {
+    display: block;
+    position: relative;
+    margin: 0 auto;
+    /*max-width: 750px;*/
+    width: 100%;
+    height: 100%;
+  }
+
+.portfolio-box .portfolio-box-caption {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    color: #fff;
+    opacity: 0;
+    background: rgba(235, 34, 215,.7);
+    -webkit-transition: all .35s;
+    -moz-transition: all .35s;
+    transition: all .35s;
+}
+
+
+.portfolio-box .portfolio-box-caption .portfolio-box-caption-content {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    text-align: center;
+    transform: translateY(-50%);
+}
+.portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-category,
+.portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-name {
+    padding: 0 15px;
+    font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
+}
+.portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-category {
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-name {
+    font-size: 18px;
+}
+.portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-name {
+    font-size: 18px;
+}
+
+.portfolio-box:hover .portfolio-box-caption {
+    opacity: 1;
+}
+
+@media(min-width:768px) {
+    .portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-category {
+        font-size: 16px;
+    }
+
+    .portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-name {
+        font-size: 22px;
+    }
+}
+::selection {
+    text-shadow: none;
+    color: #fff;
+    background: #222;
+}
+
+/****************************************/
+/*              sections               */
+/****************************************/
+.about-section{
+  height: 100%;
+  padding-top: 100px;
+  padding-bottom: 150px;
+  background-color:rgba(193, 66, 66, 0.07);
+  margin-left:-15px; 
+  margin-right:-15px;
+}
+.timeline{
+    list-style:none;
+    padding:0;
+    position:relative
+}
+.timeline:before{
+    top:0;bottom:0;
+    position:absolute;
+    content:"";width:2px;
+    background-color:#111;
+    left:40px;margin-left:-1.5px
+}
+.timeline>li{
+    margin-bottom:50px;
+    position:relative;
+    min-height:50px
+}
+.timeline>li:before,.timeline>li:after{
+    content:" ";display:table
+}
+.timeline>li:after{
+  clear:both
+}.timeline>li .timeline-panel{
+  width:100%;
+  float:right;
+  padding:0 20px 0 100px;
+  position:relative;
+  text-align:left
+}
+.timeline>li .timeline-panel:before{
+  border-left-width:0;
+  border-right-width:15px;
+  left:-15px;right:auto
+}
+.timeline>li .timeline-panel:after{
+  border-left-width:0;
+  border-right-width:14px;
+  left:-14px;right:auto
+}
+.timeline>li .timeline-image{
+  left:0;
+  margin-left:0;
+  width:80px;
+  height:80px;
+  position:absolute;
+  z-index:100;
+  background-color:#fed136;
+  color:#fff;
+  border-radius:100%;
+  border:7px solid #fff;
+  text-align:center
+}
+.timeline>li .timeline-image h4{
+  font-size:10px;
+  margin-top:12px;
+  line-height:14px
+}
+.timeline>li.timeline-inverted>.timeline-panel{
+  float:right;
+  text-align:left;
+  padding:0 20px 0 100px
+}
+.timeline>li.timeline-inverted>.timeline-panel:before{
+  border-left-width:0;
+  border-right-width:15px;
+  left:-15px;right:auto
+}
+.timeline>li.timeline-inverted>.timeline-panel:after{
+  border-left-width:0;
+  border-right-width:14px;
+  left:-14px;right:auto
+}
+.timeline>li:last-child{
+  margin-bottom:0
+}
+.timeline .timeline-heading h4{
+  margin-top:0;color:inherit
+}
+.timeline .timeline-heading h4.subheading{
+  text-transform:none
+}
+.timeline .timeline-body>p,.timeline .timeline-body>ul{
+  margin-bottom:0
+}
+@media (min-width:768px){
+  .timeline:before{
+    left:50%
+  }
+  .timeline>li{
+    margin-bottom:100px;
+    min-height:100px
+  }
+  .timeline>li .timeline-panel{
+    width:41%;
+    float:left;
+    padding:0 20px 20px 30px;
+    text-align:right
+  }
+  .timeline>li .timeline-image{
+    width:100px;
+    height:100px;
+    left:50%;
+    margin-left:-50px
+  }
+  .timeline>li .timeline-image h4{
+    font-size:13px;
+    margin-top:16px;
+    line-height:18px
+  }
+  .timeline>li.timeline-inverted>.timeline-panel{
+    float:right;
+    text-align:left;
+    padding:0 30px 20px 20px
+  }
+}
+@media (min-width:992px){
+  .timeline>li{
+    min-height:150px
+  }
+  .timeline>li .timeline-panel{
+    padding:0 20px 20px
+  }
+  .timeline>li .timeline-image{
+    width:150px;
+    height:150px;
+    margin-left:-75px
+  }
+  .timeline>li .timeline-image h4{
+    font-size:18px;
+    margin-top:30px;
+    line-height:26px
+  }
+  .timeline>li.timeline-inverted>.timeline-panel{
+    padding:0 20px 20px
+  }
+}
+@media (min-width:1200px){
+  .timeline>li{
+    min-height:170px
+  }
+  .timeline>li .timeline-panel{
+    padding:0 20px 20px 100px
+  }
+  .timeline>li .timeline-image{
+    width:170px;
+    height:170px;
+    margin-left:-85px
+  }
+  .timeline>li .timeline-image h4{
+    margin-top:40px
+  }
+  .timeline>li.timeline-inverted>.timeline-panel{
+    padding:0 100px 20px 20px
+  }
+}
+
+/****************************************/
+/*              Timeline                */
+/****************************************/
+
