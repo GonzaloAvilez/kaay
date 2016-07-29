@@ -38,6 +38,9 @@ TEMPLATES = [
                 'django.template.context_processors.tz',
                 'django.contrib.messages.context_processors.messages',
                  'cart.context_processors.cart',
+                 # Python Social Auth Context Processors
+                'social.apps.django_app.context_processors.backends',
+                'social.apps.django_app.context_processors.login_redirect',
             ],
         },
     },
@@ -76,6 +79,7 @@ INSTALLED_APPS = (
     'authtools',
     'crispy_forms',
     'easy_thumbnails',
+    
 
     'paypal.standard.ipn',
     'payment',
@@ -85,9 +89,9 @@ INSTALLED_APPS = (
     'shop',    
     'cart',
     'socialhand',
-    'haystack'
-    
-    
+    'haystack',
+    'djrill',
+        
     
 )
 
@@ -100,6 +104,8 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
+
+
 
 ROOT_URLCONF = 'socialhand.urls'
 
@@ -161,19 +167,29 @@ CART_SESSION_ID = 'cart'
 
 #Contact Us features
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = "djrill.mail.backends.djrill.DjrillBackend"
+
+MANDRILL_API_KEY='n6MKcMYN9KTbSPrZcl8sKA'
+DEFAULT_FROM_EMAIL= "g.avilez.ig@gmail.com"
+
+# EMAIL_HOST ='smtp.mandrillapp.com'
+# EMAIL_PORT = 587
+# EMAIL_HOST_PASSWORD= 'n6MKcMYN9KTbSPrZcl8sKA'
+# EMAIL_HOST_USER= 'IKAAY'
+
 
 # DEFAULT_FROM_EMAIL = "g.avilez.ig@gmail.com"
-
 # EMAIL_USE_TLS = True
 # EMAIL_HOST = 'smtp.gmail.com'
 # EMAIL_PORT = 587
 # EMAIL_HOST_USER = 'g.avilez.ig@gmail.com'
 # EMAIL_HOST_PASSWORD = 'aiig890905hgrvgn04'
 
-EMAIL_BACKEND = "sgbackend.SendGridBackend"
-SENDGRID_USER = "g.avilez.ig"
-SENDGRID_PASSWORD = "gonzalito"
+
+
+# EMAIL_BACKEND = "sgbackend.SendGridBackend"
+# SENDGRID_USER = "g.avilez.ig"
+# SENDGRID_PASSWORD = "gonzalito"
 
 
 

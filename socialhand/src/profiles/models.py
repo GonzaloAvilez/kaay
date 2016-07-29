@@ -5,7 +5,7 @@ import uuid
 from django.db import models
 from django.conf import settings
 from django.utils import timezone
-
+ 
 
 
 class BaseProfile(models.Model):
@@ -31,13 +31,11 @@ class BaseProfile(models.Model):
         "Devuleve el nombre de la tienda"
         return self.market
 
-
-
-
 @python_2_unicode_compatible
 class Profile(BaseProfile):
     def __str__(self):
         return "{}' Tienda". format(self.user)
+
 
 #creating post model for entries.
 

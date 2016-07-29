@@ -4,7 +4,7 @@ from django.core.mail import send_mail
 from .models import Order
 
 
-# @task
+@task
 # def order_created(order_id):
 # 	"""
 # 	Task to send an e-mail notification when an order is
@@ -28,9 +28,9 @@ def order_created(order_id):
 				Tu número de orden es {}.'.format(order.first_name,
 											order.id)
 	mail_sent = send_mail  (subject,
-								message,
-								'g.avilez.ig@gmail.com',
-	 							[order.email])
+							message,
+							'g.avilez.ig@gmail.com',
+	 						[order.email])
 	return mail_sent
 
 	

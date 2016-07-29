@@ -66,17 +66,16 @@ class ShopFor(forms.ModelForm):
             Field('price'),
             Field('stock'),
             Field('available'),
-
-            
-
             Submit('update', 'Update', css_class="btn-success"),
             )
 
 
     class Meta:
         model = Product
-        fields = ('name','slug', 'image', 'category', 'description', 'price','stock',)    
+        fields = ('name','slug', 'category', 'image', 'description', 'price','stock' )    
 
+
+# postform fue agregado para auxiliar la creacion de shopfor 
 class PostForm(forms.ModelForm):
 
         class Meta:

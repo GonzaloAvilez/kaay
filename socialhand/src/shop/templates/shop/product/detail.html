@@ -8,18 +8,42 @@
 
 
 {% block container %}
+<div></br></br></div>
+<div id="detail"class="justified-gallery" style="background-color: black;">  
+	<div>
+		<img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "image/noimage.png" %}{% endif %}"  alt="<h3>&nbsp;&nbsp;&nbsp;&nbsp;{{product.name}}</h3> {{ product.description|linebreaks }}<br/>${{ product.price }} " >		
+	</div>
+</div>
+<div class="container-fluid"> 
 
+	{{product.author}}
+	{{request.user}}
+	 {{product.id}} {{product.pk}}
+	 {% if product.author == user %}
+	 	<a class="btn btn-primary"  href="{% url 'shop:product_edit' product.id product.slug %}"><span class="glyphicon glyphicon-pencil"></span></a>	
+	 	<a class="btn btn-primary" href="{% url 'shop:product_remove' product.id product.slug %}"><span class="glyphicon glyphicon-remove"></span></a>
+	 {% endif %}
 	<div class="product-detail">
-		<img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "image/noimage.png" %}{% endif %}" >
-		<h1>{{ product.name }}</h1>
-		<h2><a href="{{ product.category.get_absolute_url }}">{{ product.category }}</a></h2>
-		<p class="price">${{ product.price }}</p>
-		<form action="{% url "cart:cart_add" product.id %}" method="post">
+		<h4><p class="price">${{ product.price }}</p></h4>
+		{{ product.description|linebreaks }}
+		<form action="{% url 'cart:cart_add' product.id%}" method="post">
 		{{ cart_product_form }}
 		{% csrf_token %}
-		<input type="submit" value="Add to cart">
+		<input type="submit" value="Añadir al carrito">
 		</form>
-		{{ product.description|linebreaks }}
 	</div>
-
+</div>
 {% endblock container %}
+
+
+{% block scripts %}
+<script src = "{%static 'site/js/jquery.justifiedGallery.js' %}"></script>
+<script>
+    $("#detail").justifiedGallery({
+    rowHeight : 350,
+    lastRow : 'justify',    
+    // nojustify or hide for last image
+    margins : 10
+    });
+</script>
+{% endblock scripts %}
