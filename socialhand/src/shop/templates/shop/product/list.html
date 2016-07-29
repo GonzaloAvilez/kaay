@@ -11,12 +11,12 @@
 {% endblock %}
 
 	{% block content %}
-    <div>
+    
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">{{ show_user.profile.get_short_name }} Tienda
+                <h2 > Tienda
                     <small>Secondary Text</small>
-                </h1>
+                </h2>
             </div>
         </div>
         <!-- /.row -->
@@ -41,37 +41,38 @@
         
         <!-- /.row -->
  <!--  <div class="row"> -->
- <div class="catalogue">
-  {% for product in products %}
-    <div class="col-sm-3 col-lg-3 col-md-3">
-            <div class="thumbnail">
 
-               <a href="{{ product.get_absolute_url }}">
-                    <img  src="{% if product.image %}{{ product.image.url }}{%else %}{% static 'image/noimage.png' %}{% endif %}" alt="article" style="height:245px">
+<div id="simple"class="justified-gallery" >  
+
+  
+  {% for product in products %}
+
+    <a href="{{ product.get_absolute_url }}"class="portfolio-box ">
+                    <img  src="{% if product.image %}{{ product.image.url }}{%else %}{% static 'image/noimage.png' %}{% endif %}" >
+
+                    <div class="portfolio-box-caption">
+
+              <div class="portfolio-box-caption-content">
+
+                <div class="project-category text-faded">
+                <h3>{{ product.name }}</h3>
+                </div>
+                <div class="project-name">
+                <h3>${{ product.price }}</h3>
+                </div>
+              </div>
+            </div>    
                 </a>
-                <div class="caption">
+            <!--     <div class="caption">
                     <h3 class="pull-right">${{ product.price }}</h3>
                     <h3>
-                    <a href="{{ product.get_absolute_url }}">{{ product.name }}</a><br>
-                
-                    </h3>
+                    <a href="{{ product.get_absolute_url }}">{{ product.name }}</a><br>     </h3>
                 </div>
-                <div class="ratings">
-                    <p class="pull-right">15 reviews</p>
-                    <p>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                    </p>
-                </div>
-            </div>
-       </div>  
+                -->
+            
+        
        {% endfor %}
-
-         </div>
-         
+         </div> 
         <!-- </div>	 -->
         <!-- /.row -->
 
@@ -119,3 +120,18 @@
 	
 	
 {% endblock  %}
+
+
+{% block scripts %}
+
+<script src = "{%static 'site/js/jquery.justifiedGallery.js' %}"></script>
+<script>
+    $("#simple").justifiedGallery({
+    rowHeight : 220,
+    lastRow : 'justify',    
+    // nojustify or hide for last image
+    margins : 15
+    });
+</script>
+
+{% endblock scripts %}

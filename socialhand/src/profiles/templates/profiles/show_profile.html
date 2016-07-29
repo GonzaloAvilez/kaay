@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load staticfiles %}
+{% load crispy_forms_tags %}
 {% load thumbnail %}
 
 {% block title %}{{ block.super }}{{ show_user.profile.get_short_name }}{% endblock %}
@@ -18,110 +19,187 @@
               <a href="{% url 'profiles:edit_self' %}" class="btn btn-default">Editar Perfil</a>
             {% endif %}
         </div> -->
-        {% if editable %}
-            <div class="col-md-12">
-              <a href="{% url 'profiles:edit_self' %}" class="btn btn-default">Editar Perfil</a>
-            </div>
-        {% endif %}
+      {% if editable %}
+          <div class="col-md-12">
+            <a href="{% url 'profiles:edit_self' %}" class="btn btn-default">Editar Perfil</a>
+          </div>
+      {% endif %}
   </div><!-- /col-md-12 text-center -->   
-        <div class="row">
-        <div  class="col-xs-6 col-md-3">  
-            <div id="under">   
-            <h1 style="font-family:Lobster;" ><font color="white">{{ show_user.profile.get_short_name }}</font></h1>
-            <img title="profile picture" class="img-circle img-responsive img-thumbnail" src="{% thumbnail show_user.profile.picture|default:'default_profile.png' 150x150 crop %}">   
-            </div> 
-        </div>        
-        </div>
-        
+    <div class="container-fluid">
+      <div  class="col-xs-6 col-md-3">  
+        <div id="under">   
+        <h1 style="font-family:Lobster;" ><font color="white">{{ show_user.profile.get_short_name }}</font></h1>
+        <img title="profile picture" class="img-circle img-responsive img-thumbnail" src="{% thumbnail show_user.profile.picture|default:'default_profile.png' 150x150 crop %}">   
+        </div> 
+      </div>        
+    </div>       
 </div>  <!-- /overlay -->
 
 <!--======== fullscreen carousel =========-->
 <div>
-    <div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel" data-interval="7000">
+    <div id="myCarousel" class="carousel fade-carousel slide" data-pause="click">
       <ol class="carousel-indicators">
           <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
           <li data-target="#myCarousel" data-slide-to="1"></li>
           <li data-target="#myCarousel" data-slide-to="2"></li>
       </ol>
-        <div class="carousel-inner">
-            <div class="item active">
-                <img class="slide-image" src="/static/site/img/bordado.jpg" alt="">
-            </div>
-            <div class="item">
-                <img class="slide-image" src="/static/site/img/merida.jpg" alt="">
-            </div>
-            <div class="item">
-                <img class="slide-image" src="/static/site/img/m.jpg" alt="">
-            </div>
+    <div class="carousel-inner">
+        <div class="item slides active">
+            <img class="slide-image" src="/static/site/img/bordado.jpg" alt="">
         </div>
-        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
-        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+        <div class="item">
+            <img class="slide-image" src="/static/site/img/merida.jpg" alt="">
+        </div>
+        <div class="item">
+            <img class="slide-image" src="/static/site/img/m.jpg" alt="">
+        </div>
+    </div>
+        <!-- <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a> -->
     </div>
 </div>
 
 
 
 <div class="container profile-body" style="font-size:15px">
-  <div class="row">
+  <div class="container-fluid ">
     <div class="col-sm-4">
       <ul class="list-group">
         <li class="list-group-item text-muted">Tu perfil</li>
         <li class="list-group-item text-right"><span class="pull-left"><strong>Email:</strong></span> {{ show_user.email|default:"missing" }}
-
-    {% if editable %}
+        {% if editable %}
         	{% if show_user.profile.email_verified %}
-        	    <span class="glyphicon glyphicon-ok-circle" aria-hidden="true" title="Correo electrónico verificado"></span>
-              <span class="sr-only">Verificado</span>
+      	    <span class="glyphicon glyphicon-ok-circle" aria-hidden="true" title="Correo electrónico verificado"></span>
+            <span class="sr-only">Verificado</span>
         	{% else %}
-        	    <span class="glyphicon glyphicon-warning-sign" aria-hidden="true" title="Correo electrónico No verificado"></span>
-        	    <span class="sr-only">No Verificado</span>
+      	    <span class="glyphicon glyphicon-warning-sign" aria-hidden="true" title="Correo electrónico No verificado"></span>
+      	    <span class="sr-only">No Verificado</span>
           {% endif %}
-      	      </li>
-              <li class="list-group-item text-right"> 
-                <span class="pull-left"><strong>Registrado desde:</strong></span> {{ show_user.date_joined }}
-              </li>
-              <li class="list-group-item text-right">
-                <span class="pull-left"><strong>Ultimo ingreso:</strong></span> {{ show_user.last_login }}
-              </li>
+    	      </li>
+            <li class="list-group-item text-right"> 
+              <span class="pull-left"><strong>Registrado desde:</strong></span> {{ show_user.date_joined }}
+            </li>
+            <li class="list-group-item text-right">
+              <span class="pull-left"><strong>Ultimo ingreso:</strong></span> {{ show_user.last_login }}
+            </li>
+        {% endif %}
       </ul>
-    {% endif %}
     </div>
     <div class="col-sm-8">
       <div class="panel panel-default">
         <div class="panel-heading" style="font-size:25px">{{ show_user.get_full_name }}'s Artesanías
-	  {% if show_user.profile.slug %}
-	    <a href="{% url 'profiles:show' show_user.profile.slug %}">
-	    	<span class="glyphicon glyphicon-link" aria-hidden="true" title="Profile permalink"></span>
-	    	<span class="sr-only">Permalink</span></a> {{ show_user.profile.get_absolute_url }}
-	  {% else %}
-		<a href="https://github.com/arocks/edge/issues/40" target="_blank"><span>No permalink. See this issue.</span></a>
-	  {% endif %}
-	</div>
+	         {% if show_user.profile.slug %}
+	           <a href="{% url 'profiles:show' show_user.profile.slug %}">
+             <span class="glyphicon glyphicon-link" aria-hidden="true" title="Profile permalink"></span>
+	    	     <span class="sr-only">Permalink</span></a> {{ show_user.profile.get_absolute_url }}
+	         {% else %}
+		         <a href="https://github.com/arocks/edge/issues/40" target="_blank"><span>No permalink. See this issue.</span></a>
+	         {% endif %}
+	      </div>
         <div class="panel-body">
-            <p>
-	          <strong>Nuestra tienda:</strong> {{ show_user.profile.get_short_name }} 
-            </p>
-            <p>
-            <strong>Nuestra historia:</strong> <li align="right"> {{ show_user.profile.bio }} </li> 
-            </p>
+            <p><strong>Nuestra tienda:</strong> {{ show_user.profile.get_short_name }}</p>
+            <p><strong>Nuestra historia:</strong> <li align="right"> {{ show_user.profile.bio }} </li></p>
         </div>
-	  
-        </div> 
+	    </div> 
     </div>
-    <div class="col-md-9">
-    
-
-  {% if editable %}
+    <div class="col-md-9"> 
+      {% if editable %}
         <a href="{% url 'profiles:post_new_product' %}" class="btn btn-primary">Nuevo Producto</a>
-  {% endif  %}
+      {% endif  %}
     </div>
-   
-  <a href="{% url 'shop:product_list' %}"> visitanos
- 
-  </a>
-
+    <a href="{% url 'shop:product_list' %}"> visitanos</a>
+  </div>
 </div>
 
-{% endblock %}
+
+  <!-- <div class="container-fluid">
+<section class="no-padding parallax-bg1 background-primary" style="background-position: 50% 80%;" data-stellar-background-ratio="0.1">  
+  <div class="container-fluid">
+      <div class="row no-gutter">
+
+  {% for product in products %}
 
 
+        <div class="col-sm-3 col-lg-3 col-md-3">
+            <div class="thumbnail">
+               <a href="{{ product.get_absolute_url }}">
+                    <img  src="{% if product.image %}{{ product.image.url }}{%else %}{% static 'image/noimage.png' %}{% endif %}" alt="article" style="height:245px">
+                </a>
+                <div class="caption">
+                    <h4 class="pull-right">${{ product.price }}</h4>
+                    <h3>
+                    <a href="{{ product.get_absolute_url }}">{{ product.name }}</a><br></h3>
+                </div>           
+            </div>
+       </div>  
+
+
+
+        <div class="col-sm-4 col-lg-4 col-md-4">     
+        <div class="">     
+          <a href="{{ product.get_absolute_url }}" class="portfolio-box "><img  src="{% if product.image %}{{ product.image.url }}{%else %}{% static 'image/noimage.png' %}{% endif %}"  alt="article" class="img-responsive aux-responsive-grid">
+            <div class="portfolio-box-caption">
+              <div class="portfolio-box-caption-content">
+                <div class="project-category text-faded">
+                Category
+                </div>
+                <div class="project-name">
+                Project Name
+                </div>
+              </div>
+            </div>               
+          </a>
+        </div>
+        </div>
+     
+  {% endfor %}
+   </div>
+    </div>
+</section>
+
+  </div> -->
+
+
+ <div id="simple"class="justified-gallery" style="background-color: black" >  
+  
+{% for product in products %}
+  <a href="{{ product.get_absolute_url }}"class="portfolio-box image-frame ">
+    <img  src="{% if product.image %}{{ product.image.url }}{%else %}{% static 'image/noimage.png' %}{% endif %}"   >
+    <div class="portfolio-box-caption">
+              <div class="portfolio-box-caption-content">
+                <div class="project-category text-faded">
+                {{ product.name }}
+                </div>
+                <div class="project-name">
+                <h3>by:{{ show_user.get_full_name }} {{product.id}}</h3>
+                </div>
+              </div>
+            </div>    
+  </a>
+
+{% endfor %}    
+  </div>
+
+
+<!-- </div> -->
+
+{% endblock container %}
+
+{% block scripts %}
+
+    
+<script src="{% static 'site/js/site.js' %}"></script>
+<!-- add scripts for animate scrolling -->
+<script src="{% static 'site/js/scrolling-nav.js' %}"></script>
+<script src="{% static 'site/js/jquery.easing.min.js' %}"></script>
+
+<script src = "{%static 'site/js/jquery.justifiedGallery.js' %}"></script>
+<script>
+    $("#simple").justifiedGallery({
+    rowHeight : 220,
+    lastRow : 'nojustify',
+    margins : 15
+    });
+</script>
+
+{% endblock scripts %}

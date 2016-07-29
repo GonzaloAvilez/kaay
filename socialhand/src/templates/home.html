@@ -1,32 +1,31 @@
 {% extends "base.html" %}
-
+ 
 {% load staticfiles %}
 {% load crispy_forms_tags %}
 
 {% block title %}{{ block.super }}Mercado artesanal{% endblock %}
 {% block navbar-brand %}
-<a class="navbar-brand page-scroll" href="#presentation">
-<img src="{% static 'site/img/logo.png' %}" alt="logo">
-{% include "_brandname.html" %}
-</a>
+  <a class="navbar-brand page-scroll" href="#presentation">
+    <img src="{% static 'site/img/logo.png' %}" alt="logo">{% include "_brandname.html" %}
+  </a>
 {% endblock %}
 
 {% block navbar-left %}
-<li><a class="page-scroll" href="#about">Qué es?</a></li>
-<li><a class="page-scroll" href="#portafolio">Portafolio</a></li>
-{% include "_navbar.html" with active_link="home" %}
+  <li><a class="page-scroll" href="#about">Qué es?</a></li>
+  <li><a class="page-scroll" href="#portafolio">Portafolio</a></li>
+  {% include "_navbar.html" with active_link="home" %}
 {% endblock %}
 
 {% block navbar-right %}
   {% if not user.is_authenticated %}
-<a class="btn btn-default" href="{% url 'accounts:login' %}" role="button">Ingresar</a>
-<a class="btn btn-default" href="{% url 'accounts:signup' %}" role="button">Regístrate</a>
+  <a class="btn btn-default" href="{% url 'accounts:login' %}" role="button">Ingresar</a>
+  <a class="btn btn-default" href="{% url 'accounts:signup' %}" role="button">Regístrate</a>
   {% else %}
     {{ block.super }}
   {% endif %}
 {% endblock %}
 
-{% block splash %} 
+{% block splash %}
 <!--===================================-->
 <!--              Carousel             -->
 <!--===================================-->
@@ -38,7 +37,7 @@
           <li data-target="#myCarousel" data-slide-to="1"></li>
           <li data-target="#myCarousel" data-slide-to="2"></li>
         </ol>
-     <!-- Wrapper for slides -->  
+     <!-- Wrapper for slides -->
       <div class="carousel-inner">
         <div class="item slides active">
         <div class="slide-1"></div>
@@ -50,13 +49,13 @@
           <div class="container-fluid">
             <div class="carousel-caption">
               <h1 style="font-family:Lobster;"><font color="white">{% include "_brandname.html" %}</font></h1>
-               <p> Hecho para ti... pensando en ti </p> 
-               <p><a class="btn btn-lg btn-default" href="{% url 'accounts:signup' %}" role="button">Quiero vender!</a></p>                 
+               <p> Hecho para ti... pensando en ti </p>
+               <p><a class="btn btn-lg btn-default" href="{% url 'accounts:signup' %}" role="button">Quiero vender!</a></p>
             </div>
           </div>
         </div>
         <div class="item slides">
-        <div class="slide-2"></div>      
+        <div class="slide-2"></div>
           <img class="second-slide" src="/static/site/img/bordado.jpg" alt="Second slide">
           <div class="container">
             <div class="carousel-caption">
@@ -82,23 +81,97 @@
     </div><!-- /.carousel -->
 </section>
 {% endblock splash %}
-
 {% block container %}
+<a href="{% url 'search' %}">search page</a>
 <!-- principal body container -->
-<div class="container-fluid">
+
 <section id="about">
   <div class="background-white">
             <div class="container">
                     <div class="col-md-4 col-md-offset-4">
                         <h2 class="text-center article-title" style="font-size:300%;">Bienvenido</h2>
-                        <p class="text-center">Käay es un lugar donde encontrarás una comunidad de artesanos que muestran su creatividad y comparten contigo un trozo de su trabajo, un trozo de su vida </p>
+                        <p class="text-center">Käay es un lugar donde encontrarás una comunidad de artesanos que nos muestran su creatividad y comparten contigo un trozo de su trabajo... un trozo de su vida </p>
                         <img class="img-responsive"  alt="" src="{% static "/static/site/img/creative.png" %}" style="display: block; margin-left: auto; margin-right: auto; margin-top: 40px;">
                     </div>            
             </div>
   </div>
 </section>
 
+<div id="simple"class="justified-gallery" style="background-color: black" >  
+    <a href="{{ product.get_absolute_url }}"class="portfolio-box image-frame ">
+    <img  src="{% static "/static/site/img/soldar.jpg" %}"  >
+    media\products\2016\07\25
+    <div class="portfolio-box-caption">
+      <div class="portfolio-box-caption-content">
+        <div class="project-category text-faded">
+        {{ product.name }}
+        </div>
+        <div class="project-name">
+        <h3>by:{{ show_user.get_full_name }} {{product.id}}</h3>
+        </div>
+      </div>
+    </div>    
+    </a>
+    <a href="{{ product.get_absolute_url }}"class="portfolio-box image-frame ">
+    <img  src="{% static "/static/site/img/platos.jpg" %}"  >
+    media\products\2016\07\25
+    <div class="portfolio-box-caption">
+      <div class="portfolio-box-caption-content">
+        <div class="project-category text-faded">
+        {{ product.name }}
+        </div>
+        <div class="project-name">
+        <h3>by:{{ show_user.get_full_name }} {{product.id}}</h3>
+        </div>
+      </div>
+    </div>    
+    </a>
 
+    <a href="{{ product.get_absolute_url }}"class="portfolio-box image-frame ">
+    <img  src="{% static "/static/site/img/b.jpg" %}"  >
+    media\products\2016\07\25
+    <div class="portfolio-box-caption">
+      <div class="portfolio-box-caption-content">
+        <div class="project-category text-faded">
+        {{ product.name }}
+        </div>
+        <div class="project-name">
+        <h3>by:{{ show_user.get_full_name }} {{product.id}}</h3>
+        </div>
+      </div>
+    </div>    
+    </a>
+     <a href="{{ product.get_absolute_url }}"class="portfolio-box image-frame ">
+    <img  src="{% static "/static/site/img/a.jpg" %}"  >
+    media\products\2016\07\25
+    <div class="portfolio-box-caption">
+      <div class="portfolio-box-caption-content">
+        <div class="project-category text-faded">
+        {{ product.name }}
+        </div>
+        <div class="project-name">
+        <h3>by:{{ show_user.get_full_name }} {{product.id}}</h3>
+        </div>
+      </div>
+    </div>    
+    </a>
+    
+    <a href="{{ product.get_absolute_url }}"class="portfolio-box image-frame ">
+    <img  src="{% static "/static/site/img/hands.jpg" %}"  >
+    media\products\2016\07\25
+    <div class="portfolio-box-caption">
+      <div class="portfolio-box-caption-content">
+        <div class="project-category text-faded">
+        {{ product.name }}
+        </div>
+        <div class="project-name">
+        <h3>by:{{ show_user.get_full_name }} {{product.id}}</h3>
+        </div>
+      </div>
+    </div>    
+    </a>
+</div>
+<div class="container-fluid">
 <section class="no-padding parallax-bg1 background-primary" style="background-position: 50% 0%;" data-stellar-background-ratio="0.5">
   <div class="container-fluid">
     <div class="row no-gutter">
@@ -246,6 +319,9 @@
   </div>  <!-- container-fluid -->   
 </section>
 
+
+
+
 <section id="aditional" class="no-padding parallax-bg2">
  <div id="icons" style="background-position: 50% 0%;" data-stellar-background-ratio="0.5">
             <div class="container">
@@ -371,7 +447,128 @@
 
 
 
+
+ 
+
+             <!-- Marketing messaging and featurettes
+    ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->   
+<hr class="featurette-divider">
+    <section class="no-padding" id="portafolio">
+       <div class="container marketing">
+        <!-- Three columns of text below the carousel -->
+        <div class="row">
+          <div class="col-lg-4">
+            <img class="img-circle" src="{% static "/static/site/img/kaay.jpg" %}" alt="Generic image" width="140" height="140">
+            <h2>Heading</h2>
+            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+            <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
+          </div><!-- /.col-lg-4 -->
+          <div class="col-lg-4">
+            <img class="img-circle" src="{% static "/static/site/img/kaay.jpg" %}"  alt="Generic image" width="140" height="140">
+            <h2>Heading</h2>
+            <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
+            <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
+          </div><!-- /.col-lg-4 -->
+          <div class="col-lg-4">
+            <img class="img-circle" src="{% static "/static/site/img/kaay.jpg" %}"  alt="Generic image" width="140" height="140">
+            <h2>Heading</h2>
+            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+            <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
+          </div><!-- /.col-lg-4 -->
+        </div><!-- /.row -->
+      </div>    
+    </section>
+
+
 </div><!-- /.end  principal div_container-fluid -->
+
+
+
+
+
+<div id="simple"class="justified-gallery" style="background-color: black" >  
+    <a href="{{ product.get_absolute_url }}"class="portfolio-box image-frame ">
+    <img  src="{% static "/static/site/img/soldar.jpg" %}"  >
+    media\products\2016\07\25
+    <div class="portfolio-box-caption">
+      <div class="portfolio-box-caption-content">
+        <div class="project-category text-faded">
+        {{ product.name }}
+        </div>
+        <div class="project-name">
+        <h3>by:{{ show_user.get_full_name }} {{product.id}}</h3>
+        </div>
+      </div>
+    </div>    
+    </a>
+    <a href="{{ product.get_absolute_url }}"class="portfolio-box image-frame ">
+    <img  src="{% static "/static/site/img/platos.jpg" %}"  >
+    media\products\2016\07\25
+    <div class="portfolio-box-caption">
+      <div class="portfolio-box-caption-content">
+        <div class="project-category text-faded">
+        {{ product.name }}
+        </div>
+        <div class="project-name">
+        <h3>by:{{ show_user.get_full_name }} {{product.id}}</h3>
+        </div>
+      </div>
+    </div>    
+    </a>
+
+    <a href="{{ product.get_absolute_url }}"class="portfolio-box image-frame ">
+    <img  src="{% static "/static/site/img/b.jpg" %}"  >
+    media\products\2016\07\25
+    <div class="portfolio-box-caption">
+      <div class="portfolio-box-caption-content">
+        <div class="project-category text-faded">
+        {{ product.name }}
+        </div>
+        <div class="project-name">
+        <h3>by:{{ show_user.get_full_name }} {{product.id}}</h3>
+        </div>
+      </div>
+    </div>    
+    </a>
+     <a href="{{ product.get_absolute_url }}"class="portfolio-box image-frame ">
+    <img  src="{% static "/static/site/img/a.jpg" %}"  >
+    media\products\2016\07\25
+    <div class="portfolio-box-caption">
+      <div class="portfolio-box-caption-content">
+        <div class="project-category text-faded">
+        {{ product.name }}
+        </div>
+        <div class="project-name">
+        <h3>by:{{ show_user.get_full_name }} {{product.id}}</h3>
+        </div>
+      </div>
+    </div>    
+    </a>
+    
+    <a href="{{ product.get_absolute_url }}"class="portfolio-box image-frame ">
+    <img  src="{% static "/static/site/img/hands.jpg" %}"  >
+    media\products\2016\07\25
+    <div class="portfolio-box-caption">
+      <div class="portfolio-box-caption-content">
+        <div class="project-category text-faded">
+        {{ product.name }}
+        </div>
+        <div class="project-name">
+        <h3>by:{{ show_user.get_full_name }} {{product.id}}</h3>
+        </div>
+      </div>
+    </div>    
+    </a>
+</div>
+
+
+
+
+
+
+
+
 {% endblock container %}
 
 {% block scripts %}
@@ -381,6 +578,14 @@
 <script src="{% static 'site/js/scrolling-nav.js' %}"></script>
 <script src="{% static 'site/js/jquery.easing.min.js' %}"></script>
 
+<script src = "{%static 'site/js/jquery.justifiedGallery.js' %}"></script>
+<script>
+    $("#simple").justifiedGallery({
+    rowHeight : 250,
+    lastRow : 'nojustify',
+    margins : 5
+    });
+</script>
 
 {% endblock scripts %}
 

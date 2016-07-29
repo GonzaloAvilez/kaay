@@ -4,14 +4,13 @@
 
 {% block title %}{{ block.super }}Sign Up{% endblock %}
 
-{% block form_heading %}Regístrate, es gratis{% endblock %}
+{% block form_heading %}Regístrate{% endblock %}
 
 {% block form %}
   {% crispy form %}
-
   <div class="form-message">
     <p>
-      Ya te registraste antes? <a href="{% url 'accounts:login' %}">Log in</a>.
+      Ya estás registrado? <a href="{% url 'accounts:login' %}">Log in</a>.
     </p>
   </div>
 {% endblock form %}

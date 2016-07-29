@@ -1,5 +1,5 @@
 from __future__ import unicode_literals
-from django.views import generic
+from django.views.generic import TemplateView
 from django.shortcuts import get_object_or_404, redirect
 from django.contrib import messages
 from braces.views import LoginRequiredMixin
@@ -12,31 +12,42 @@ from django.shortcuts import render
 from .models import Post
 from .forms import ShopFor,PostForm
 import shop.models  
+from shop.models import Product
+from django.contrib.auth.decorators import login_required
 
 
-
-class ShowProfile(LoginRequiredMixin, generic.TemplateView):
-    template_name = "profiles/show_profile.html"
-    
-    http_method_names = ['get' ]
-
+ 
+class ShowProfile(LoginRequiredMixin,TemplateView):
+    template_name = "profiles/show_profile.html"  
+    http_method_names = ['get', 'post' ]
     def get(self, request, *args, **kwargs):
         slug = self.kwargs.get('slug')
         if slug:
             profile = get_object_or_404(models.Profile, slug=slug)
             user = profile.user
         else:
+            #add anonymoues user?
             user = self.request.user
 
         if user == self.request.user:
             kwargs["editable"] = True
         kwargs["show_user"] = user
+        # print products by profile kwargs returns a dictionary
+        products = Product.objects.filter(author=user).order_by('?')
+        kwargs['products']= products
         return super(ShowProfile, self).get(request, *args, **kwargs)
-
     
 
+    # show us all products in ShowProfile
+    # def get_context_data(self,**kwargs):
+    #     context = super(ShowProfile, self).get_context_data(**kwargs)
+    #     context['products'] =Product.objects.filter(available=True)
+    #     return  context
 
-class EditProfile(LoginRequiredMixin, generic.TemplateView):
+
+
+
+class EditProfile(LoginRequiredMixin,TemplateView):
     template_name = "profiles/edit_profile.html"
     http_method_names = ['get', 'post']
 
@@ -73,7 +84,7 @@ class EditProfile(LoginRequiredMixin, generic.TemplateView):
 
 
 
-#add new product for sell
+#Add new product for sell
 def post_new(request):
         if request.method == "POST":
             form = ShopFor(request.POST,
@@ -87,6 +98,8 @@ def post_new(request):
         else:
             form = ShopFor()
         return render(request, 'profiles/product_add.html', {'form': form})
+
+
 
 # def post_new(request):
 #         if request.method == "POST":

@@ -20,6 +20,8 @@ urlpatterns = [
     url(r'^', include(shop.urls, namespace='shop')),
     url(r'^cart/', include('cart.urls', namespace='cart')),
     url(r'^search/', views.notes, name='search'),
+    # Python Social Auth URLs
+    url('', include('social.apps.django_app.urls', namespace='social')),
     
     
 
