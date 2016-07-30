@@ -110,6 +110,8 @@ AUTHENTICATION_BACKENDS = (
     'social.backends.facebook.FacebookOAuth2',
     # Twitter
     'social.backends.twitter.TwitterOAuth',
+    # Google 
+    'social.backends.google.GoogleOAuth2',
     # Django
     'django.contrib.auth.backends.ModelBackend',
 )
@@ -117,11 +119,17 @@ AUTHENTICATION_BACKENDS = (
 # Facebook Keys
 SOCIAL_AUTH_FACEBOOK_KEY = '657778311046259'
 SOCIAL_AUTH_FACEBOOK_SECRET = '95a709bc0b55e58dcb010d0ba45fcb54'
-SOCIAL_AUTH_LOGIN_REDIRECT_URL = "/"
+
 
 # Twitter Keys
 SOCIAL_AUTH_TWITTER_KEY = 'wk2ccPNF6lc9T84xjgejYuqUE'
 SOCIAL_AUTH_TWITTER_SECRET = 'IrK4vcEebnoDPNXEaIhyoDj64GuKNdxqANyBFViLM67U3MGIld'
+
+# Google Keys 
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '913879562571-3prerlijc0i0ahp0plta7juieev02c7l.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'H7RVg5PlMgil9GxK0K0TvPn1'
+
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = "/"
 
 ROOT_URLCONF = 'socialhand.urls'
 
