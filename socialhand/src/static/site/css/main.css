@@ -1325,7 +1325,7 @@ ul.social-network li {
 
 
 /* footer social icons */
-.social-network a.icoRss:hover {
+.social-network a.icoInstagram:hover {
   background-color: #F56505;
 }
 .social-network a.icoFacebook:hover {
@@ -1359,14 +1359,22 @@ a.socialIcon:hover, .socialHoverClass {
   -webkit-border-radius:50%;
   border-radius:50%;
   text-align:center;
-  width: 50px;
-  height: 50px;
-  font-size:20px;
+  width: 70px;
+  height: 70px;
+  font-size:50px;
+    -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+  border-radius: 100px;
+  -webkit-box-shadow: inset 2px 2px 4px rgba(0,0,0,0.4);
+  -moz-box-shadow: inset 2px 2px 4px rgba(0,0,0,0.4);
+  box-shadow: inset 2px 2px 4px rgba(0,0,0,0.4);
 }
 .social-circle li i {
   margin:0;
   line-height:50px;
   text-align: center;
+
+
 }
 
 .social-circle li a:hover i, .triggeredHover {
@@ -1379,6 +1387,7 @@ a.socialIcon:hover, .socialHoverClass {
   -o-transition: all 0.2s;
   -ms-transition: all 0.2s;
   transition: all 0.2s;
+
 }
 .social-circle i {
   color: #fff;
@@ -1387,8 +1396,13 @@ a.socialIcon:hover, .socialHoverClass {
   -o-transition: all 0.8s;
   -ms-transition: all 0.8s;
   transition: all 0.8s;
+
+
 }
 
 a {
- background-color: #D3D3D3;   
+
+}
+.ico-background{
+  background: rgba(0, 0, 0, 0.9 );
 }
