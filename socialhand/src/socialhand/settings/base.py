@@ -79,7 +79,7 @@ INSTALLED_APPS = (
     'authtools',
     'crispy_forms',
     'easy_thumbnails',
-    
+    'social.apps.django_app.default',
 
     'paypal.standard.ipn',
     'payment',
@@ -105,7 +105,23 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
+AUTHENTICATION_BACKENDS = (
+    # Facebook
+    'social.backends.facebook.FacebookOAuth2',
+    # Twitter
+    'social.backends.twitter.TwitterOAuth',
+    # Django
+    'django.contrib.auth.backends.ModelBackend',
+)
 
+# Facebook Keys
+SOCIAL_AUTH_FACEBOOK_KEY = '657778311046259'
+SOCIAL_AUTH_FACEBOOK_SECRET = '95a709bc0b55e58dcb010d0ba45fcb54'
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = "/"
+
+# Twitter Keys
+SOCIAL_AUTH_TWITTER_KEY = 'wk2ccPNF6lc9T84xjgejYuqUE'
+SOCIAL_AUTH_TWITTER_SECRET = 'IrK4vcEebnoDPNXEaIhyoDj64GuKNdxqANyBFViLM67U3MGIld'
 
 ROOT_URLCONF = 'socialhand.urls'
 
