@@ -6,13 +6,27 @@
 
 {% block form_heading %}Ingresa{% endblock %}
 
+
 {% block form %}
+
+	
+  <div class="form-message">
   {% crispy form %}
 
-  <div class="form-message">
+  	<div class="col-md-4 col-md-offset-4">
+	    <ul class="social-network social-circle">  
+	        <li><a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}" class="icoFacebook ico-background" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+	        <li><a href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}" class="icoTwitter ico-background" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+	        <li><a href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}" class="icoGoogle ico-background" title="Google +"><i class="fa fa-google-plus"></i></a></li>     
+	    </ul>             
+    </div>
+ 
+  
+	
     <p>
       ¿No tienes una cuenta? <a href="{% url 'accounts:signup' %}">Regístrate</a>.
     </p>
   </div>
 {% endblock form %}
+
 
