@@ -41,6 +41,7 @@ TEMPLATES = [
                  # Python Social Auth Context Processors
                 'social.apps.django_app.context_processors.backends',
                 'social.apps.django_app.context_processors.login_redirect',
+                'django.core.context_processors.request',
             ],
         },
     },
@@ -80,6 +81,7 @@ INSTALLED_APPS = (
     'crispy_forms',
     'easy_thumbnails',
     'social.apps.django_app.default',
+    'embed_video',  
 
     'paypal.standard.ipn',
     'payment',

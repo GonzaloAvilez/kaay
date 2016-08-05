@@ -3,21 +3,22 @@ from django.views.generic import TemplateView
 from django.shortcuts import get_object_or_404, redirect
 from django.contrib import messages
 from braces.views import LoginRequiredMixin
+from django.contrib.auth.mixins import AccessMixin
 from . import forms
 from . import models
 from django.http import HttpResponse
 
 from django.utils import timezone
 from django.shortcuts import render
-from .models import Post
-from .forms import ShopFor,PostForm
+from .models import Post, Video
+from .forms import ShopFor, PostForm
 import shop.models  
 from shop.models import Product
 from django.contrib.auth.decorators import login_required
-
-
- 
-class ShowProfile(LoginRequiredMixin,TemplateView):
+from django.views.generic import ListView, DetailView
+from .models import Video
+  
+class ShowProfile(AccessMixin,TemplateView):
     template_name = "profiles/show_profile.html"  
     http_method_names = ['get', 'post' ]
     def get(self, request, *args, **kwargs):
@@ -34,7 +35,9 @@ class ShowProfile(LoginRequiredMixin,TemplateView):
         kwargs["show_user"] = user
         # print products by profile kwargs returns a dictionary
         products = Product.objects.filter(author=user).order_by('?')
+        videos =Video.objects.filter(author=user)
         kwargs['products']= products
+        kwargs['videos']=videos
         return super(ShowProfile, self).get(request, *args, **kwargs)
     
 
@@ -114,3 +117,9 @@ def post_new(request):
 #         else:
 #             form = PostForm()
 #         return render(request, 'profiles/product_add.html', {'form': form})
+
+
+class PostVideo(ListView):
+    model = Video
+
+
