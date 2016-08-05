@@ -2,6 +2,7 @@
 {% load staticfiles %}
 {% load crispy_forms_tags %}
 {% load thumbnail %}
+{% load embed_video_tags %}
 
 {% block title %}{{ block.super }}{{ show_user.profile.get_short_name }}{% endblock %}
 
@@ -112,7 +113,7 @@
 </div>
 
 
-  <!-- <div class="container-fluid">
+ <!--  <div class="container-fluid">
 <section class="no-padding parallax-bg1 background-primary" style="background-position: 50% 80%;" data-stellar-background-ratio="0.1">  
   <div class="container-fluid">
       <div class="row no-gutter">
@@ -157,8 +158,49 @@
     </div>
 </section>
 
-  </div> -->
+  </div>
+ -->
 
+
+  
+<div class="container-fluid">
+<div class="video-shared"> 
+u'<iframe src="https://player.vimeo.com/video/32761077" width="440" height="240"
+ frameborder="0" title="Jewelry Design Workshop" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>'
+</div>
+</div>
+
+<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    Button with data-target
+  </button>
+</p>
+<div class="collapse" id="collapseExample" style="background-color: black;">
+  <div class="card card-block">
+   <ul>
+    {% for video in videos %}
+    <tr>
+     {% video video.video '460x280' %}
+      {% video video.video as video %}
+        <td><a href="{{ video.url }}">{{ video.title }} {{video.author}}visualiza</a>{{ video.url }} {% video video.video %}</td>
+       
+        {{link.url}}
+        {{ video.backend }}
+        {% video item.video '800x600' %}
+        {% endvideo %}
+
+
+    </tr>
+    {% endfor %}
+ </ul>  
+  </div>
+</div>
+
+
+
+{{video.title}}
+{{video.author}}
+{% video item.video %}
+        
 
  <div id="simple"class="justified-gallery" style="background-color: black" >  
   

@@ -8,5 +8,4 @@ urlpatterns = [
     url(r'^(?P<slug>[\w\-]+)$', views.ShowProfile.as_view(),
         name='show'),
     url(r'^me/add$', views.post_new, name='post_new_product'),
-    
 ]

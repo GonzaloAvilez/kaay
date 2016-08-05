@@ -5,6 +5,9 @@ import uuid
 from django.db import models
 from django.conf import settings
 from django.utils import timezone
+
+from embed_video.fields import EmbedVideoField
+from django.core.urlresolvers import reverse
  
 
 
@@ -58,7 +61,27 @@ class Post(models.Model):
         return self.title
 
 
+class Video(models.Model):
+    author= models.ForeignKey('authtools.User')
+    title = models.CharField(max_length=200)
+    video = EmbedVideoField(
+                            help_text='add a valid URL',
+                            null=True,
+                            blank=True)
+    class Meta: 
+        ordering = ('title',)
+        verbose_name = 'video'
+        verbose_name_plural = 'videos'
 
+
+    def __unicode__(self):
+        return self.title
+
+
+    # def get_absolute_url(self):
+    #         return reverse('profiles:detail', kwargs={'pk': self.pk})
+
+        
 
 
 

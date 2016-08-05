@@ -22,7 +22,7 @@
         <!-- /.row -->
              <div class="row">
 <div class="col-sm-2">
-    <div class="list-group">
+    <div class="list-group ">
 	   <h3>Categorias</h3>
 		<ul class="nav nav-pills nav-stacked">
 			<li {% if not category %}class="selected"{% endif %}>
@@ -36,9 +36,27 @@
 		</ul>
 	</div>
 </div>
+
+
                 </div>
         <!-- Projects Row -->
-        
+
+
+<div class="container-fluid">
+    <div class="btn-group btn-group-lg dropdown-menu"> 
+    <button type="button" class="btn-default btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categorías<span class="caret "></span></button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+            <li {% if not category %}class="selected"{% endif %}>
+                <a href="{% url "shop:product_list" %}" class=" ">All</a>
+            </li>
+        {% for c in categories %} 
+            <li {% if category.slug == c.slug %}{% endif %}><a tabindex="-1" href="{{ c.get_absolute_url }}" class="product-category">{{ c.name }}</a></li>
+        {% endfor %}
+            <li class="divider"></li>
+            <li><a tabindex="-1" href="#">Other</a></li>
+        </ul>
+    </div>
+ </div>       
         <!-- /.row -->
  <!--  <div class="row"> -->
 
@@ -47,7 +65,7 @@
   
   {% for product in products %}
 
-    <a href="{{ product.get_absolute_url }}"class="portfolio-box ">
+    <a href="{{ product.get_absolute_url }}"class="portfolio-box  image-frame">
                     <img  src="{% if product.image %}{{ product.image.url }}{%else %}{% static 'image/noimage.png' %}{% endif %}" >
 
                     <div class="portfolio-box-caption">

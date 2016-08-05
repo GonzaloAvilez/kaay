@@ -6,7 +6,7 @@ from authtools.admin import NamedUserAdmin
 from .models import Profile
 from django.contrib.auth import get_user_model
 from django.core.urlresolvers import reverse
-from .models import Post
+from .models import Post, Video
 
 User = get_user_model()
 
@@ -33,3 +33,4 @@ class NewUserAdmin(NamedUserAdmin):
 admin.site.unregister(User)
 admin.site.register(User, NewUserAdmin)
 admin.site.register(Post)
+admin.site.register(Video)

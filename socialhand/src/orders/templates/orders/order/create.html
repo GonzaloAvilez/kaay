@@ -19,12 +19,12 @@
 	</ul>
 	<p>Total: ${{ cart.get_total_price }}</p>
 	</div>
-
+	<div class="container-fluid">
 	<form action="." method="post" class="order-form">
 		{{ form.as_p }}
 		<p><input type="submit" value="Hacer pedido"></p>
 		{% csrf_token %}
 	</form>
-
+	</div>
 {% endblock %}
 
