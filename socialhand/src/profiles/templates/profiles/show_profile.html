@@ -61,7 +61,7 @@
 </div>
 
 
-
+<!--=============== profile details  ==================-->
 <div class="container profile-body" style="font-size:15px">
   <div class="container-fluid ">
     <div class="col-sm-4">
@@ -113,54 +113,7 @@
 </div>
 
 
- <!--  <div class="container-fluid">
-<section class="no-padding parallax-bg1 background-primary" style="background-position: 50% 80%;" data-stellar-background-ratio="0.1">  
-  <div class="container-fluid">
-      <div class="row no-gutter">
-
-  {% for product in products %}
-
-
-        <div class="col-sm-3 col-lg-3 col-md-3">
-            <div class="thumbnail">
-               <a href="{{ product.get_absolute_url }}">
-                    <img  src="{% if product.image %}{{ product.image.url }}{%else %}{% static 'image/noimage.png' %}{% endif %}" alt="article" style="height:245px">
-                </a>
-                <div class="caption">
-                    <h4 class="pull-right">${{ product.price }}</h4>
-                    <h3>
-                    <a href="{{ product.get_absolute_url }}">{{ product.name }}</a><br></h3>
-                </div>           
-            </div>
-       </div>  
-
-
-
-        <div class="col-sm-4 col-lg-4 col-md-4">     
-        <div class="">     
-          <a href="{{ product.get_absolute_url }}" class="portfolio-box "><img  src="{% if product.image %}{{ product.image.url }}{%else %}{% static 'image/noimage.png' %}{% endif %}"  alt="article" class="img-responsive aux-responsive-grid">
-            <div class="portfolio-box-caption">
-              <div class="portfolio-box-caption-content">
-                <div class="project-category text-faded">
-                Category
-                </div>
-                <div class="project-name">
-                Project Name
-                </div>
-              </div>
-            </div>               
-          </a>
-        </div>
-        </div>
-     
-  {% endfor %}
-   </div>
-    </div>
-</section>
-
-  </div>
- -->
-
+<!-- =========== Embedded Videos ================= -->
 
   
 <div class="container-fluid">
@@ -170,36 +123,22 @@ u'<iframe src="https://player.vimeo.com/video/32761077" width="440" height="240"
 </div>
 </div>
 
-<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-    Button with data-target
-  </button>
-</p>
-<div class="collapse" id="collapseExample" style="background-color: black;">
-  <div class="card card-block">
-   <ul>
-    {% for video in videos %}
-    <tr>
-     {% video video.video '460x280' %}
-      {% video video.video as video %}
-        <td><a href="{{ video.url }}">{{ video.title }} {{video.author}}visualiza</a>{{ video.url }} {% video video.video %}</td>
-       
-        {{link.url}}
-        {{ video.backend }}
-        {% video item.video '800x600' %}
-        {% endvideo %}
-
-
-    </tr>
-    {% endfor %}
- </ul>  
-  </div>
+<div class="container-fluid">
+  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse-video" aria-expanded="false" aria-controls="collapseExample">Contenido</button>
+    <div class="collapse" id="collapse-video" >
+      <div class=" video-shared ">
+        {% for video in videos %}
+         {% video video.video '440x240' %}
+          {% video video.video as video %}
+           <td><a href="{{ video.url }}">{{ video.title }} visualiza</a></td>
+          {% endvideo %}
+        {% endfor %}
+      </div>
+    </div>
 </div>
 
 
 
-{{video.title}}
-{{video.author}}
-{% video item.video %}
         
 
  <div id="simple"class="justified-gallery" style="background-color: black" >  
@@ -208,17 +147,16 @@ u'<iframe src="https://player.vimeo.com/video/32761077" width="440" height="240"
   <a href="{{ product.get_absolute_url }}"class="portfolio-box image-frame ">
     <img  src="{% if product.image %}{{ product.image.url }}{%else %}{% static 'image/noimage.png' %}{% endif %}"   >
     <div class="portfolio-box-caption">
-              <div class="portfolio-box-caption-content">
-                <div class="project-category text-faded">
-                {{ product.name }}
-                </div>
-                <div class="project-name">
-                <h3>by:{{ show_user.get_full_name }} {{product.id}}</h3>
-                </div>
-              </div>
-            </div>    
+      <div class="portfolio-box-caption-content">
+        <div class="project-category text-faded">
+        {{ product.name }}
+        </div>
+        <div class="project-name">
+        <h3>by:{{ show_user.get_full_name }} {{product.id}}</h3>
+        </div>
+      </div>
+    </div>    
   </a>
-
 {% endfor %}    
   </div>
 

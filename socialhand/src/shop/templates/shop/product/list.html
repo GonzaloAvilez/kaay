@@ -19,27 +19,7 @@
                 </h2>
             </div>
         </div>
-        <!-- /.row -->
-             <div class="row">
-<div class="col-sm-2">
-    <div class="list-group ">
-	   <h3>Categorias</h3>
-		<ul class="nav nav-pills nav-stacked">
-			<li {% if not category %}class="selected"{% endif %}>
-				<a href="{% url "shop:product_list" %}" class="list-group-item active">All</a>
-			</li>
-			{% for c in categories %}		
-				<li {% if category.slug == c.slug %}class="selected"{% endif %}>
-					<a href="{{ c.get_absolute_url }}" class="list-group-item">{{ c.name }}</a>
-				</li>			
-			{% endfor %}
-		</ul>
-	</div>
-</div>
-
-
-                </div>
-        <!-- Projects Row -->
+  
 
 
 <div class="container-fluid">
