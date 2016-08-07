@@ -237,3 +237,9 @@ HAYSTACK_CONNECTIONS = {
 }
 # signal processor will enable signal processor that for every change in the models will run
 HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
+
+
+
+REDIS_HOST = 'localhost'
+REDIS_PORT = 6379
+REDIS_DB = 0

@@ -29,13 +29,23 @@
 	<div class="product-detail">
 		<h4><p class="price">${{ product.price }}</p></h4>
 		{{ product.description|linebreaks }}
+			</div>
+	<div class="col-md-6 col-md-offset-6">
+	<span class="count">
+	<span class="total">{{ total_views }}</span>
+	visita{{ total_views|pluralize }}
+	</span>
+	</div>
+		<div class="col-md-6">
 		<form action="{% url 'cart:cart_add' product.id%}" method="post">
 		{{ cart_product_form }}
 		{% csrf_token %}
 		<input type="submit" value="Añadir al carrito">
 		</form>
-	</div>
+		</div>
+
 </div>
+
 <div class="container-fluid">
       <div  class="col-xs-3 col-md-3">  
           
