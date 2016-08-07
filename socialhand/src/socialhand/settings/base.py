@@ -91,8 +91,8 @@ INSTALLED_APPS = (
     'shop',    
     'cart',
     'socialhand',
-    'haystack',
-    'djrill',
+    # 'haystack',
+    # 'djrill',
         
     
 )
@@ -195,8 +195,8 @@ CART_SESSION_ID = 'cart'
 
 EMAIL_BACKEND = "djrill.mail.backends.djrill.DjrillBackend"
 
-MANDRILL_API_KEY='n6MKcMYN9KTbSPrZcl8sKA'
-DEFAULT_FROM_EMAIL= "g.avilez.ig@gmail.com"
+# MANDRILL_API_KEY='n6MKcMYN9KTbSPrZcl8sKA'
+# DEFAULT_FROM_EMAIL= "g.avilez.ig@gmail.com"
 
 # EMAIL_HOST ='smtp.mandrillapp.com'
 # EMAIL_PORT = 587
@@ -228,15 +228,15 @@ PAYPAL_TEST = True
 
 #search engine adquired via pip 
 
-HAYSTACK_CONNECTIONS = {
-    'default': {
-        'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
-        'URL': 'http://127.0.0.1:9200/',
-        'INDEX_NAME': 'haystack',
-    },
-}
+# HAYSTACK_CONNECTIONS = {
+#     'default': {
+#         'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
+#         'URL': 'http://127.0.0.1:9200/',
+#         'INDEX_NAME': 'haystack',
+#     },
+# }
 # signal processor will enable signal processor that for every change in the models will run
-HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
+# HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
 
 
 
