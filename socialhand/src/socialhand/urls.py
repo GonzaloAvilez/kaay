@@ -6,7 +6,7 @@ import profiles.urls
 import accounts.urls
 import shop.urls
 from . import views
-from .views import notes
+# from .views import notes
 from django.views.generic import TemplateView
 
 
@@ -21,7 +21,7 @@ urlpatterns = [
     url(r'^payment/', include('payment.urls', namespace='payment')),
     url(r'^', include(shop.urls, namespace='shop')),
     url(r'^cart/', include('cart.urls', namespace='cart')),
-    url(r'^search/', views.notes, name='search'),
+    # url(r'^search/', views.notes, name='search'),
     # Python Social Auth URLs
     url('', include('social.apps.django_app.urls', namespace='social')),
     url(r'^$', TemplateView.as_view(template_name="home.html"), name="home"),
