@@ -10,6 +10,8 @@ urlpatterns = [
 	url(r'^productos/(?P<id>\d+)/(?P<slug>[-\w]+)/$',views.product_detail,name='product_detail'),
 	url(r'^productos/(?P<id>\d+)/(?P<slug>[-\w]+)/edit/$', views.product_edit, name='product_edit'),
 	url(r'^productos/(?P<id>\d+)/(?P<slug>[-\w]+)/remove/$',views.product_remove, name='product_remove'),
+	url(r'^ranking/$', views.product_ranking, name='create'),
+
 ]
 
 if settings.DEBUG:

@@ -13,13 +13,14 @@
 				
 {% block container %}				
 <div id="header">
-	<a href="/productos" class="logo">Mi tienda</a>
+	<a href="/productos" class="logo">Catálogo</a>
 </div>
 <div id="subheader">
 	<div class="cart">
 		{% with total_items=cart|length %}
 			{% if cart|length > 0 %}
-				Tu carrito:
+			<span class="glyphicon glyphicon-shopping-cart"></span>
+				Tus elecciones:
 				<a href="{% url "cart:cart_detail" %}">
 					{{ total_items }} artículo{{ total_items|pluralize }},
 					${{ cart.get_total_price }}
