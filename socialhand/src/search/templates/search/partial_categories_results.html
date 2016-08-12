@@ -1,0 +1,22 @@
+{% load i18n %}
+
+<h2></h2>
+{% block container %}
+{% if results %}
+  <ul class="feed-results">
+    {% for category in results %}
+      <li profile-id="{{ category.pk }}">
+    
+        <div class="post">
+          <h3>
+            <a href=""></a>
+          </h3>
+        <li {% if category.slug %}{% endif %}><a tabindex="-1" href="{{ category.get_absolute_url }}" class="product-category">{{ category.name }} {{ category.pk }}</a></li>    
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <h4 class="no-result"></h4>
+{% endif %}
+{% endblock container %}

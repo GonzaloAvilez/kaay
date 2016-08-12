@@ -5,6 +5,8 @@ from django.conf.urls.static import static
 import profiles.urls
 import accounts.urls
 import shop.urls
+from search import views as search_views
+
 from . import views
 # from .views import notes
 from django.views.generic import TemplateView
@@ -26,6 +28,7 @@ urlpatterns = [
     url('', include('social.apps.django_app.urls', namespace='social')),
     url(r'^$', TemplateView.as_view(template_name="home.html"), name="home"),
     url(r'^users/logout/$', 'django.contrib.auth.views.logout', {'next_page': '/'}, name="user-logout"),
+    url(r'^search/$', search_views.search, name='search'),
 
 
 ]

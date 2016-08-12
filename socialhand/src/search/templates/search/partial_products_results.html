@@ -1,0 +1,19 @@
+{% load i18n %}
+
+<h2>{% trans 'categories' %}</h2>
+{% if results %}
+  <ul class="categories-results">
+    {% for product in results %}
+      <li product-slug="{{ product.name }}">
+      <a href="{{product.get_absolute_url}}">
+      {{ product.name }}
+
+        </a>
+      
+      </li>
+    {% endfor %}
+    
+  </ul>
+{% else %}
+  <h4 class="no-result">{% trans 'No product found' %} :(</h4>
+{% endif %}

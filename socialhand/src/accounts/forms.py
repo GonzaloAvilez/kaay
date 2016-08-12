@@ -10,6 +10,8 @@ from crispy_forms.bootstrap import AppendedText, PrependedText, FormActions
 from authtools import forms as authtoolsforms
 from django.contrib.auth import forms as authforms
 from django.core.urlresolvers import reverse
+from django.db.models import Q
+from authtools.models import User
 
 
 class LoginForm(AuthenticationForm):
@@ -29,6 +31,7 @@ class LoginForm(AuthenticationForm):
             Submit('sign_in', 'Log in',
                    css_class="btn btn-lg btn-primary btn-block"),
             )
+
 
 
 class SignupForm(authtoolsforms.UserCreationForm):
