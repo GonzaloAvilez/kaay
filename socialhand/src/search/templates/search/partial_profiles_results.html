@@ -1,0 +1,23 @@
+{% load i18n %}
+
+<h2>{% trans 'profiles' %}</h2>
+{% if results %}
+  <ul class="users-results">
+    {% for profile in results %}
+      <li username="{{ user.name }}"> 
+      <a href="{% url 'profiles:show' user.profile.slug %}">
+            {{ user.name }}  
+            </a>  
+            {{ profile.email }}
+            {{ user.profile.picture }}
+            {{ profile.id }}
+            {{ user.get_short_name }} 
+            {{user.profile.slug}} 
+            {{ show_user.profile.slug }}   
+            	
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <h4 class="no-result">{% trans 'No user found' %} :(</h4>
+{% endif %}

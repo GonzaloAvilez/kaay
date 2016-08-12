@@ -491,7 +491,7 @@ bottom: -200px;
 
 a {
     text-decoration:none;
-    color:#5993bb;
+    color:#045FB4;
 }
 
 a:hover {
@@ -928,7 +928,8 @@ ul.errorlist {
     text-align: center;
     color: #fff;
     opacity: 0;
-    background: rgba(235, 34, 215,.7);
+/*    background: rgba(235, 34, 215,.7);*/ 
+    background: rgba(255, 33, 233, 0.53);
     -webkit-transition: all .35s;
     -moz-transition: all .35s;
     transition: all .35s;
@@ -1423,4 +1424,23 @@ a.socialIcon:hover, .socialHoverClass {
     border-radius:26px;
     padding:10px 20px;
     margin:20px 10px 0;
+}
+
+blockquote {
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+  quotes: "\201C""\201D""\2018""\2019";
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+blockquote p {
+  display: inline;
 }

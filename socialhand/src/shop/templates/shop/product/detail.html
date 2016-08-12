@@ -48,14 +48,15 @@
 
 <div class="container-fluid">
       <div  class="col-xs-3 col-md-3">  
-          
+        <a href="{% url 'profiles:show' user.profile.slug %}">
         <h1 style="font-family:Lobster;" ><font color="black">{{craftsman.get_short_name }}</font></h1>
-        <img title="profile picture" class="img-circle img-responsive img-thumbnail" src="{% thumbnail craftsman.picture|default:'default_profile.png' 150x150 crop %}">   
+        <img title="profile picture" class="img-circle img-responsive img-thumbnail" src="{% thumbnail craftsman.picture|default:'default_profile.png' 150x150 crop %}"> 
+        </a>  
        	
       </div>        
   
   {{ craftsman.get_short_name }}
- {{ craftsman.bio }} 
+<blockquote><p> {{ craftsman.bio }} </p> </blockquote>
 {{ craftsman.pk }}
 
 

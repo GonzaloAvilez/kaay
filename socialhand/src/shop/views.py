@@ -6,10 +6,10 @@ from django.shortcuts import redirect
 from profiles.views import ShowProfile
 from profiles.models import Profile
 from django.views.generic import TemplateView
-import redis
+# import redis
 
 # connect to redis
-r = redis.StrictRedis(host='localhost', port=6379, db=0)
+# r = redis.StrictRedis(host='localhost', port=6379, db=0)
 
   
 def product_list(request, category_slug=None):
@@ -32,9 +32,9 @@ def product_detail(request, id, slug):
 								slug=slug,
 								available=True)
 	# increment total image views by 1
-	total_views = r.incr('product:{}:views'.format(product.id))
+	# total_views = r.incr('product:{}:views'.format(product.id))
 	# increment image ranking by 1
-	r.zincrby('product_ranking', product.id, 1)
+	# r.zincrby('product_ranking', product.id, 1)
 	cart_product_form = CartAddProductForm()
 	# looking author of product
 	creator=product.author
@@ -43,7 +43,7 @@ def product_detail(request, id, slug):
 	return render(request,
 				 'shop/product/detail.html',{
 				 'product': product,
-				 'total_views':total_views,
+				 # 'total_views':total_views,
 				 'cart_product_form': cart_product_form,
 				 'craftsman':craftsman,})
 	
