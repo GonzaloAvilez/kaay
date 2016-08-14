@@ -1,19 +1,49 @@
 {% load i18n %}
+{% load staticfiles %}
 
-<h2>{% trans 'categories' %}</h2>
+
+<h2>{% trans 'Galería' %}</h2>
 {% if results %}
-  <ul class="categories-results">
+  
+     <div id="simple"class="justified-gallery" style="background-color: black" >  
     {% for product in results %}
-      <li product-slug="{{ product.name }}">
-      <a href="{{product.get_absolute_url}}">
-      {{ product.name }}
-
-        </a>
       
-      </li>
+      <a href="{{product.get_absolute_url}}" class="portfolio-box image-frame" >
+      <img src="{% if product.image %}{{product.image.url}}{% else %}{% static 'image/noimage.png' %}{% endif %}">
+      {{ product.name }}
+      {{ product.image.url }}
+      <div class="portfolio-box-caption">
+      <div class="portfolio-box-caption-content">
+        <div class="project-category text-faded">
+        {{ product.name }}
+        </div>
+        <div class="project-name">
+        <h3>by:{{ show_user.get_full_name }} {{product.id}}</h3>
+        </div>
+      </div>
+    </div>    
+      </a>
+     
     {% endfor %}
-    
-  </ul>
+    </div>
+  
 {% else %}
   <h4 class="no-result">{% trans 'No product found' %} :(</h4>
 {% endif %}
+
+
+
+
+{% block scripts %}
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script src = "{%static 'site/js/jquery.justifiedGallery.js' %}"></script>
+<script>
+    $("#simple").justifiedGallery({
+    rowHeight : 150,
+    lastRow : 'justify',    
+    // nojustify or hide for last image
+    margins : 10
+    });
+</script>
+
+{% endblock scripts %}

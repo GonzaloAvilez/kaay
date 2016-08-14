@@ -41,7 +41,7 @@
       <div class="carousel-inner">
         <div class="item slides active">
         <div class="slide-1"></div>
-            <video  loop="loop" preload="auto" id="sensi-video"autoplay class="video-playing" poster="/static/site/img/mexican_colors.jpg" style="min-height: 100%;">
+            <video loop="loop" preload="auto" id="sensi-video"autoplay class="video-playing" poster="/static/site/img/mexican_colors.jpg" style="min-height: 100%;">
                 <source src="{{ MEDIA_URL }}telar12.mp4" type="video/mp4">
 
                 <!-- <source src="{{ MEDIA_URL }}telar4.webm" type="video/webm"> -->
@@ -98,16 +98,6 @@
  --><!-- principal body container -->
 
 
- <div class="col-md-12">
-                    <ul class="social-network social-circle">
-                        <li><a href="#" class="icoRss ico-background" title="Rss"><i class="fa fa-instagram"></i></a></li>
-                        <li><a href="#" class="icoFacebook ico-background" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#" class="icoTwitter ico-background" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-
-                        <li><a href="#" class="icoGoogle ico-background" title="Google +"><i class="fa fa-google-plus"></i></a></li>
-                        <li><a href="#" class="icoLinkedin ico-background" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
-                    </ul>       
-        </div>
 
 {% if not hide_search %}
                 <form class="navbar-form navbar-left" role="search" action="{% url 'search' %}">
