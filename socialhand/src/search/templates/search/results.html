@@ -32,7 +32,7 @@
     <div class="col-md-3">
       {% include 'search/partial_results_menu.html' with active=active count=count querystring=querystring %}
     </div>
-    <div class="col-md-6">
+    <div class="col-md-9">
       {% if active == 'products' %}
         {% include 'search/partial_products_results.html' with results=results %}
       {% elif active == 'products' %}

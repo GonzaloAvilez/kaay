@@ -9,7 +9,7 @@ from profiles.models import Profile
 
 # Create your views here.
 
-@login_required
+
 def search(request):
 	if 'q' in request.GET:
 		querystring = request.GET.get('q').strip()
@@ -24,10 +24,11 @@ def search(request):
 
 		count = {}
 		results = {}
-
+		
 		results['products'] = Product.objects.filter(Q(name__icontains=querystring) | Q(description__icontains=querystring) | Q(slug__icontains=querystring))
 		results['categories'] = Category.objects.filter(name__icontains=querystring)
-		results['profiles'] = User.objects.filter(Q(email__icontains=querystring) | Q(name__icontains=querystring))
+		results['profiles'] = Profile.objects.filter(Q(market__icontains=querystring) | Q(bio__icontains=querystring) | Q(user__name__icontains=querystring))
+
 
 		count['products'] = results['products'].count()
 		count['categories'] = results['categories'].count()

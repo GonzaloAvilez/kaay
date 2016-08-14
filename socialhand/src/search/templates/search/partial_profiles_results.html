@@ -4,16 +4,23 @@
 {% if results %}
   <ul class="users-results">
     {% for profile in results %}
-      <li username="{{ user.name }}"> 
-      <a href="{% url 'profiles:show' user.profile.slug %}">
-            {{ user.name }}  
+      <li username="{{ profile.name }}"> 
+   	<a href="{% url 'profiles:show' profile.slug %}">
+            {{ profile.user.name }}  
+
             </a>  
-            {{ profile.email }}
+            </br>
+            {{ user.name }}
+            </br>
+            {{ profile.bio }}
+            </br>
             {{ user.profile.picture }}
-            {{ profile.id }}
+            </br>
             {{ user.get_short_name }} 
-            {{user.profile.slug}} 
-            {{ show_user.profile.slug }}   
+            </br>            
+            {{ profile.slug }} 
+            </br>
+             {{ user.pk }} 
             	
       </li>
     {% endfor %}
