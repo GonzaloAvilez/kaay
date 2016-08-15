@@ -1,7 +1,6 @@
 {% load i18n %}
 {% load staticfiles %}
 
-
 <h2>{% trans 'Galería' %}</h2>
 {% if results %}
   
@@ -39,7 +38,7 @@
 <script src = "{%static 'site/js/jquery.justifiedGallery.js' %}"></script>
 <script>
     $("#simple").justifiedGallery({
-    rowHeight : 150,
+    rowHeight : 250,
     lastRow : 'justify',    
     // nojustify or hide for last image
     margins : 10
