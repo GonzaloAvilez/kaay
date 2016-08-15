@@ -1,5 +1,6 @@
 {% load i18n %}
-
+{% load thumbnail %}
+ 
 <h2>{% trans 'profiles' %}</h2>
 {% if results %}
   <ul class="users-results">
@@ -10,11 +11,16 @@
 
             </a>  
             </br>
+            <img title="profile picture" class="img-rounded    img-responsive img-thumbnail" src="{% thumbnail  profile.picture|default:'default_profile.png' 150x150 crop %}">  
             {{ user.name }}
             </br>
+            <div class="">
+            <blockquote>
             {{ profile.bio }}
+            </blockquote>
+            </div>
             </br>
-            {{ user.profile.picture }}
+            {{ profile.picture }}
             </br>
             {{ user.get_short_name }} 
             </br>            
