@@ -26,9 +26,6 @@
 {% endblock %}
 
 {% block splash %}
-<!--===================================-->
-<!--              Carousel             -->
-<!--===================================-->
 <section id="carousel">
   <div id="myCarousel" class="carousel fade-carousel slide"  data-ride="carousel" data-interval="5000" data-pause="click">
     <!-- Indicators -->
@@ -53,7 +50,7 @@
               </div>
               <div class="carousel-caption">
                 <a href="{% url 'accounts:signup' %}">
-                  <p><button class="btn btn-lg btn-default"> Quiero vender!</button></p>
+                  <p><button class="btn btn-lg btn-default"> Regístrate!</button></p>
                 </a>
               </div>
           </div>
@@ -477,13 +474,13 @@
 <script src="{% static 'site/js/site.js' %}"></script>
 <!-- add scripts for animate scrolling -->
 <script src="{% static 'site/js/scrolling-nav.js' %}"></script>
-  
+<script src="{% static 'site/js/jquery.easing.min.js' %}"></script>
 
 <script src = "{%static 'site/js/jquery.justifiedGallery.js' %}"></script>
 <script>
     $("#simple").justifiedGallery({
     rowHeight : 250,
-    lastRow : 'nojustify',
+    lastRow : 'justify',
     margins : 5
     });
 </script>
