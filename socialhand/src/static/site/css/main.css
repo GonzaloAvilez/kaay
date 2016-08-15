@@ -166,6 +166,17 @@ body>.navbar-transparent {
   border-color: #494F57;
 }
 
+
+.btn-primary{
+  border-color: transparent;
+  background-color: #5DADE2;  
+}
+
+.btn-primary:hover{
+   border-color: transparent;
+}
+
+
 /*end custom button edit profile in showprofile */
 
 
@@ -195,9 +206,7 @@ body>.navbar-transparent {
     background:url(/static/site/img/workspace.png) repeat;
     padding: 70px 0px 30px 20px;
 }
-.profile-body {
-    padding: 60px 0px;
-}
+
 
 .text-page {
     padding: 120px 0;
@@ -467,7 +476,7 @@ transform: translate3d(0, 0, 0);
         left:0;
         width:100%;
         text-align:center;
-        text-shadow: 1px 1px 0 rgba(0,0,0,.9);
+        text-shadow: 1px 1px 0 rgba(0,0,0,.2);
 
       }
 

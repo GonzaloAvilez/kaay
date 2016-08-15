@@ -13,13 +13,6 @@
   <div class=" col-md-12 text-center">
     <h1><font color="white">Qué es lo que trabajas?</font></h1>
     <h3>descripcion</h3> 
-        <!--==== a button center for next times ====-->
-        <!-- <div class=" col-md-12">
-            {% if editable %}
-              <a href="{% url 'profiles:edit_self' %}" class="btn btn-default">Editar Perfil</a>
-              <a href="{% url 'profiles:edit_self' %}" class="btn btn-default">Editar Perfil</a>
-            {% endif %}
-        </div> -->
       {% if editable %}
           <div class="col-md-12">
             <a href="{% url 'profiles:edit_self' %}" class="btn btn-default">Editar Perfil</a>
@@ -28,7 +21,7 @@
   </div><!-- /col-md-12 text-center -->   
     <div class="container-fluid">
       <div  class="col-xs-6 col-md-3">  
-        <div id="under">   
+        <div id="container-fluid">   
         <h1 style="font-family:Lobster;" ><font color="white">{{ show_user.profile.get_short_name }}</font></h1>
         <img title="profile picture" class="img-circle img-responsive img-thumbnail" src="{% thumbnail show_user.profile.picture|default:'default_profile.png' 150x150 crop %}">   
         </div> 
@@ -37,7 +30,7 @@
 </div>  <!-- /overlay -->
 
 <!--======== fullscreen carousel =========-->
-<div>
+<div id="carousel">
     <div id="myCarousel" class="carousel fade-carousel slide"  data-ride="carousel" data-interval="5000" data-pause="click">
       <ol class="carousel-indicators">
           <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -60,74 +53,73 @@
     </div>
 </div>
 
-
-<!--=============== profile details  ==================-->
-<div class="container profile-body" style="font-size:15px">
+{% if editable %}
+  <hr class="custom">
+    <div class="container fluid">
+      <div class="col-md-6">    
+        <a href="{% url 'profiles:post_new_product' %}" class="btn btn-primary">Nuevo Producto</a>
+      </div>
+    </div>
+{% endif  %}
+<hr class="custom">
   <div class="container-fluid ">
     <div class="col-sm-4">
       <ul class="list-group">
-        <li class="list-group-item text-muted">Tu perfil</li>
-        <li class="list-group-item text-right"><span class="pull-left"><strong>Email:</strong></span> {{ show_user.email|default:"missing" }}
-        {% if editable %}
-        	{% if show_user.profile.email_verified %}
-      	    <span class="glyphicon glyphicon-ok-circle" aria-hidden="true" title="Correo electrónico verificado"></span>
-            <span class="sr-only">Verificado</span>
-        	{% else %}
-      	    <span class="glyphicon glyphicon-warning-sign" aria-hidden="true" title="Correo electrónico No verificado"></span>
-      	    <span class="sr-only">No Verificado</span>
-          {% endif %}
-    	      </li>
-            <li class="list-group-item text-right"> 
-              <span class="pull-left"><strong>Registrado desde:</strong></span> {{ show_user.date_joined }}
-            </li>
-            <li class="list-group-item text-right">
-              <span class="pull-left"><strong>Ultimo ingreso:</strong></span> {{ show_user.last_login }}
-            </li>
+        <li class="list-group-item text-muted">
+        <h4>{{ show_user.profile.get_short_name }}</h4>
+        </li>
+        <li class="list-group-item text-right">
+          <span class="pull-left">
+            <strong style="font-family:Lobster;">Email:</strong>
+          </span>
+          {{ show_user.email|default:"missing" }}
+          {% if editable %}
+            {% if show_user.profile.email_verified %}
+              <span class="glyphicon glyphicon-ok-circle" aria-hidden="true" title="Correo electrónico verificado"></span>
+              <span class="sr-only">Verificado</span>
+            {% else %}
+              <span class="glyphicon glyphicon-warning-sign" aria-hidden="true" title="Correo electrónico No verificado"></span>
+              <span class="sr-only">No Verificado</span>
+            {% endif %}
+        </li>
+        <li class="list-group-item text-right"> 
+            <span class="pull-left"><strong style="font-family: Lobster;">Registrado desde:</strong></span> 
+            {{ show_user.date_joined }}
+        </li>
+        <li class="list-group-item text-right">
+            <span class="pull-left"><strong style="font-family: Lobster;">Ultimo ingreso:</strong></span> 
+            {{ show_user.last_login }}
+        </li>
         {% endif %}
       </ul>
     </div>
     <div class="col-sm-8">
       <div class="panel panel-default">
-        <div class="panel-heading" style="font-size:25px">{{ show_user.get_full_name }}'s Artesanías
-	         {% if show_user.profile.slug %}
-	           <a href="{% url 'profiles:show' show_user.profile.slug %}">
-             <span class="glyphicon glyphicon-link" aria-hidden="true" title="Profile permalink"></span>
-	    	     <span class="sr-only">Permalink</span></a> {{show_user.profile.get_absolute_url}}
-	         {% else %}
-		         <a href="https://github.com/arocks/edge/issues/40" target="_blank"><span>No permalink. See this issue.</span></a>
-	         {% endif %}
-	      </div>
-        <div class="panel-body">
-            <p><strong>Nuestra tienda:</strong> {{ show_user.profile.get_short_name }}</p>
-            <p><strong>Nuestra historia:</strong> <li align="right"> {{ show_user.profile.bio }}{{ show_user.profile.slug }} </li></p>
-            {% if show_user.profile.slug %}
+        <div class="panel-heading" style="font-family: Lobster; font-size:25px; color: white;">{{ show_user.get_full_name }}'s Artesanías
+           {% if show_user.profile.slug %}
              <a href="{% url 'profiles:show' show_user.profile.slug %}">
              <span class="glyphicon glyphicon-link" aria-hidden="true" title="Profile permalink"></span>
-             <span class="sr-only">Permalink</span></a> {{show_user.profile.get_absolute_url}}
+             <span class="sr-only">Ver como</span></a> {{show_user.profile.get_absolute_url}}
            {% else %}
              <a href="https://github.com/arocks/edge/issues/40" target="_blank"><span>No permalink. See this issue.</span></a>
            {% endif %}
         </div>
-	    </div> 
+        <div class="panel-body">
+            <p><strong style="font-size: 20px">Quienes somos:</strong> <li align="right"> {{ show_user.profile.bio }}</li></p>
+        </div>
+      </div> 
     </div>
-    <div class="col-md-9"> 
-      {% if editable %}
-        <a href="{% url 'profiles:post_new_product' %}" class="btn btn-primary">Nuevo Producto</a>
-      {% endif  %}
-    </div>
+    
     <a href="{% url 'shop:product_list' %}"> visitanos</a>
   </div>
-</div>
-
-
 <!-- =========== Embedded Videos ================= -->
-
-  
+<hr class="custom">
+  5DADE2
 <div class="container-fluid">
-<div class="video-shared"> 
-u'<iframe src="https://player.vimeo.com/video/32761077" width="440" height="240"
- frameborder="0" title="Jewelry Design Workshop" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>'
-</div>
+  <div class="video-shared"> 
+    <iframe src="https://player.vimeo.com/video/32761077" width="440" height="240"
+     frameborder="0" title="Jewelry Design Workshop" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+  </div>
 </div>
 
 <div class="container-fluid">
@@ -137,7 +129,7 @@ u'<iframe src="https://player.vimeo.com/video/32761077" width="440" height="240"
         {% for video in videos %}
          {% video video.video '440x240' %}
           {% video video.video as video %}
-           <td><a href="{{ video.url }}">{{ video.title }} visualiza</a></td>
+           <td><a href="{{ video.url }}">{{ video.title }} </a></td>
           {% endvideo %}
         {% endfor %}
       </div>
@@ -147,7 +139,7 @@ u'<iframe src="https://player.vimeo.com/video/32761077" width="440" height="240"
 
 
         
-
+ <hr class="custom">
  <div id="simple"class="justified-gallery" style="background-color: black" >  
   
 {% for product in products %}
@@ -166,6 +158,11 @@ u'<iframe src="https://player.vimeo.com/video/32761077" width="440" height="240"
   </a>
 {% endfor %}    
   </div>
+
+
+
+
+
 
 
 <!-- </div> -->
