@@ -1,0 +1,38 @@
+{% extends "shop/home.html" %}
+{% load staticfiles %}
+
+
+ 
+{% block content %}
+     
+    <h3>Posts</h3>
+ 
+    <div  class="endless_page_template">
+        {% include "shop/product/list_test.html" %}
+    </div>
+ 
+
+
+
+{% endblock  %}
+
+
+    {% block scripts %}     {{ block.super }}
+
+   		<script src="{% static 'site/js/jquery.js' %}"></script>
+    	<script src="{% static 'site/js/endless.js' %}"></script>
+    	<script src="{% static 'site/js/endless_on_scroll.js' %}"></script>
+
+<!--         <script src="{% static 'site/js/endless-pagination.js' %}"></script>
+ -->    <!--     <script>$.endlessPaginate({paginateOnScroll: true});</script> -->
+        <script src = "{%static 'site/js/jquery.justifiedGallery.js' %}"></script>
+<script>
+    $("#simple").justifiedGallery({
+    rowHeight : 220,
+    lastRow : 'justify',    
+    // nojustify or hide for last image
+    margins : 15
+    });
+</script>
+
+    {% endblock scripts %}

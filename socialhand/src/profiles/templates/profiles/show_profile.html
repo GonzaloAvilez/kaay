@@ -20,7 +20,7 @@
       {% endif %}
   </div><!-- /col-md-12 text-center -->   
     <div class="container-fluid">
-      <div  class="col-xs-6 col-md-3">  
+      <div  class="col-xs-6 col-md-2">  
         <div id="container-fluid">   
         <h1 style="font-family:Lobster;" ><font color="white">{{ show_user.profile.get_short_name }}</font></h1>
         <img title="profile picture" class="img-circle img-responsive img-thumbnail" src="{% thumbnail show_user.profile.picture|default:'default_profile.png' 150x150 crop %}">   
@@ -114,7 +114,6 @@
   </div>
 <!-- =========== Embedded Videos ================= -->
 <hr class="custom">
-  5DADE2
 <div class="container-fluid">
   <div class="video-shared"> 
     <iframe src="https://player.vimeo.com/video/32761077" width="440" height="240"

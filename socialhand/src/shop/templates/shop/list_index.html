@@ -1,0 +1,34 @@
+{% extends "shop/home.html" %}
+{% load staticfiles %}
+{% load el_pagination_tags %}
+
+
+ 
+{% block content %}
+     
+    <h2>Posts</h2>
+    	
+    <div class="endless_page_template">
+        {% include page_template %}
+    </div>
+ 		
+
+
+
+{% endblock  %}
+
+
+    {% block scripts %}   
+    	{{ block.super }}
+    	
+    	<script src="{% static 'site/js/jquery.js' %}" ></script>
+   		
+   		<script src="{% static 'site/js/el-pagination.js' %}"></script>
+   		<script src="{% static 'site/js/el-pagination-endless.js' %}"></script>	
+   		<!-- <script src="{% static 'site/js/jquery.easing.min.js' %}"></script> -->
+
+
+    
+        <script>$.endlessPaginate({paginateOnScroll: true});</script>
+  
+    {% endblock scripts %}
