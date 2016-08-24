@@ -1,0 +1,85 @@
+
+{% load staticfiles %}
+{% load static %}
+<!-- {% load endless%}
+ -->
+{% load el_pagination_tags %}
+
+
+
+
+{% paginate products %}
+
+<div id="container">
+<div  id="b" class="justified-gallery" style="background-color: black;" > 
+
+  {% for product  in products %}
+
+    <a href="{{ product.get_absolute_url }}"class="portfolio-box  image-frame">
+                    <img  src="{% if product.image %}{{ product.image.url }}{%else %}{% static 'image/noimage.png' %}{% endif %}" >
+
+                    <div class="portfolio-box-caption">
+
+              <div class="portfolio-box-caption-content">
+
+                <div class="project-category text-faded">
+                <h3>{{ product.name }}</h3>
+                </div>
+                <div class="project-name">
+                <h3>${{ product.price }}</h3>
+                </div>
+              </div>
+            </div>    
+      </a>
+         
+            
+        
+       {% endfor %}
+     
+</div>      
+ </div>
+       
+
+{% show_more %}
+
+
+
+{% block scripts %}
+<script  src="{% static 'site/js/jquery.js' %}" ></script>
+
+      
+      <script src="{% static 'site/js/el-pagination.js' %}"></script>
+      <script src="{% static 'site/js/el-pagination-endless.js' %}"></script> 
+      <!-- <script src="{% static 'site/js/jquery.easing.min.js' %}"></script> -->
+
+
+    
+        <script>$.endlessPaginate({paginateOnScroll: true});</script>
+<!-- <script src="{% static 'site/js/jquery.easing.min.js' %}"></script> -->
+<script src = "{%static 'site/js/jquery.justifiedGallery.js' %}"></script>
+<script>
+    $(function(){
+    var i=0;
+    $('.justified-gallery').each(function(){
+        var temp='b'+i;
+        $(this).attr('id',temp);
+        ++i;
+        console.log($(this).attr('id'));
+    });
+  });
+</script>
+<script>
+     $("#b").justifiedGallery({
+    rowHeight : 220,
+    lastRow : 'nojustify',    
+    // nojustify or hide for last image
+    margins : 15
+    
+    });
+</script>
+
+
+
+
+
+{% endblock scripts %}

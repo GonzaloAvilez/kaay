@@ -1,0 +1,66 @@
+
+{% load staticfiles %}
+{% load static %}
+<!-- {% load endless%}
+ -->
+{% load el_pagination_tags %}
+
+
+<div class="container-fluid">
+    <div class="btn-group btn-group-lg dropdown-menu"> 
+    <button type="button" class="btn-default btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categorías<span class="caret "></span></button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+            <li {% if not category %}class="selected"{% endif %}>
+                <a href="{% url "shop:product_list" %}" class=" ">All</a>
+            </li>
+        {% for c in categories %} 
+            <li {% if category.slug == c.slug %}{% endif %}><a tabindex="-1" href="{{ c.get_absolute_url }}" class="product-category">{{ c.name }}</a></li>
+        {% endfor %}
+            <li class="divider"></li>
+            <li><a tabindex="-1" href="#">Other</a></li>
+        </ul>
+    </div>
+</div>
+
+
+
+
+{% block scripts %}
+<script  src="{% static 'site/js/jquery.js' %}" ></script>
+
+      
+      <script src="{% static 'site/js/el-pagination.js' %}"></script>
+      <script src="{% static 'site/js/el-pagination-endless.js' %}"></script> 
+      <!-- <script src="{% static 'site/js/jquery.easing.min.js' %}"></script> -->
+
+
+    
+        <script>$.endlessPaginate({paginateOnScroll: true});</script>
+<!-- <script src="{% static 'site/js/jquery.easing.min.js' %}"></script> -->
+<script src = "{%static 'site/js/jquery.justifiedGallery.js' %}"></script>
+<script>
+    $(function(){
+    var i=0;
+    $('.justified-gallery').each(function(){
+        var temp='b'+i;
+        $(this).attr('id',temp);
+        ++i;
+        console.log($(this).attr('id'));
+    });
+  });
+</script>
+<script>
+     $("#b").justifiedGallery({
+    rowHeight : 220,
+    lastRow : 'nojustify',    
+    // nojustify or hide for last image
+    margins : 15
+    
+    });
+</script>
+
+
+
+
+
+{% endblock scripts %}

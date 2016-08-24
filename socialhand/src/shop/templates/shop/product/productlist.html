@@ -1,0 +1,35 @@
+{% load staticfiles %}
+{% load infinite_pagination %}
+
+
+
+
+
+{% block content %}
+
+ <div>
+        <ul>
+        {% for object in object_list %}
+            <li>{{ object }}</li>
+        {% endfor %}
+        </ul>
+        {% paginate %}
+    </div>
+{% endblock %}
+
+
+{% block scripts %}
+<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src = "{%static 'site/js/jquery.justifiedGallery.js' %}"></script>
+<script>
+    $("#simple").justifiedGallery({
+    rowHeight : 220,
+    lastRow : 'justify',    
+    // nojustify or hide for last image
+    margins : 15
+    });
+</script>
+
+
+
+{% endblock scripts %}
