@@ -5,14 +5,11 @@ from profiles.forms import ShopFor
 from django.shortcuts import redirect
 from profiles.views import ShowProfile
 from profiles.models import Profile
-from django.views.generic import TemplateView,View
+from django.views.generic import TemplateView,View,DetailView
 from django.shortcuts import render_to_response
-#para endless pagination
 from django.template import RequestContext
-from endless_pagination.decorators import page_template
-#para infinte pagination
 from django.views.generic.list import ListView
-from infinite_pagination.paginator import InfinitePaginator
+from django.views.generic.base import ContextMixin
 # para el-pagination 
 from el_pagination.views import AjaxListView
 # import redis
@@ -94,46 +91,25 @@ def product_ranking(request):
 					'most_viewed': most_viewed})
 
 
-
-#paginacion alternativa . no definita one-by-one
-
-
-# @page_template('shop/product/list_test.html')
-# def pagination(request,template='shop/product/list_index.html',extra_context=None):
-# 	pag_product = Product.objects.all()
-# 	context = {'products':pag_product}
-# 	if extra_context is not None:
-# 		context.update(extra_context)
-# 	return render_to_response(template,context,context_instance=RequestContext(request))	
-
-
-#paginacion opciones alternas
-
-class ProductListView(AjaxListView,View):
-		context_object_name = "categories"
-		model = Category
-
-		template_name = 'shop/list_index.html'
-		page_template = 'shop/category_list.html'
-		
-
-		def get(self,request,*args,**kwargs):
-			
-			categories = Category.objects.all()
-			kwargs['categories']=categories
-			return super(ProductListView,self).get(request,*args,**kwargs)
-
-
-class ProductTestView(AjaxListView,View):
-		context_object_name = "products"
+class ProductListView(AjaxListView):
+		context_object_name= 'products'	
 		template_name = "shop/product/list.html"
 		page_template = "shop/product_list.html"
-
-
+		
 		def get_queryset(self):
 			return Product.objects.all()
-
-		def get_context_data(self,**kwargs):
-			kwargs['categories'] = Category.objects.all()
-			return super(ProductTestView,self).get_context_data(**kwargs)
 			
+		def get_context_data(self,**kwargs):
+			category = None
+			slug = self.kwargs.get('slug')
+			products = Product.objects.all()
+			categories = Category.objects.all()
+			kwargs['categories']= categories
+			if  slug:
+				category = get_object_or_404(Category, slug=slug)
+				products =products.filter(category=category)				
+			kwargs['products'] = products
+			kwargs['category'] = category
+			return super(ProductListView,self).get_context_data(**kwargs)
+
+

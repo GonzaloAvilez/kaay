@@ -21,9 +21,18 @@
                 </h2>
             </div>
         </div>
-  
-
-
+  {% for product  in products %}
+                  {% if product.category == category %} 
+                    -{{ product.name }}.
+                    {{ product.category }}-    
+                    {%else %}  
+                         {%if not category %}         
+                         /{{ product.name }}.
+                            {{ product.category }}/  
+                            {% endif%}
+        {% endif%}   
+{% endfor %}
+   
 <div id="categories" class="container-fluid">
     <div class="btn-group btn-group-lg dropdown-menu"> 
     <button type="button" class="btn-default btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categorías<span class="caret "></span></button>
@@ -31,8 +40,10 @@
             <li {% if not category %}class="selected"{% endif %}>
                 <a href="{% url "shop:product_list" %}" class=" ">All</a>
             </li>
-        {% for c in categories %} 
-            <li {% if category.slug == c.slug %}{% endif %}><a tabindex="-1" href="{{ c.get_absolute_url }}" class="product-category">{{ c.name }}</a></li>
+        {% for category in categories %} 
+            <li {% if category.slug == category.slug %}{% endif %}>
+                <a tabindex="-1" href="{{ category.get_absolute_url }}" class="product-category">{{ category.name }}</a>
+            </li>
         {% endfor %}
             <li class="divider"></li>
             <li><a tabindex="-1" href="#">Other</a></li>
@@ -41,7 +52,7 @@
  </div>     
      
 <div id="pagination" class="endless_page_template">
-        {% include page_template %}
+        {% include "shop/product_list.html" %}
 </div>
     	
 {% endblock  %}

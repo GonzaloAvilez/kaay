@@ -1111,7 +1111,7 @@
     extension: /\.[^.\\/]+$/, // regexp to capture the extension of an image
     refreshTime: 200, // time interval (in ms) to check if the page changes its width
     refreshSensitivity: 0, // change in width allowed (in px) without re-building the gallery
-    randomize: false,
+    randomize: true,
     sort: false, /*
       - false: to do not sort
       - function: to sort them using the function as comparator (see Array.prototype.sort())

@@ -10,17 +10,14 @@ https://docs.djangoproject.com/en/dev/ref/settings/
 from django.core.urlresolvers import reverse_lazy
 from os.path import dirname, join, exists
  
-from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
-TEMPLATE_CONTEXT_PROCESSORS += (
-    'django.core.context_processors.request',
-)   
+ 
 
 # Build paths inside the project like this: join(BASE_DIR, "directory")
 BASE_DIR = dirname(dirname(dirname(__file__)))
 STATICFILES_DIRS = [join(BASE_DIR, 'static')]
 
 
-EL_PAGINATION_PER_PAGE=9
+EL_PAGINATION_PER_PAGE=8
 
 # Use Django templates using the new Django 1.8 TEMPLATES settings
 TEMPLATES = [
@@ -87,8 +84,6 @@ INSTALLED_APPS = (
     'easy_thumbnails',
     
     'el_pagination',
-    'infinite_pagination',
-    'endless_pagination',
     'social.apps.django_app.default',
     'embed_video',  
     'paypal.standard.ipn',
