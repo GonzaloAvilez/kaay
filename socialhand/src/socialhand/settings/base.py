@@ -86,7 +86,9 @@ INSTALLED_APPS = (
     'el_pagination',
     'social.apps.django_app.default',
     'embed_video',  
+    
     'paypal.standard.ipn',
+    
     'search',
     'payment',
     'profiles',
