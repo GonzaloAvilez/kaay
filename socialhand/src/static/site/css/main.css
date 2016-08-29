@@ -269,11 +269,16 @@ body>.navbar-transparent {
 /********************************/
 /*       Fade Bs-carousel       */
 /********************************/
-      .fade-carousel {
+  /*    .fade-carousel {
           position: relative;
           height: 100vh;
-      }
+      }*/
       .fade-carousel .carousel-inner .item {
+          height: 100vh;
+          /*height: 100vw;*/
+      }
+
+      .carousel-inner {
           height: 100vh;
       }
 
@@ -378,7 +383,7 @@ body>.navbar-transparent {
 }
 
 .carousel .item {
-  /*height: 650px;*/
+  /*height: 100vw;*/
   background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9));
       z-index: 1;
       
@@ -397,7 +402,7 @@ body>.navbar-transparent {
 .carousel-inner > .item > a > img {
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
 }
 
 .carousel-control .glyphicon-chevron-left, .carousel-control .glyphicon-chevron-right, .carousel-control .icon-prev, .carousel-control .icon-next {
