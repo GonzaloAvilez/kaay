@@ -36,7 +36,7 @@
         <div class="carousel-inner">
           <div class="item slides active">
             <div class="slide-1"></div>
-              <video loop="loop" preload="auto" id="sensi-video"autoplay class="video-playing" poster="/static/site/img/mexican_colors.jpg" style="min-height: 100%;" src="{{ MEDIA_URL }}telar12.mp4" type="video/mp4">
+              <video loop="loop" preload="auto" id="sensi-video"autoplay class="video-playing" poster="/static/site/img/barro.jpg" style="min-height: 100%;" src="{{ MEDIA_URL }}telar12.mp4" type="video/mp4">
                   <source src="{{ MEDIA_URL }}telar12.mp4" type="video/mp4" >
                   <source src="{{ MEDIA_URL }}telar4.webm" type="video/ogv">
               </video>
@@ -125,7 +125,7 @@
 </section>
 <hr class="custom">
 <div id="simple"class="justified-gallery" style="background-color: black" >  
-    <a href="{{ product.get_absolute_url }}"class="portfolio-box image-frame ">
+    <a class="portfolio-box image-frame ">
     <img  src="{% static "/static/site/img/soldar.jpg" %}"  >
       <div class="portfolio-box-caption">
       <div class="portfolio-box-caption-content">
@@ -133,14 +133,14 @@
         {{ product.name }}
         </div>
         <div class="project-name">
-        <h3>by:{{ show_user.get_full_name }} {{product.id}}</h3>
+        <h3>{{ show_user.get_full_name }} {{product.id}}</h3>
         </div>
       </div>
     </div>    
     </a>
     <a href="{{ product.get_absolute_url }}"class="portfolio-box image-frame ">
     <img  src="{% static "/static/site/img/platos.jpg" %}"  >
-    media\products\2016\07\25
+   
     <div class="portfolio-box-caption">
       <div class="portfolio-box-caption-content">
         <div class="project-category text-faded">
@@ -326,17 +326,17 @@
                 <div class="row margin-vert-40">
                     <!-- Icons -->
                     <div class="col-md-4 text-center animate fadeInLeft">
-                        <i class="fa-crosshairs fa-3x color-primary-lighter"></i>
+                        <img src="{% static 'site/img/light.gif' %}" alt="logo">
                         <h2 class="padding-top-10">Innovación</h2>
                         <p> a short description </p>
                     </div>
                     <div class="col-md-4 text-center animate fadeIn">
-                        <i class="fa-puzzle-piece fa-3x color-primary-lighter"></i>
+                        <img src="{% static 'site/img/draft.gif' %}" alt="logo">
                         <h2 class="padding-top-10">Creatividad</h2>
                         <p> a short description</p>
                     </div>
                     <div class="col-md-4 text-center animate fadeInRight">
-                        <i class="fa-music fa-3x color-primary-lighter"></i>
+                       <img src="{% static 'site/img/brain.gif' %}" alt="logo">
                         <h2 class="padding-top-10">Inspiración</h2>
                         <p>a short description</p>
                     </div>

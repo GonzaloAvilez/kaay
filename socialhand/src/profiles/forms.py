@@ -39,14 +39,22 @@ class ProfileForm(forms.ModelForm):
             Field('market'),
             Field('bio'),
             Field('picture'),
-            
+            HTML(""" <hr class="basic-custom">"""),
+            Field('background_1'),
+            HTML("""{% if user.profile.background_1 %}<img class="img-responsive" src="{{ MEDIA_URL }}{{ user.profile.background_1 }}"><hr class="custom">{% endif %}""", ),                    
+            Field('background_2'),
+            HTML("""{% if user.profile.background_2 %}<img class="img-responsive" src="{{ MEDIA_URL }}{{ user.profile.background_2 }}"><hr class="custom">{% endif %}""", ),
+            Field('background_3'),   
+            HTML("""{% if user.profile.background_3 %}<img class="img-responsive" src="{{ MEDIA_URL }}{{ user.profile.background_3 }}"><hr class="custom">{% endif %}""", ),
+
+
 
             Submit('update', 'Update', css_class="btn-success"),
             )
 
     class Meta:
         model = models.Profile
-        fields = ['picture', 'bio', 'market']    
+        fields = ['picture', 'bio', 'market','background_1','background_2','background_3']    
 
 
 # form for add a new product 

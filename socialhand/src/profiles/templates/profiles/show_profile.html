@@ -33,26 +33,41 @@
 <div id="carousel">
     <div id="myCarousel" class="carousel fade-carousel slide"  data-ride="carousel" data-interval="5000" data-pause="click">
       <ol class="carousel-indicators">
+      {% if  show_user.profile.background_1%}
           <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      {% endif %}
+      {% if  show_user.profile.background_2%}
           <li data-target="#myCarousel" data-slide-to="1"></li>
+      {% endif %}
+      {% if  show_user.profile.background_3%}
           <li data-target="#myCarousel" data-slide-to="2"></li>
+      {% endif %}
       </ol>
     <div class="carousel-inner">
+    {% if  show_user.profile.background_1%}
+
         <div class="item slides active">
-            <img class="slide-image" src="/static/site/img/bordado.jpg" alt="">
+            <img class="slide-image" src=" {{ MEDIA_URL }}{{show_user.profile.background_1}}" alt="">
+
         </div>
+        {% endif %}
+      {% if  show_user.profile.background_2%}
         <div class="item">
-            <img class="slide-image" src="/static/site/img/merida.jpg" alt="">
+            <img class="slide-image"  src=" {{ MEDIA_URL }}{{show_user.profile.background_2}}" alt="">
         </div>
+        {% endif %}
+      {% if  show_user.profile.background_3%}
         <div class="item">
-            <img class="slide-image" src="/static/site/img/m.jpg" alt="">
+            <img class="slide-image"  src=" {{ MEDIA_URL }}{{show_user.profile.background_3}}" alt="">
         </div>
+        {% endif %}
     </div>
         <!-- <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
         <a class="right carousel-control" href="#carousel-example-generic" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a> -->
     </div>
 </div>
 
+{{show_user.profile.backgroud_1}}
 {% if editable %}
   <hr class="custom">
     <div class="container fluid">
@@ -112,6 +127,8 @@
     
     <a href="{% url 'shop:product_list' %}"> visitanos</a>
   </div>
+
+{{show_user.profile.background}}
 <!-- =========== Embedded Videos ================= -->
 <hr class="custom">
 <div class="container-fluid">
