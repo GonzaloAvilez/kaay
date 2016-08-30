@@ -9,7 +9,7 @@ from django.utils import timezone
 from embed_video.fields import EmbedVideoField
 from django.core.urlresolvers import reverse
  
-
+ 
 
 class BaseProfile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL,
@@ -22,6 +22,18 @@ class BaseProfile(models.Model):
                                 upload_to='profile_pics/%Y-%m-%d/',
                                 null=True,
                                 blank=True)
+    background_1 = models.ImageField('Portada_1',
+                                    upload_to = 'profile_background/%Y-%m-%d',
+                                    null = True,
+                                    blank = True,)
+    background_2 = models.ImageField('Portada_2',
+                                    upload_to = 'profile_background/%Y-%m-%d',
+                                    null = True,
+                                    blank = True,)
+    background_3 = models.ImageField('Portada_3',
+                                    upload_to = 'profile_background/%Y-%m-%d',
+                                    null = True,
+                                    blank = True,)
     bio = models.CharField("Nuestra historia", max_length=200, blank=True, null=True,
         help_text=("Relata un poco sobre tu trabajo: cuánto tiempo llevas haciéndolo, cómo empezó, dónde nació tu creatividad, etc"))
 
@@ -33,6 +45,21 @@ class BaseProfile(models.Model):
     def get_short_name(self):
         "Devuleve el nombre de la tienda"
         return self.market
+
+class CoverPageProfile(models.Model):
+    author = models.ForeignKey('authtools.User')
+    background = models.ImageField('Portada',
+                                    upload_to = 'profile_background/%Y/%m/%d',
+                                    null = True,
+                                    blank = True,)
+    class Meta: 
+        ordering = ('author',)  
+
+    def __unicode__(self):
+        return self.background
+
+        
+
 
 @python_2_unicode_compatible
 class Profile(BaseProfile):

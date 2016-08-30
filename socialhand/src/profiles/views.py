@@ -35,7 +35,7 @@ class ShowProfile(AccessMixin,TemplateView):
         kwargs["show_user"] = user
         # print products by profile kwargs returns a dictionary
         products = Product.objects.filter(author=user).order_by('?')
-        videos =Video.objects.filter(author=user)
+        videos = Video.objects.filter(author=user)
         kwargs['products']= products
         kwargs['videos']=videos
         return super(ShowProfile, self).get(request, *args, **kwargs)
