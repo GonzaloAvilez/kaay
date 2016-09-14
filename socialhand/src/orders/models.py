@@ -6,12 +6,12 @@ from django.utils.translation import gettext_lazy as _
 
 
 class Order(models.Model):
-	first_name = models.CharField(_('Nombre'),max_length=50)
-	last_name = models.CharField(_('Apellidos'),max_length=50)
-	email = models.EmailField(_('Email'),)
-	address = models.CharField(_('Dirección'), max_length=250)
-	postal_code = models.CharField(_('Código postal'), max_length=20)
-	city = models.CharField(_('Ciudad'), max_length=100)
+	first_name = models.CharField(_('First name'),max_length=50)
+	last_name = models.CharField(_('Last name'),max_length=50)
+	email = models.EmailField(_('E-mail'),)
+	address = models.CharField(_('Address'), max_length=250)
+	postal_code = models.CharField(_('postal code'), max_length=20)
+	city = models.CharField(_('City'), max_length=100)
 	created = models.DateTimeField( auto_now_add=True)
 	updated = models.DateTimeField( auto_now=True)
 	paid = models.BooleanField( default=False)
@@ -26,10 +26,10 @@ class Order(models.Model):
 		return sum(item.get_cost() for item in self.items.all())
 
 class OrderItem(models.Model):
-	order = models.ForeignKey(Order, related_name='items')
-	product = models.ForeignKey(Product,related_name='order_items')
-	price = models.DecimalField(max_digits=10, decimal_places=2)
-	quantity = models.PositiveIntegerField(default=1)
+	order = models.ForeignKey(Order,_('Order'), related_name='items',)
+	product = models.ForeignKey(Product,_('Product'),related_name='order_items')
+	price = models.DecimalField(_('Price'),max_digits=10, decimal_places=2)
+	quantity = models.PositiveIntegerField(_('Quantity'),default=1)
 
 	def __str__(self):
 		return '{}'.format(self.id)

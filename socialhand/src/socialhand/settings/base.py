@@ -9,8 +9,9 @@ https://docs.djangoproject.com/en/dev/ref/settings/
 """
 from django.core.urlresolvers import reverse_lazy
 from os.path import dirname, join, exists
+from django.utils.translation import gettext_lazy as _
  
- 
+
 
 # Build paths inside the project like this: join(BASE_DIR, "directory")
 BASE_DIR = dirname(dirname(dirname(__file__)))
@@ -18,6 +19,8 @@ STATICFILES_DIRS = [join(BASE_DIR, 'static')]
 
 
 EL_PAGINATION_PER_PAGE=8
+
+
 
 # Use Django templates using the new Django 1.8 TEMPLATES settings
 TEMPLATES = [
@@ -107,10 +110,12 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
 )
 
 AUTHENTICATION_BACKENDS = (
@@ -167,9 +172,17 @@ DATABASES = {
 # Internationalization
 # https://docs.djangoproject.com/en/dev/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es'
+LANGUAGES = (
+            ('es', _('Spanish')),
+            ('en', _('English')),
+)
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Mexico_City'
+LOCALE_PATHS =(
+    join(BASE_DIR, 'locale'),
+    )
+
 
 USE_I18N = True
 
@@ -180,11 +193,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/dev/howto/static-files/
 
+
 STATIC_URL = "/static/"
 STATIC_ROOT = join(BASE_DIR, '')
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = join(BASE_DIR, 'media')
+
+
 
 ALLOWED_HOSTS = []
 

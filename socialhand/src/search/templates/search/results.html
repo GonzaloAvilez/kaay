@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
+{% load i18n %}
 
 
-{% block title %} Search {% endblock %}
+{% block title %}{% trans 'Search' %}{% endblock %}
 
 {% block head %}
   <link href="{% static 'css/search.css' %}" rel="stylesheet">

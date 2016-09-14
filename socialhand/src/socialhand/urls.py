@@ -6,13 +6,13 @@ import profiles.urls
 import accounts.urls
 import shop.urls
 from search import views as search_views
-
 from . import views
 # from .views import notes
 from django.views.generic import TemplateView
 
 
-urlpatterns = [
+
+urlpatterns =  [
     url(r'^$', views.HomePage.as_view(), name='home'),
     url(r'^about/$', views.AboutPage.as_view(), name='about'),
     url(r'^users/', include(profiles.urls, namespace='profiles')),
@@ -29,7 +29,7 @@ urlpatterns = [
     url(r'^$', TemplateView.as_view(template_name="home.html"), name="home"),
     url(r'^users/logout/$', 'django.contrib.auth.views.logout', {'next_page': '/'}, name="user-logout"),
     url(r'^search/$', search_views.search, name='search'),
-
+    url(r'^i18n/', include('django.conf.urls.i18n', namespace='i18n')),
 
 ]
 
