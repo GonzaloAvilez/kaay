@@ -35,6 +35,8 @@
       <ol class="carousel-indicators">
       {% if  show_user.profile.background_1%}
           <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      {% else %}
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
       {% endif %}
       {% if  show_user.profile.background_2%}
           <li data-target="#myCarousel" data-slide-to="1"></li>
@@ -50,7 +52,11 @@
             <img class="slide-image" src=" {{ MEDIA_URL }}{{show_user.profile.background_1}}" alt="">
 
         </div>
-        {% endif %}
+    {% else %}
+    <div class="item slides active">
+            <img class="slide-image" src=" {{ MEDIA_URL }}{{ "profile_background/black_wood.jpg" }}" alt="">
+            </div>
+    {% endif %}
       {% if  show_user.profile.background_2%}
         <div class="item">
             <img class="slide-image"  src=" {{ MEDIA_URL }}{{show_user.profile.background_2}}" alt="">

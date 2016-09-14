@@ -41,15 +41,23 @@ class ProfileForm(forms.ModelForm):
             Field('picture'),
             HTML(""" <hr class="basic-custom">"""),
             Field('background_1'),
-            HTML("""{% if user.profile.background_1 %}<img class="img-responsive" src="{{ MEDIA_URL }}{{ user.profile.background_1 }}"><hr class="custom">{% endif %}""", ),                    
+            HTML("""{% if user.profile.background_1 %}
+                        <img class="img-responsive" src="{{ MEDIA_URL }}{{ user.profile.background_1 }}">                
+                    {% endif %}
+                    <hr class="custom">""", ),                    
             Field('background_2'),
-            HTML("""{% if user.profile.background_2 %}<img class="img-responsive" src="{{ MEDIA_URL }}{{ user.profile.background_2 }}"><hr class="custom">{% endif %}""", ),
+            HTML("""{% if user.profile.background_2 %}
+                        <img class="img-responsive" src="{{ MEDIA_URL }}{{ user.profile.background_2 }}">
+                    {% endif %}
+                    <hr class="custom">""", ),
             Field('background_3'),   
-            HTML("""{% if user.profile.background_3 %}<img class="img-responsive" src="{{ MEDIA_URL }}{{ user.profile.background_3 }}"><hr class="custom">{% endif %}""", ),
-
-
+            HTML("""{% if user.profile.background_3 %}
+                        <img class="img-responsive" src="{{ MEDIA_URL }}{{ user.profile.background_3 }}">
+                    {% endif %}
+                    <hr class="custom">""", ),
 
             Submit('update', 'Update', css_class="btn-success"),
+            
             )
 
     class Meta:
