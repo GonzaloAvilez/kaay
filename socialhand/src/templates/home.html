@@ -98,14 +98,14 @@
 
 
 <form action="/i18n/setlang/" method="post">
-{% csrf_token %}
-<input name="next" type="hidden" value="{{request.path}}" />
-<select name="language">
-    {% for lang in LANGUAGES %}
-    <option value="{{ lang.0 }}">{{ lang.1 }}</option>
-    {% endfor %}
-</select>
-<input type="submit" value="Go" />
+    {% csrf_token %}
+  <input name="next" type="hidden" value="{{request.path}}" />
+      <select name="language">
+          {% for lang in LANGUAGES %}
+          <option value="{{ lang.0 }}">{{ lang.1 }}</option>
+          {% endfor %}
+      </select>
+  <input type="submit" value="Go" />
 </form>
 <div id="search" class="container-fluid">
   {% if not hide_search %}
@@ -151,6 +151,38 @@
 <div class="container-fluid"> 
 
 <hr class="custom">
+<section id="aditional" class="no-padding parallax-bg2">
+ <div id="icons" style="background-position: 50% 0%;" data-stellar-background-ratio="0.5">
+            <div class="container">
+                <div class="row ">
+                    <!-- Icons -->
+                    <div class="col-md-4 text-center animate fadeInLeft">
+                        <img src="{% static 'site/img/foco_enciende.gif' %}" alt="logo">
+                        <h2 class="padding-top-10">Innovación</h2>
+                        <p> a short description </p>
+                    </div>
+                    <div class="col-md-4 text-center animate fadeIn">
+                        <img src="{% static 'site/img/cerebro.gif' %}" alt="logo">
+                        <h2 class="padding-top-10">Creatividad</h2>
+                        <p> a short description</p>
+                    </div>
+                    <div class="col-md-4 text-center animate fadeInRight">
+                       <img src="{% static 'site/img/lapiz_color.gif' %}" alt="logo">
+                        <h2 class="padding-top-10">Inspiración</h2>
+                        <p>a short description</p>
+                    </div>
+                    <!-- End Icons -->
+                </div>
+            </div>
+        </div>
+</section>
+
+<div class="prlx prlx3">
+      <div class="img img2" ></div>
+  </div>
+
+<hr class="custom">
+
 <section id="portafolio" class="no-padding parallax-bg1 background-primary" style="background-position: 50% 0%;" data-stellar-background-ratio="0.5">
   <div class="container-fluid">
     <div class="row no-gutter  margin-vert-40">
@@ -244,35 +276,14 @@
 
 <hr class="custom">
 
-
-<section id="aditional" class="no-padding parallax-bg2">
- <div id="icons" style="background-position: 50% 0%;" data-stellar-background-ratio="0.5">
-            <div class="container">
-                <div class="row ">
-                    <!-- Icons -->
-                    <div class="col-md-4 text-center animate fadeInLeft">
-                        <img src="{% static 'site/img/foco_enciende.gif' %}" alt="logo">
-                        <h2 class="padding-top-10">Innovación</h2>
-                        <p> a short description </p>
-                    </div>
-                    <div class="col-md-4 text-center animate fadeIn">
-                        <img src="{% static 'site/img/cerebro.gif' %}" alt="logo">
-                        <h2 class="padding-top-10">Creatividad</h2>
-                        <p> a short description</p>
-                    </div>
-                    <div class="col-md-4 text-center animate fadeInRight">
-                       <img src="{% static 'site/img/lapiz_color.gif' %}" alt="logo">
-                        <h2 class="padding-top-10">Inspiración</h2>
-                        <p>a short description</p>
-                    </div>
-                    <!-- End Icons -->
-                </div>
-            </div>
-        </div>
-</section>
+<div class="prlx prlx3">
+      <div class="img img3" ></div>
+  </div>
 
 <hr class="custom">
 
+
+  
 <hr class="custom">
     
 
@@ -301,6 +312,7 @@
 <!-- add scripts for animate scrolling -->
 <script src="{% static 'site/js/scrolling-nav.js' %}"></script>
 <script src="{% static 'site/js/jquery.easing.min.js' %}"></script>
+<script src="{% static 'site/js/parallax-background.js' %}"></script>
 
 <script src = "{%static 'site/js/jquery.justifiedGallery.js' %}"></script>
 <script>
@@ -315,6 +327,23 @@
     margins : 20,
     });
 </script>
+<script>
+      $('.prlx').parallaxBackground({
+        'image': '.img'
+      });
+    </script><script type="text/javascript">
 
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36251023-1']);
+  _gaq.push(['_setDomainName', 'jqueryscript.net']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
 {% endblock scripts %}
 
