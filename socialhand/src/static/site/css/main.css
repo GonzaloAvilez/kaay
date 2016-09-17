@@ -532,6 +532,7 @@ bottom: -200px;
   background-clip: border-box;
   background-origin: padding-box;
   background-position: 50% 0;
+  background-position: center;
   background-repeat: no-repeat;
   background-size: cover !important;
   /*margin-left: -15px;
@@ -551,7 +552,6 @@ bottom: -200px;
   background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.02)),
 
 }
-
 
 
 /***************************************/
@@ -1238,7 +1238,7 @@ ul.errorlist {
   margin-bottom: 60px;
 }
 .margin-gif {
-  margin-bottom: 80px;
+  margin-bottom: 40px;
 }
 
 @-webkit-keyframes justified-gallery-show-caption-animation {
@@ -1528,3 +1528,37 @@ blockquote:before {
 blockquote p {
   display: inline;
 }
+
+
+/*************************/
+.prlx {
+    background-color: #0099A9;
+    overflow: hidden;
+    position: relative;
+    }
+
+.prlx2, .prlx3 {
+    height: 40vh;
+}
+
+.img{
+   /* background-position: 50% 50%;*/
+    background-position: 50% 50%;
+    background-size: cover ;
+    display: none;
+    position: absolute;
+    width: 100%;
+}
+.img2, .img3 {
+    height: 100vh;
+    top: -30vh;
+/*    top: -30vh;
+*/    z-index: 20;
+}  
+.img3 {
+    background-image: url("/static/site/img/carpintero.jpg") ;
+}
+.img2 {
+    background-image: url("/static/site/img/mexican_colors.jpg") ;
+}
+
