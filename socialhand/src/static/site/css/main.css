@@ -1552,9 +1552,8 @@ blockquote p {
 .img2, .img3 {
     height: 100vh;
     top: -30vh;
-/*    top: -30vh;
-*/    z-index: 20;
-}  
+/*   z-index: 1;
+*/}  
 .img3 {
     background-image: url("/static/site/img/carpintero.jpg") ;
 }
@@ -1562,3 +1561,6 @@ blockquote p {
     background-image: url("/static/site/img/mexican_colors.jpg") ;
 }
 
+.frente{
+  z-index: 200;
+}
