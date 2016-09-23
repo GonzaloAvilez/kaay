@@ -26,10 +26,10 @@ class Order(models.Model):
 		return sum(item.get_cost() for item in self.items.all())
 
 class OrderItem(models.Model):
-	order = models.ForeignKey(Order,_('Order'), related_name='items',)
-	product = models.ForeignKey(Product,_('Product'),related_name='order_items')
-	price = models.DecimalField(_('Price'),max_digits=10, decimal_places=2)
-	quantity = models.PositiveIntegerField(_('Quantity'),default=1)
+	order = models.ForeignKey(Order, related_name='items',)
+	product = models.ForeignKey(Product,related_name='order_items')
+	price = models.DecimalField(max_digits=10, decimal_places=2)
+	quantity = models.PositiveIntegerField(_('quantity'),default=1)
 
 	def __str__(self):
 		return '{}'.format(self.id)

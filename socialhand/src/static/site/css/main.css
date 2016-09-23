@@ -351,8 +351,8 @@ body>.navbar-transparent {
     .overlay {
         position: absolute;
         width: 100%;
-        height: 100%;
-        z-index: 2;
+/*        height: 100%;
+*/        z-index: 2;
     }
 
 /********************************/
@@ -369,7 +369,7 @@ body>.navbar-transparent {
       .fade-carousel .slides .slide-1 {
       }
       .fade-carousel .slides .slide-2 {        
-        background-image: url("/static/site/img/bordado.jpg");
+        background-image: url("/static/site/img/bordando.jpg");
 
       }
       .fade-carousel .slides .slide-3 {
@@ -501,7 +501,7 @@ transform: translate3d(0, 0, 0);
         z-index: -1;
         min-height: 100%;
         min-width: 100%;
-        background: url("/static/site/img/barro.jpg");
+        background: url("/static/site/img/platos.jpg");
         background-size: cover;
     }
 
@@ -1563,4 +1563,10 @@ blockquote p {
 
 .frente{
   z-index: 200;
+}
+
+#sensi-video{
+    background-image: url("/static/site/img/plata.jpg") ;
+    background-position: center center;
+    background-size: cover;
 }
