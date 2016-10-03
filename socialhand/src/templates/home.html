@@ -5,8 +5,8 @@
 
 {% block title %}{{ block.super }}Mercado artesanal{% endblock %}
 {% block navbar-brand %}
-  <a class="navbar-brand page-scroll logo" href="#cover">
-    <img src="{% static 'site/img/hand_logo.png' %}" alt="logo">{% include "_brandname.html" %}
+  <a class="navbar-brand page-scroll" href="#cover">
+    <img class="logo" src="{% static 'site/img/hand_logo.png' %}" alt="logo">{% include "_brandname.html" %}
   </a>
 {% endblock %}
 
@@ -96,7 +96,7 @@
 {% block container %}
 <hr class="custom">
 
-
+<!-- 
 <form action="/i18n/setlang/" method="post">
     {% csrf_token %}
   <input name="next" type="hidden" value="{{request.path}}" />
@@ -106,7 +106,7 @@
           {% endfor %}
       </select>
   <input type="submit" value="Go" />
-</form>
+</form> -->
 <div id="search" class="container-fluid">
   {% if not hide_search %}
   <div class="col-lg-6 col-lg-offset-3 ">
@@ -124,56 +124,43 @@
 </div>
 
 <section id="presentation">
-  <div class="background-white">
-    <div class="container">
+    <div class="container text-page">
       <div class="col-md-4 col-md-offset-4">
-        <h2 class="text-center article-title" style="font-size:300%;">{% trans 'Welcome' %}</h2>
-        <p class="text-center">{% trans 'Käay es un lugar donde encontrarás una comunidad de artesanos que nos muestran su creatividad y comparten contigo un trozo de su trabajo... un trozo de su vida '%}</p>
         <img class="img-responsive"  alt="" src="{% static "/static/site/img/creative.png" %}" style="display: block; margin-left: auto; margin-right: auto;">
+        <h2 class="text-center article-title" style="font-size:300%;">{% trans 'Welcome' %}</h2>
+        <p class="text-center lead">{% trans 'Käay es un lugar donde encontrarás una comunidad de artesanos que nos muestran su creatividad y comparten contigo un trozo de su trabajo... un trozo de su vida '%}</p>
+        
       </div>            
     </div>
-  </div>
 </section>
 
 <div class="container-fluid"> <!-- principal -->
-
-<hr class="custom">
+<!-- 
+<hr class="custom"> -->
 
 <div class=" no-padding prlx prlx2">
       <div class="img img2" ></div>
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
-<hr class="custom">
-<section id="aditional" class="no-padding parallax-bg2">
- <div id="icons" style="background-position: 50% 0%;" data-stellar-background-ratio="0.5">
+<section id="aditional" >
+ <div id="icons" class="text-page">
             <div class="container">
                 <div class="row ">
                     <!-- Icons -->
                     <div class="col-md-4 text-center animate fadeInLeft">
                         <img src="{% static 'site/img/foco_enciende.gif' %}" alt="logo">
                         <h2 class="padding-top-10">Innovación</h2>
-                        <p> {% trans 'Nuevas  propuestas de diseño y creación de obras de arte'%}</p>
+                        <p class="lead"> {% trans 'Nuevas  propuestas de diseño y creación de obras de arte'%}</p>
                     </div>
                     <div class="col-md-4 text-center animate fadeIn">
                         <img src="{% static 'site/img/Draft.gif' %}" alt="logo">
                         <h2 class="padding-top-10">Creatividad</h2>
-                        <p>{% trans  'Para la generación de ideas y conceptos '%}</p>
+                        <p class="lead">{% trans  'Para la generación de ideas y conceptos '%}</p>
                     </div>
                     <div class="col-md-4 text-center animate fadeInRight">
                        <img src="{% static 'site/img/lapiz_color.gif' %}" alt="logo">
                         <h2 class="padding-top-10">Inspiración</h2>
-                        <p>{% trans 'Estímulos repentino que permiten concebir una idea' %}</p>
+                        <p class="lead">{% trans 'Estímulos repentino que permiten concebir una idea' %}</p>
                     </div>
                     <!-- End Icons -->
                 </div>
@@ -183,9 +170,6 @@
 
 
 
-
-
-<hr class="custom">
 <div class="no-padding prlx prlx3">
       <div class="img img3" ></div>
   </div>
