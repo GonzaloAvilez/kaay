@@ -52,13 +52,13 @@ def product_detail(request, id, slug):
 				 # 'total_views':total_views,
 				 'cart_product_form': cart_product_form,
 				 'craftsman':craftsman,})
-	
+	 
 def product_edit(request,id,slug):
         product = get_object_or_404(Product,
                                     id=id,
                                    	slug=slug)                            	
         if request.method == "POST":
-            form = ShopFor(request.POST or None, instance=product)
+            form = ShopFor(request.POST,request.FILES or None, instance=product)
             if form.is_valid():
                 product = form.save (commit=False)
                 product.author = request.user

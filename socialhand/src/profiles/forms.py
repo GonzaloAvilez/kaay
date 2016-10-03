@@ -8,7 +8,7 @@ from . import models
 from .models import Post
 from shop.models import Category, Product
 
-
+ 
 #define user parameter register_registration
 
 User = get_user_model()
@@ -88,7 +88,7 @@ class ShopFor(forms.ModelForm):
 
     class Meta:
         model = Product
-        fields = ('name','slug', 'category', 'image', 'description', 'price','stock' )    
+        fields =['name','slug', 'category', 'image', 'description', 'price','stock' ]
 
 
 # postform fue agregado para auxiliar la creacion de shopfor 
