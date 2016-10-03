@@ -17,9 +17,11 @@
 </div>
 <div class="container-fluid"> 
 
-	{{product.author}}
+	author:{{product.author}}
+	<br/>id:{{product.id}}
+	 <br/>pk: {{product.pk}}  
+	 <br/>image: {{product.image}}
 	 
-	 {{product.id}} {{product.pk}}  
 	 
 	 {% if product.author == user %}
 	 	<a class="btn btn-primary"  href="{% url 'shop:product_edit' product.id product.slug %}"><span class="glyphicon glyphicon-pencil"></span></a>	
