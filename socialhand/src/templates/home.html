@@ -1,5 +1,5 @@
 {% extends "base.html" %}
- {% load i18n %}
+{% load i18n %}
 {% load staticfiles %}
 {% load crispy_forms_tags %}
 
@@ -11,16 +11,16 @@
 {% endblock %}
 
 {% block navbar-left %}
-  <li><a class="page-scroll" href="#presentation">Qué es?</a></li>
-  <li><a class="page-scroll" href="#portafolio">Galería</a></li>
+  <li><a class="page-scroll" href="#presentation">{% trans 'What´s this?' %}</a></li>
+  <li><a class="page-scroll" href="#portafolio">{% trans 'Handcrafted'%}</a></li>
   {% include "_navbar.html" with active_link="home" %}
-  <li><h4>Sitio en construcción</h4></li>
+  <li><p class="text-center lead"><font color="white"> Sitio en construcción</font></p></li>
 {% endblock %}
 
 {% block navbar-right %}
   {% if not user.is_authenticated %}
-  <a class="btn btn-default" href="{% url 'accounts:login' %}" role="button">Ingresar</a>
-  <a class="btn btn-default" href="{% url 'accounts:signup' %}" role="button">Regístrate</a>
+  <a class="btn btn-default" href="{% url 'accounts:login' %}" role="button">{% trans 'Log in' %}</a>
+  <a class="btn btn-default" href="{% url 'accounts:signup' %}" role="button">{% trans 'Sign Up' %}</a>
   {% else %}
     {{ block.super }}
   {% endif %}
@@ -43,13 +43,14 @@
               </video>
               <div class="container-fluid">
                 <div class="carousel-caption carousel-description">
-                  <h1 style="font-family:Lobster;"><font color="white">{% include "_brandname.html" %}</font></h1>
-                  <p> Encuentra algo único y especial</p>      
+                  <!-- <h1 style="font-family:Lobster;"><font color="white">{% include "_brandname.html" %}</font></h1> -->
+                  <h1>{% trans 'Handmade'%}</h1>
+                  <p>{% trans 'Products elaborated by handcrafted way'%}</p>      
                 </div>
               </div>
               <div class="carousel-caption">
-                <a href="{% url 'accounts:signup' %}">
-                  <p><button class="btn btn-lg btn-default"> Regístrate!</button></p>
+                <a href="{% url 'shop:product_list' %}">
+                  <p><button class="btn btn-lg btn-default"> {% trans 'Gallery'%}!</button></p>
                 </a>
               </div>
           </div>
@@ -58,13 +59,13 @@
              <!--  <img class="second-slide " src="/static/site/img/bordado.jpg" alt="Second slide"> -->
               <div class="container">
                 <div class="carousel-caption carousel-description">
-                  <h1>Manos artesanas</h1>
-                  <p> Un lugar donde encontrarás produtos elaborados artesanalmente</p>  
+                  <h1>{% trans 'Welcome craftsman' %}</h1>
+                  <p>{% trans 'Sign up to show your work' %}</p>  
                 </div>
               </div>
               <div class="carousel-caption">
-                <a href="{% url 'shop:product_list' %}" role="button">
-                <p><button class="btn btn-lg btn-default"> Galería!</button></p></a>
+                <a href="{% url 'accounts:signup' %}" role="button">
+                <p><button class="btn btn-lg btn-default"> Sign up!</button></p></a>
               </div>
           </div>
           <div class="item slides">
@@ -72,12 +73,12 @@
              <!--  <img class="third-slide line-cover" src="{% static "/static/site/img/barro.jpg" %}" alt="Third slide"> -->
               <div class="container">
                 <div class="carousel-caption carousel-description">
-                  <h1>Another written here</h1>
-                  <p>The world hope this website</p>   
+                  <h1>{% trans 'Another written here' %}</h1>
+                  <p>{% trans 'The world hopes this website'%} </p>   
                 </div>
               <div class="carousel-caption">
                 <a href="/" role="button">
-                  <p><button class="btn btn-lg btn-default"> Another action!</button></p>
+                  <p><button class="btn btn-lg btn-default"> {% trans 'Another action!' %} </button></p>
                 </a>
               </div>
             </div>
@@ -112,7 +113,7 @@
   <div class="col-lg-6 col-lg-offset-3 ">
     <form class="" role="search" action="{% url 'search' %}">
       <div class="input-group">
-      {% trans 'Encuentra algo único y especial para tí' as search %}
+      {% trans 'Find something special  and unique for you' as search %}
         <input type="text" class="form-control" name="q" placeholder="{{ search }}" >
         <span class="input-group-btn">
           <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button>
@@ -128,7 +129,7 @@
       <div class="col-md-4 col-md-offset-4">
         <img class="img-responsive"  alt="" src="{% static "/static/site/img/creative.png" %}" style="display: block; margin-left: auto; margin-right: auto;">
         <h2 class="text-center article-title" style="font-size:300%;">{% trans 'Welcome' %}</h2>
-        <p class="text-center lead">{% trans 'Käay es un lugar donde encontrarás una comunidad de artesanos que nos muestran su creatividad y comparten contigo un trozo de su trabajo... un trozo de su vida '%}</p>
+        <p class="text-center lead">{% trans 'Käay is a platform where you can find a community of mexican craftsmen,  Who show and share with us a bit of their work ... a bit of their life. '%}</p>
         
       </div>            
     </div>
@@ -146,21 +147,21 @@
  <div id="icons" class="text-page">
             <div class="container">
                 <div class="row ">
-                    <!-- Icons -->
+                    <!-- Icons -->                  
+                    <div class="col-md-4 text-center animate fadeInRight">
+                       <img src="{% static 'site/img/foco_enciende.gif' %}" alt="logo">
+                        <h2 class="padding-top-10">Inspiration</h2>
+                        <p class="lead">{% trans 'Sudden stimulus  that makes someone want to do or create something' %}</p>
+                    </div>
                     <div class="col-md-4 text-center animate fadeInLeft">
-                        <img src="{% static 'site/img/foco_enciende.gif' %}" alt="logo">
-                        <h2 class="padding-top-10">Innovación</h2>
-                        <p class="lead"> {% trans 'Nuevas  propuestas de diseño y creación de obras de arte'%}</p>
+                        <img src="{% static 'site/img/cerebro.gif' %}" alt="logo">
+                        <h2 class="padding-top-10">{% trans 'Innovation'%}</h2>
+                        <p class="lead"> {% trans 'New concepts for design and creation of artworks'%}</p>
                     </div>
                     <div class="col-md-4 text-center animate fadeIn">
-                        <img src="{% static 'site/img/Draft.gif' %}" alt="logo">
-                        <h2 class="padding-top-10">Creatividad</h2>
-                        <p class="lead">{% trans  'Para la generación de ideas y conceptos '%}</p>
-                    </div>
-                    <div class="col-md-4 text-center animate fadeInRight">
-                       <img src="{% static 'site/img/lapiz_color.gif' %}" alt="logo">
-                        <h2 class="padding-top-10">Inspiración</h2>
-                        <p class="lead">{% trans 'Estímulos repentino que permiten concebir una idea' %}</p>
+                        <img src="{% static 'site/img/lapiz_color.gif' %}" alt="logo">
+                        <h2 class="padding-top-10">{% trans 'Creativity'%}</h2>
+                        <p class="lead">{% trans  ' Tendency to generate or perceive new ideas  and concepts'%}</p>
                     </div>
                     <!-- End Icons -->
                 </div>
@@ -193,8 +194,7 @@
 
 
   
-<hr class="custom">
-    
+
 
 
 

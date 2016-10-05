@@ -48,6 +48,7 @@
             {% endblock %}
           </a>
         </div>
+
         {% block navbar-menu %}
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
@@ -66,8 +67,8 @@
                     <span class="caret"></span>
                     </a>
                       <ul class="dropdown-menu aux-dropdown" role="menu">
-                        <li><a href="{% url 'profiles:show_self' %}"><h5>Tu cuenta</h5></a></li>
-                        <li><a href="{% url 'accounts:logout' %}"><h5>Salir</h5></a></li>
+                        <li><a href="{% url 'profiles:show_self' %}"><h5>{% trans 'Your space'%} </h5></a></li>
+                        <li><a href="{% url 'accounts:logout' %}"><h5>{% trans 'Exit'%}</h5></a></li>
                       </ul>
                 </li>
               {% endif %}
@@ -124,10 +125,10 @@
           </div>
           <div class="col-lg-6 text-right">
             <!-- Conéctate con nosotros -->
-            Muy pronto en
-            <a href="#"><i class="fa fa-facebook"></i> Facebook</a> 
-            <a href="#"><i class="fa fa-twitter"></i> Twitter</a>
-            <a href="#"><i class="fa fa-instagram"></i> Instagram</a>
+            {% trans 'Comming soon '%}
+            <a href="#"><i class="fa fa-facebook-square"></i> </a> 
+            <a href="#"><i class="fa fa-twitter"></i> </a>
+            <a href="#"><i class="fa fa-instagram"></i> </a>
           </div>
         </div>
             </div>

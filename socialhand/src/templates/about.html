@@ -1,7 +1,7 @@
 {% extends "base.html" %}
-
 {% load staticfiles %}
 {% load crispy_forms_tags %}
+{% load i18n %}
 
 {% block title %}{{ block.super }}About{% endblock %}
 
@@ -18,7 +18,7 @@
   <div class="container-fluid">
       <div class="col-md-12 text-center">
          <h1 style="font-family:Lobster;" ><font color="white">{% include "_brandname.html" %}</font></h1>
-        <p class="lead"><i><strong><font color="white"> Nuestro ingrediente secreto: Creatividad, envuelta en tradición y cultura</font></strong></i></p>
+        <p class="lead"><i><strong><font color="white"> {% trans 'Our secret ingredient: Our culture, ancestor traditions and creativity' %}</font></strong></i></p>
       </div>
   </div>
 </div>
@@ -27,22 +27,22 @@
   <div class="container-fluid">
       <div class="col-md-12 text-center">
         <!-- <h2>Cónoce nuestro equipo</h2> -->
-        <p class="lead">Let´s work together for better life conditions! </p>
+        <p class="lead">{% trans 'Let´s work together for better life conditions!' %}  </p>
       </div>
     <div class="container-fluid">
 
       <div class="col-lg-4">
         <div class="text-center"><img class="img-circle centered" src="{% static "/static/site/img/kaay.jpg" %}" alt="profile pic"></div>
         <p class="heavy text-center">Antonio Rojas</p>
-        <h2 class="heavy text-center">Founder</h2>
-        <p class="heavy text-center">Your Description </p>
+        <h2 class="heavy text-center">{% trans 'Founder' %}</h2>
+        <p class="heavy text-center">{% trans 'A brief  description'%} </p>
       </div>
       
       <div class="col-lg-4">
         <div class="text-center"><img class="img-circle centered"src="{% static "/static/site/img/kaay.jpg" %}" alt="profile pic"/></div>
         <p class="heavy text-center">Gonzalo Avilez</p>
-        <h2 class="heavy text-center">Founder</h2>
-        <p class="heavy text-center">Artesano de sangre nacido en la ciudad de Taxco de Alarcón</p>
+        <h2 class="heavy text-center">{% trans 'Founder & Developer'%}</h2>
+        <p class="heavy text-center">{% trans 'Craftsman since my childhood, born in Taxco de Alarcón city' %}</p>
       </div>
       
       
@@ -50,9 +50,9 @@
       <div class="col-lg-4">
         <div class="text-center"><img class="img-circle centered" src="{% static "/static/site/img/kaay.jpg" %}" alt="profile pic"></div>
         <p class="heavy text-center">Your Name</p>
-        <h2 class="heavy text-center">Next Co-Founder</h2>
+        <h2 class="heavy text-center">{% trans 'Co-Founder' %} </h2>
         <p class="heavy text-center"
-        >Your Description </p>
+        >{% trans 'A brief description'%}</p>
       </div>
     </div>
   </div>
@@ -67,14 +67,14 @@
     <div class="row">
       <div id="map-outer" class="col-md-12">
         <div id="address" class="col-md-4">
-          <h2>Nuestra Ubicación</h2>
+          <h2>{% trans 'Our location' %}</h2>
           <address>
             <strong>Käay Co.</strong><br>
             San José La Pilita<br>
             Metepec, Edo. Méx<br>
             C.P. 52149<br>
             México<br>
-            <abbr>Contacto:</abbr> +52 722 437 9591
+            <abbr>{% trans 'Contact:' %}</abbr> +52 722 437 9591
           </address>
         </div>
         <div id="map-container" class="col-md-8"></div>

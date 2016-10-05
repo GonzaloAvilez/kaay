@@ -9,7 +9,7 @@ from django.utils import timezone
 from embed_video.fields import EmbedVideoField
 from django.core.urlresolvers import reverse
 from django.utils.translation import gettext_lazy as _
- 
+  
  
 
 class BaseProfile(models.Model):

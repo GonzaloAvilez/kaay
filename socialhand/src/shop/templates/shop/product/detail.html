@@ -1,6 +1,7 @@
 {% extends "shop/home.html" %}
 {% load staticfiles %}
 {% load thumbnail %}
+{% load i18n %}
 
 
 {% block title %}
@@ -9,59 +10,73 @@
 
 
 {% block container %}
-<div></br></br></div>
+</br></br>
 <div id="detail"class="justified-gallery" style="background-color: black;">  
 	<div>
-		<img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "image/noimage.png" %}{% endif %}"  alt="<h3>&nbsp;&nbsp;&nbsp;&nbsp;{{product.name}}</h3> {{ product.description|linebreaks }}<br/>${{ product.price }} " >		
+		<img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "image/noimage.png" %}{% endif %}"  alt="<h3>&nbsp;&nbsp;&nbsp;&nbsp;{{product.name}}</h3> {{ product.description|linebreaks }}<br/>${{ product.price }} ">		
 	</div>
 </div>
 <div class="container-fluid"> 
+</br>
+	 
+	 {% if product.author == user %}
 
-	author:{{product.author}}
+	 <div class="col-md-4">
+	 	<a class="btn btn-primary"  href="{% url 'shop:product_edit' product.id product.slug %}"><span class="glyphicon glyphicon-pencil"></span></a>	
+	 	<a class="btn btn-primary" href="{% url 'shop:product_remove' product.id product.slug %}"><span class="glyphicon glyphicon-remove"></span></a>
+	 </div>
+	 <div class=" text-right col-md-4 col-md-offset-4">
+		
+		<span class="count">
+		<span class="total">{{ total_views }}</span>
+		visita{{ total_views|pluralize }}
+		</span>
+	 </div>
+	 
+	 {% endif %}
+
+<font color="white">
+	{{ product.description|linebreaks }}
+	</br>author:{{product.author}}
 	<br/>id:{{product.id}}
 	 <br/>pk: {{product.pk}}  
 	 <br/>image: {{product.image}}
-	 
-	 
-	 {% if product.author == user %}
-	 	<a class="btn btn-primary"  href="{% url 'shop:product_edit' product.id product.slug %}"><span class="glyphicon glyphicon-pencil"></span></a>	
-	 	<a class="btn btn-primary" href="{% url 'shop:product_remove' product.id product.slug %}"><span class="glyphicon glyphicon-remove"></span></a>
+	 	<div class="product-detail">
+			<p class="price">${{ product.price }}</p>
+		</div>
+</font> 
 
-	 {% endif %}
-	<div class="product-detail">
-		<h4><p class="price">${{ product.price }}</p></h4>
-		{{ product.description|linebreaks }}
-			</div>
-	<div class="col-md-6 col-md-offset-6">
-	<span class="count">
-	<span class="total">{{ total_views }}</span>
-	visita{{ total_views|pluralize }}
-	</span>
-	</div>
 		<div class="col-md-6">
 		<form action="{% url 'cart:cart_add' product.id%}" method="post">
 		{{ cart_product_form }}
 		{% csrf_token %}
-		<input type="submit" value="Añadir al carrito">
+		{% trans 'Add to cart' as cart %}
+		<input type="submit" value="{{cart}}">
 		</form>
 		</div>
 
 </div>
 
 <div class="container-fluid">
-      <div  class="col-xs-3 col-md-3">  
+      <div  class="col-xs-6 col-md-2">  
         
         <a href="{% url 'profiles:show' craftsman.slug %}">
         <h1 style="font-family:Lobster;" ><font color="black">{{craftsman.get_short_name }}</font></h1>
         <img title="profile picture" class="img-circle img-responsive img-thumbnail" src="{% thumbnail craftsman.picture|default:'default_profile.png' 150x150 crop %}"> 
         </a>  
        	
+        <a  data-toggle="tooltip" title="{{ craftsman.bio }}  Gonzalo Avilez">Hover over me</a>
+
       </div>        
   
   {{ craftsman.get_short_name }}
-<blockquote><p> {{ craftsman.bio }} </p> </blockquote>
-{{ craftsman.pk }}
-{{ craftsman.slug}}
+<div class="col-md-9">
+	<blockquote><p> {{ craftsman.bio }} 
+	</br>{{ craftsman.pk }}
+	</br>{{ craftsman.slug}}</p> </blockquote>
+</div>
+
+
 
 
 </div>
@@ -78,5 +93,10 @@
     // nojustify or hide for last image
     margins : 10
     });
+</script>
+<script>
+	$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+	});
 </script>
 {% endblock scripts %}

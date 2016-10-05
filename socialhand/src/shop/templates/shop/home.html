@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 {% load crispy_forms_tags %}
+{% load i18n%}
+
  
 
 
@@ -11,22 +13,24 @@
 <!-- code for the shop -->
 <link href="{% static 'site/css/main.css' %}" rel="stylesheet">
 				
-{% block container %}				
+{% block container %}	
+
 <div id="header">
-	<a href="/productos" class="logo">Catálogo</a>
+	<p class="text-center ">{% trans 'Gallery' %}</p>	
 </div>
 <div id="subheader">
 	<div class="cart">
 		{% with total_items=cart|length %}
+		<span class="glyphicon glyphicon-shopping-cart"></span>
 			{% if cart|length > 0 %}
-			<span class="glyphicon glyphicon-shopping-cart"></span>
-				Tus elecciones:
+			{% trans 'Your choices:' %}			
 				<a href="{% url "cart:cart_detail" %}">
 					{{ total_items }} artículo{{ total_items|pluralize }},
 					${{ cart.get_total_price }}
 				</a>
 			{% else %}
-			No hay selección de productos
+			{% trans 'Your cart is empty'%}
+			:(
 			{% endif %}
 		{% endwith %}
 	</div>
