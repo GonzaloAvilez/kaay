@@ -431,7 +431,7 @@ body>.navbar-transparent {
 }
 
  @media screen and (max-width: 480px) {
-    .carousel-inner > .item > img {top:0; background-size: cover !important; min-width: 200vw;}
+    .carousel-inner > .item > img {top:0; background-size: cover !important; min-width: 1 00vw;}
 
 
 }
@@ -676,14 +676,16 @@ ul.errorlist {
 
 /*tienda principal headers***************** */
 #header {
-    padding:20px 150px;
-    font-size:328px;
+    padding:10px;
+    font-size:28px;
     overflow:auto;
+    font-family:Lobster;
+    color:black;
 }
 #subheader {
     background:#FF5733;
     color:#fff;
-    padding:35px 100px;
+    padding:35px 10px;
     overflow:auto;
 }
 #header .logo {
@@ -1510,11 +1512,14 @@ a.socialIcon:hover, .socialHoverClass {
 
 .count {
     color:#aaa;
-    border:3px solid #bbb;
-    border-radius:26px;
+    border:1px solid #bbb;
+    border-radius:16px;
     padding:10px 20px;
-    margin:20px 10px 0;
+    margin:20px -20px 0;
+
 }
+
+/******product_detail******/
 
 blockquote {
   background: #f9f9f9;
