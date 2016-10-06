@@ -41,7 +41,7 @@ def product_detail(request, id, slug):
 	# total_views = r.incr('product:{}:views'.format(product.id))
 	# increment image ranking by 1
 	# r.zincrby('product_ranking', product.id, 1)
-	cart_product_form = CartAddProductForm()
+	cart_form = CartAddProductForm()
 	# looking author of product
 	creator=product.author
 	if creator :
@@ -50,7 +50,7 @@ def product_detail(request, id, slug):
 				 'shop/product/detail.html',{
 				 'product': product,
 				 # 'total_views':total_views,
-				 'cart_product_form': cart_product_form,
+				 'cart_form': cart_form,
 				 'craftsman':craftsman,})
 	 
 def product_edit(request,id,slug):

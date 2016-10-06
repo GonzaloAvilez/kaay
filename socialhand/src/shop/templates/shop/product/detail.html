@@ -2,7 +2,7 @@
 {% load staticfiles %}
 {% load thumbnail %}
 {% load i18n %}
-
+{% load crispy_forms_tags %}
 
 {% block title %}
 	{% if category %}{{ category.title }}{% else %}Products{% endif %}
@@ -21,11 +21,11 @@
 	 
 	 {% if product.author == user %}
 
-	 <div class="col-md-4">
+	 <div class="col-md-4" style="float: left;">
 	 	<a class="btn btn-primary"  href="{% url 'shop:product_edit' product.id product.slug %}"><span class="glyphicon glyphicon-pencil"></span></a>	
 	 	<a class="btn btn-primary" href="{% url 'shop:product_remove' product.id product.slug %}"><span class="glyphicon glyphicon-remove"></span></a>
 	 </div>
-	 <div class=" text-right col-md-4 col-md-offset-4">
+	 <div class=" text-right col-md-4 col-md-offset-4" style="float: right;">
 		
 		<span class="count">
 		<span class="total">{{ total_views }}</span>
@@ -35,51 +35,56 @@
 	 
 	 {% endif %}
 
-<font color="white">
-	{{ product.description|linebreaks }}
-	</br>author:{{product.author}}
-	<br/>id:{{product.id}}
-	 <br/>pk: {{product.pk}}  
-	 <br/>image: {{product.image}}
-	 	<div class="product-detail">
-			<p class="price">${{ product.price }}</p>
-		</div>
-</font> 
 
-		<div class="col-md-6">
-		<form action="{% url 'cart:cart_add' product.id%}" method="post">
-		{{ cart_product_form }}
+	 	<!-- </br></br>
+		<font color="blue">
+		{{ product.description|linebreaks }}
+		</br>author:{{product.author}}
+		<br/>id:{{product.id}}
+		 <br/>pk: {{product.pk}}  
+		 <br/>image: {{product.image}}
+		 	<div class="product-detail">
+				<p class="price">${{ product.price }}</p>
+			</div>
+		</font>  -->
+		</br></br></br>
+		<div class="col-md6">
+		<form class="form-inline" style="float: left;" action="{% url 'cart:cart_add' product.id%}" method="post">
+		<div class="form-group  ">
+		{{ cart_form }}
 		{% csrf_token %}
 		{% trans 'Add to cart' as cart %}
 		<input type="submit" value="{{cart}}">
+		</div>
+		</form>
+		<form class="form-inline" style="float: right;" action="{% url 'cart:cart_add' product.id%}" method="post">
+		<div class="form-group  ">
+		{% crispy cart_form %}
+		</div>
 		</form>
 		</div>
-
-</div>
+	
+</div>		
+		
 
 <div class="container-fluid">
-      <div  class="col-xs-6 col-md-2">  
+
+    <div  class="col-sm-3 col-md-8" >  
         
-        <a href="{% url 'profiles:show' craftsman.slug %}">
+        <a role="button" class="btn popovers" data-html="true" data-toggle="popover" data-content=" <blockquote>	{{ craftsman.bio }} </blockquote> " title=" <a href='{% url 'profiles:show' craftsman.slug %}'> Gonzalo Avilez </a>">
         <h1 style="font-family:Lobster;" ><font color="black">{{craftsman.get_short_name }}</font></h1>
         <img title="profile picture" class="img-circle img-responsive img-thumbnail" src="{% thumbnail craftsman.picture|default:'default_profile.png' 150x150 crop %}"> 
+
         </a>  
-       	
-        <a  data-toggle="tooltip" title="{{ craftsman.bio }}  Gonzalo Avilez">Hover over me</a>
-
-      </div>        
-  
-  {{ craftsman.get_short_name }}
-<div class="col-md-9">
-	<blockquote><p> {{ craftsman.bio }} 
-	</br>{{ craftsman.pk }}
-	</br>{{ craftsman.slug}}</p> </blockquote>
-</div>
+     	
+	</div>        
 
 
+	<a  data-toggle="tooltip" data-placement="right" title="{{ craftsman.bio }}" data-content=" <a href='{% url 'profiles:show' craftsman.slug %}'> Gonzalo Avilez </a> " >Hover over me</a>
 
+        <a  role="button" class="btn popovers" data-toggle="popover" title="" data-content="test content <a href='' title='test add link'>link on content</a>" data-original-title="test title">test link</a>
 
-</div>
+</div> 
 
 {% endblock container %}
 
@@ -99,4 +104,9 @@
     $('[data-toggle="tooltip"]').tooltip();
 	});
 </script>
+<script>
+	$("[data-toggle=popover]")
+	.popover({html:true})
+</script>
+
 {% endblock scripts %}
