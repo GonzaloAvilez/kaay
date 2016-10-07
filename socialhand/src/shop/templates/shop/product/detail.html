@@ -32,7 +32,7 @@
 		visita{{ total_views|pluralize }}
 		</span>
 	 </div>
-	 
+	 </br></br>
 	 {% endif %}
 
 
@@ -47,46 +47,80 @@
 				<p class="price">${{ product.price }}</p>
 			</div>
 		</font>  -->
-		</br></br></br>
-		<div class="col-md6">
-		<form class="form-inline" style="float: left;" action="{% url 'cart:cart_add' product.id%}" method="post">
-		<div class="form-group  ">
-		{{ cart_form }}
-		{% csrf_token %}
-		{% trans 'Add to cart' as cart %}
-		<input type="submit" value="{{cart}}">
-		</div>
-		</form>
+		
+		<div class="col-md-offset-6">
+		
 		<form class="form-inline" style="float: right;" action="{% url 'cart:cart_add' product.id%}" method="post">
 		<div class="form-group  ">
 		{% crispy cart_form %}
 		</div>
 		</form>
 		</div>
+
+		<!-- <form class="form-inline"style="float:left;"action="{% url 'cart:cart_add' product.id%}"method="post">
+			<div class="form-group  ">
+			{{ cart_form }}
+			{% csrf_token %}
+			{% trans 'Add to cart' as cart %}
+			<input type="submit" value="{{cart}}">
+			</div>
+		</form> ORIGINAL FORM-->
 	
 </div>		
 		
-
 <div class="container-fluid">
-
-    <div  class="col-sm-3 col-md-8" >  
-        
-        <a role="button" class="btn popovers" data-html="true" data-toggle="popover" data-content=" <blockquote>	{{ craftsman.bio }} </blockquote> " title=" <a href='{% url 'profiles:show' craftsman.slug %}'> Gonzalo Avilez </a>">
-        <h1 style="font-family:Lobster;" ><font color="black">{{craftsman.get_short_name }}</font></h1>
-        <img title="profile picture" class="img-circle img-responsive img-thumbnail" src="{% thumbnail craftsman.picture|default:'default_profile.png' 150x150 crop %}"> 
-
-        </a>  
-     	
-	</div>        
-
-
-	<a  data-toggle="tooltip" data-placement="right" title="{{ craftsman.bio }}" data-content=" <a href='{% url 'profiles:show' craftsman.slug %}'> Gonzalo Avilez </a> " >Hover over me</a>
-
-        <a  role="button" class="btn popovers" data-toggle="popover" title="" data-content="test content <a href='' title='test add link'>link on content</a>" data-original-title="test title">test link</a>
-
+  <div id="author-accordion">
+	<div class="no-padding panel-group" id="accordion">
+	  <div class="col-xs-6 col-sm-3 col-md-2 col-lg-2 ">
+		<div class="panel panel-default">
+		  <div class="panel-heading">
+		    <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+		      <h4 class="panel-title text-center"> {% trans 'Handcrafted by:'%}
+		      </h4>
+		    </a>
+		  </div>
+		  <div id="collapse1" class="panel-collapse collapse in">
+		    <div class="panel-body text-center">
+		      <h3 style="font-family:Lobster;" ><font color="black">{{craftsman.get_short_name }}</font></h3>
+		      	<img data-toggle="popover" data-placement="auto bottom" data-content=" <blockquote>{% if craftsman.bio%}{{ craftsman.bio }}{% else%}{% trans 'I invite you to see my profile '%}{% endif %}</blockquote> " title=" <h4><a href='{% url 'profiles:show' craftsman.slug %}'> Gonzalo Avilez </a></h4>" class="img-circle img-responsive img-thumbnail" src="{% thumbnail craftsman.picture|default:'default_profile.png' 150x150 crop %}">  		
+		    </div>
+		  </div>
+		</div>
+	  </div>  
+	</div>
+  </div>
+  
+  <div id="description-accordion">      
+ 	<div class="no-padding panel-group center-block" id="accordion">
+	  <div class=" col-xs-6 col-sm-6 col-md-6 col-lg-6 col-md-offset-1">
+	    <div class=" panel panel-default">
+	      <div class="panel-heading">
+	        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+	          <h4 class="panel-title text-center">
+	          {% trans 'Description:'%}
+	          </h4>
+	        </a>
+	   	  </div>
+	      <div id="collapse2" class="panel-collapse collapse in">
+	      	<div class="panel-body">
+	      	  <h3  style="font-family:Lobster;" ><font color="black">{{ product.name }}</font></h3>
+	      		<p class="lead">{{product.description}}</p>
+	      		
+	      	</div>
+	      </div>
+	 	</div>
+	  </div>  
+  	</div>
+  </div>
 </div> 
 
+
+
 {% endblock container %}
+
+
+
+
 
 
 {% block scripts %}

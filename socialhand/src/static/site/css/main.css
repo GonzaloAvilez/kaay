@@ -1510,6 +1510,10 @@ a.socialIcon:hover, .socialHoverClass {
   height: 100%;
 }
 
+
+
+/******product_detail******/
+
 .count {
     color:#aaa;
     border:1px solid #bbb;
@@ -1518,9 +1522,6 @@ a.socialIcon:hover, .socialHoverClass {
     margin:20px -20px 0;
 
 }
-
-/******product_detail******/
-
 blockquote {
 /*  background: #f9f9f9;
 */  border-left: 10px solid #ccc;
@@ -1540,6 +1541,29 @@ blockquote p {
   display: inline;
 }
 
+.panel-default>.panel-heading a h4{
+  color: white;
+  text-shadow: 1px 1px 0 rgba(0,0,0,.3);
+  text-decoration:none;
+}
+
+.panel-default>.panel-heading:selection{
+    color: white;
+}
+
+.popover-title {
+    margin: 0;
+    padding: 8px 14px;
+    font-size: 18px;
+/*    background-color: #FF5733;
+*/    border-bottom: 1px solid #ebebeb;
+    border-radius: 4px 4px 0 0;
+    background: rgba(255,175,75,1);
+}
+
+.popover-title h4 a{
+  color: white;
+}
 
 /*************************/
 .prlx {
