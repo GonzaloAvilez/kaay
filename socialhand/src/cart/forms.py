@@ -8,7 +8,8 @@ PRODUCT_QUANTITY_CHOICES = [(i, str(i)) for i in range(1, 40)]
 class CartAddProductForm(forms.Form):
 	quantity = forms.TypedChoiceField(
 								choices=PRODUCT_QUANTITY_CHOICES,
-								coerce=int)
+								coerce=int,
+								label='')
 	update = forms.BooleanField(required=False,
 								initial=False,
 								widget=forms.HiddenInput) 
@@ -17,7 +18,7 @@ class CartAddProductForm(forms.Form):
 		self.helper = FormHelper()
 		self.form_tag = False
 		self.helper.layout = Layout (
-			# Field ('quantity'),
+			Field ('quantity'),
 			Field ('update'),
 			Submit('update', 'Add to cart', css_class='btn-success')
 
