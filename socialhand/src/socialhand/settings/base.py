@@ -174,10 +174,10 @@ DATABASES = {
 # Internationalization
 # https://docs.djangoproject.com/en/dev/topics/i18n/
 
-LANGUAGE_CODE = 'es'
+LANGUAGE_CODE = 'en'
 LANGUAGES = (
-            ('es', _('Spanish')),
             ('en', _('English')),
+            ('es', _('Spanish')),
 )
 
 TIME_ZONE = 'America/Mexico_City'

@@ -19,7 +19,7 @@
 
 {% block navbar-right %}
   {% if not user.is_authenticated %}
-  <a class="btn btn-default" href="{% url 'accounts:login' %}" role="button">{% trans 'Log in' %}</a>
+  <a class="btn btn-default" href="{% url 'accounts:login' %}" role="button">{% trans 'Log In' %}</a>
   <a class="btn btn-default" href="{% url 'accounts:signup' %}" role="button">{% trans 'Sign Up' %}</a>
   {% else %}
     {{ block.super }}
@@ -36,16 +36,16 @@
         </ol>
         <div class="carousel-inner">
           <div class="item slides active">
-            <div class="slide-1"></div>
-              <video loop="loop" preload="auto" id="sensi-video"autoplay class="video-playing" poster="#poster" style="min-height: 100%;" >
-                  <source src="{{ MEDIA_URL }}telar12.mp4" type="video/mp4" >
+            <div class="slide-1">
+              <video loop="loop" preload="auto" id="poster"autoplay class="video-playing" poster="poster" style="min-height: 100%;" >
+                  <source src="{{ MEDIA_URL }}b.mp4" type="video/mp4" >
                   <source src="{{ MEDIA_URL }}telar4.webm" type="video/ogv">
-              </video>
+              </video></div>
               <div class="container-fluid">
                 <div class="carousel-caption carousel-description">
                   <!-- <h1 style="font-family:Lobster;"><font color="white">{% include "_brandname.html" %}</font></h1> -->
                   <h1>{% trans 'Handmade'%}</h1>
-                  <p>{% trans 'Products elaborated by handcrafted way'%}</p>      
+                  <p>{% trans 'Products by a handcrafted way'%}</p>      
                 </div>
               </div>
               <div class="carousel-caption">
@@ -56,7 +56,6 @@
           </div>
           <div class="item slides">
             <div class="slide-2"></div>
-             <!--  <img class="second-slide " src="/static/site/img/bordado.jpg" alt="Second slide"> -->
               <div class="container">
                 <div class="carousel-caption carousel-description">
                   <h1>{% trans 'Welcome craftsman' %}</h1>
@@ -70,7 +69,6 @@
           </div>
           <div class="item slides">
             <div class="slide-3"></div>
-             <!--  <img class="third-slide line-cover" src="{% static "/static/site/img/barro.jpg" %}" alt="Third slide"> -->
               <div class="container">
                 <div class="carousel-caption carousel-description">
                   <h1>{% trans 'Another written here' %}</h1>

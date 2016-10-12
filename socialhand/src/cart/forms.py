@@ -3,7 +3,7 @@ from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Div, Submit, HTML, Button, Row, Field
 
  
-
+ 
 PRODUCT_QUANTITY_CHOICES = [(i, str(i)) for i in range(1, 40)]
 class CartAddProductForm(forms.Form):
 	quantity = forms.TypedChoiceField(
@@ -19,7 +19,7 @@ class CartAddProductForm(forms.Form):
 		self.form_tag = False
 		self.helper.layout = Layout (
 			Field ('quantity'),
-			Field ('update'),
+			# Field ('update'),
 			Submit('update', 'Add to cart', css_class='btn-success')
 
 			)
