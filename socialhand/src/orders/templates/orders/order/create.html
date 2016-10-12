@@ -4,7 +4,7 @@
 	{% block title %}
 	Caja
 	{% endblock %}
-
+ 
 {% block content %}
 	<h1>Caja</h1>
 	<div class="order-info">
@@ -21,7 +21,8 @@
 	</div>
 	<div class="container-fluid">
 	<form action="." method="post" class="order-form">
-		{{ form.as_p }}
+		{% crispy form %}
+		
 		<p><input type="submit" value="Hacer pedido"></p>
 		{% csrf_token %}
 	</form>

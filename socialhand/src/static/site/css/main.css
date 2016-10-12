@@ -20,7 +20,7 @@ h2,h4,h6{
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
- 
+  background-color: rgba(255, 255, 255, 0.25); 
 }
 
 .starter-template {
@@ -373,6 +373,8 @@ body>.navbar-transparent {
         background-repeat: no-repeat;
       }
       .fade-carousel .slides .slide-1 {
+/*                background-image: url("/static/site/img/barro.jpg");
+*/
       }
       .fade-carousel .slides .slide-2 {        
         background-image: url("/static/site/img/bordando.jpg");
@@ -496,33 +498,36 @@ transform: translate3d(0, 0, 0);
 /*********************************************/
 /*                  Video                   */
 /*********************************************/
-    .video-playing {
-      
-        position: absolute;
-        top:-30px;
-        left:0; 
-        right:0;  
-        bottom: none;
-        height: auto;
-        z-index: -1;
-        min-height: 100%;
-        min-width: 100%;
-        background: url("/static/site/img/platos.jpg");
-        background-size: cover;
-    }
+.video-playing {
+  position: absolute;
+  /*top:-50px;*/
+  left:0; 
+  right:0;  
+  bottom: none;
+  height: auto;
+  z-index: -1;
+  min-height: 100%;
+  min-width: 100%;
+  
+}
 
+#poster {
+  background-image: url("/static/site/img/platos.jpg");
+  background-size: cover;
+  background-position: center center;
 
-      .overlay { 
-        color:white;
-        position:absolute;
-        z-index:12;
-        top:20%;
-        left:0;
-        width:100%;
-        text-align:center;
-        text-shadow: 1px 1px 0 rgba(0,0,0,.2);
+}
+.overlay { 
+  color:white;
+  position:absolute;
+  z-index:12;
+  top:20%;
+  left:0;
+  width:100%;
+  text-align:center;
+  text-shadow: 1px 1px 0 rgba(0,0,0,.2);
 
-      }
+}
 
 
 #under {
@@ -611,8 +616,20 @@ table th, table td {
     margin:0;
 }
 
+tbody tr:nth-child(even) {
+    background:#a357ab;
+    color:#fff;
+    font-weight: bold;
+}
+
 tbody tr:nth-child(odd) {
-    background:#efefef;
+    background:rgba(163, 87, 171, 0.12);
+}
+
+
+tr:nth-child(odd) button {
+    background-color:#a357ab;
+
 }
 
 tbody tr.subtotal {
@@ -620,7 +637,8 @@ tbody tr.subtotal {
 }
 
 thead th, tbody tr.total {
-    background:#5993bb;
+    background:#6f5571;
+    /*c06c84   a357ab*/
     color:#fff;
     font-weight:bold;
 }
@@ -633,9 +651,6 @@ table.cart img {
     width:180px;
 }
 
-tbody td.num {
-    text-align:right;
-}
 
 td input[type="submit"] {
     font-size:12px;
@@ -662,6 +677,10 @@ form p input {
     background:#efefef;
     color:#666;
     border-radius:4px;
+}
+
+.img-cart{
+  padding: 2px;
 }
 
 /* display error field empty inside form "hacer pedido"*/
@@ -1565,6 +1584,13 @@ blockquote p {
   color: white;
 }
 
+.fade.in {
+    opacity: 0.9;
+}
+.popover{
+  background: rgba(255,175,75,1);
+}
+
 /*************************/
 .prlx {
     background-color: #0099A9;
@@ -1605,8 +1631,8 @@ blockquote p {
   z-index: 200;
 }
 
-#sensi-video{
+/*#sensi-video{
     background-image: url("/static/site/img/plata.jpg") ;
     background-position: center center;
     background-size: cover;
-}
+}*/

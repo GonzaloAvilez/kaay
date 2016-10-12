@@ -8,12 +8,12 @@
 	{% if category %}{{ category.title }}{% else %}Products{% endif %}
 {% endblock %}
 
-
+ 
 {% block container %}
-</br></br>
+<br><br>
 <div id="detail"class="justified-gallery" style="background-color: black;">  
 	<div>
-		<img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "image/noimage.png" %}{% endif %}"  alt="<h3>&nbsp;&nbsp;&nbsp;&nbsp;{{product.name}}</h3> {{ product.description|linebreaks }}<br/>${{ product.price }} ">		
+		<img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "image/noimage.png" %}{% endif %}"  alt="<h3>&nbsp;&nbsp;&nbsp;&nbsp;{{product.name}}</h3>${{ product.price }} ">		
 	</div>
 </div>
 <div class="container-fluid"> 
@@ -28,8 +28,8 @@
 	 <div class=" text-right col-md-4 col-md-offset-4" style="float: right;">
 		
 		<span class="count">
-		<span class="total">{{ total_views }}</span>
-		visita{{ total_views|pluralize }}
+		<span class="total">{{ total_views }}</span>{% trans 'View'%}
+		{{ total_views|pluralize }}
 		</span>
 	 </div>
 	 </br></br>
@@ -79,7 +79,7 @@
 		      </h4>
 		    </a>
 		  </div>
-		  <div id="collapse1" class="panel-collapse collapse in">
+		  <div id="collapse1" class="panel-collapse collapse">
 		    <div class="panel-body text-center">
 		      <h3 style="font-family:Lobster;" ><font color="black">{{craftsman.get_short_name }}</font></h3>
 		      	<img data-toggle="popover" data-placement="auto bottom" data-content=" <blockquote>{% if craftsman.bio%}{{ craftsman.bio }}{% else%}{% trans 'I invite you to see my profile '%}{% endif %}</blockquote> " title=" <h4><a href='{% url 'profiles:show' craftsman.slug %}'> Gonzalo Avilez </a></h4>" class="img-circle img-responsive img-thumbnail" src="{% thumbnail craftsman.picture|default:'default_profile.png' 150x150 crop %}">  		
@@ -91,7 +91,7 @@
   </div>
   
   <div id="description-accordion">      
- 	<div class="no-padding panel-group center-block" id="accordion">
+ 	<div class="no-padding panel-group center-block" id="accordion" >
 	  <div class=" col-xs-6 col-sm-6 col-md-6 col-lg-6 col-md-offset-1">
 	    <div class=" panel panel-default">
 	      <div class="panel-heading">
@@ -101,7 +101,7 @@
 	          </h4>
 	        </a>
 	   	  </div>
-	      <div id="collapse2" class="panel-collapse collapse in">
+	      <div id="collapse2" class="collapse collapse">
 	      	<div class="panel-body">
 	      	  <h3  style="font-family:Lobster;" ><font color="black">{{ product.name }}</font></h3>
 	      		<p class="lead">{{product.description}}</p>
