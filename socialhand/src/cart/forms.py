@@ -19,7 +19,7 @@ class CartAddProductForm(forms.Form):
 		self.form_tag = False
 		self.helper.layout = Layout (
 			Field ('quantity'),
-			# Field ('update'),
+			Field ('update'),
 			Submit('update', 'Add to cart', css_class='btn-success')
 
 			)

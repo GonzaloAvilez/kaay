@@ -574,11 +574,11 @@ bottom: -200px;
 
 a {
     text-decoration:none;
-    color:#045FB4;
+    color:#000;
 }
 
 a:hover {
-    color:#77b6e2;
+    color:#bbdaf0;
 }
 
 a.button, input[type="submit"] {
@@ -616,14 +616,13 @@ table th, table td {
     margin:0;
 }
 
-tbody tr:nth-child(even) {
-    background:#a357ab;
-    color:#fff;
+tbody tr.table-content:nth-child(even) {
+    background:#fff;
     font-weight: bold;
 }
 
 tbody tr:nth-child(odd) {
-    background:rgba(163, 87, 171, 0.12);
+    background:#FFE8FF;
 }
 
 
@@ -635,9 +634,8 @@ tr:nth-child(odd) button {
 tbody tr.subtotal {
     background:#ccc;
 }
-
-thead th, tbody tr.total {
-    background:#6f5571;
+tbody  tr.head-and-footer {
+    background:#a357ab;
     /*c06c84   a357ab*/
     color:#fff;
     font-weight:bold;
@@ -679,9 +677,6 @@ form p input {
     border-radius:4px;
 }
 
-.img-cart{
-  padding: 2px;
-}
 
 /* display error field empty inside form "hacer pedido"*/
 ul.errorlist {
@@ -1542,8 +1537,7 @@ a.socialIcon:hover, .socialHoverClass {
 
 }
 blockquote {
-/*  background: #f9f9f9;
-*/  border-left: 10px solid #ccc;
+  border-left: 5px solid #fff;
   margin: 1.5em 10px;
   padding: 0.5em 10px;
   quotes: "\201C""\201D""\2018""\2019";
@@ -1571,24 +1565,27 @@ blockquote p {
 }
 
 .popover-title {
-    margin: 0;
-    padding: 8px 14px;
-    font-size: 18px;
-/*    background-color: #FF5733;
-*/    border-bottom: 1px solid #ebebeb;
-    border-radius: 4px 4px 0 0;
-    background: rgba(255,175,75,1);
+  margin: 0;
+  padding: 8px 14px;
+  font-size: 18px;
+  border-bottom: 1px solid #ebebeb;
+  border-radius: 4px 4px 0 0;
+  background: rgba(255,175,75,1);
 }
 
 .popover-title h4 a{
   color: white;
+  opacity: 1;
 }
 
-.fade.in {
-    opacity: 0.9;
+.fade.in  {
+    background: rgba(0, 0, 0, 0.6);
 }
-.popover{
-  background: rgba(255,175,75,1);
+
+
+
+.popover.top>.arrow:after{
+  border-top-color: rgba(0, 0, 0, 0.6);
 }
 
 /*************************/

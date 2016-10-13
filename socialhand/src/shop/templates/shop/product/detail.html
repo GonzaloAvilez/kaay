@@ -13,7 +13,7 @@
 <br><br>
 <div id="detail"class="justified-gallery" style="background-color: black;">  
 	<div>
-		<img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "image/noimage.png" %}{% endif %}"  alt="<h3>&nbsp;&nbsp;&nbsp;&nbsp;{{product.name}}</h3>${{ product.price }} ">		
+		<img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "image/noimage.png" %}{% endif %}"  alt="<h3 class='text-center'>{{product.name}} </br>${{ product.price }}</h3>">		
 	</div>
 </div>
 <div class="container-fluid"> 
@@ -67,7 +67,8 @@
 		</form> ORIGINAL FORM-->
 	
 </div>		
-		
+
+<hr class="custom">	
 <div class="container-fluid">
   <div id="author-accordion">
 	<div class="no-padding panel-group" id="accordion">
@@ -75,14 +76,14 @@
 		<div class="panel panel-default">
 		  <div class="panel-heading">
 		    <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
-		      <h4 class="panel-title text-center"> {% trans 'Handcrafted by:'%}
+		      <h4 class="lead panel-title text-center"> {% trans 'Handcrafted by:'%}{{craftsman.get_full_name }} 	
 		      </h4>
 		    </a>
 		  </div>
 		  <div id="collapse1" class="panel-collapse collapse">
 		    <div class="panel-body text-center">
 		      <h3 style="font-family:Lobster;" ><font color="black">{{craftsman.get_short_name }}</font></h3>
-		      	<img data-toggle="popover" data-placement="auto bottom" data-content=" <blockquote>{% if craftsman.bio%}{{ craftsman.bio }}{% else%}{% trans 'I invite you to see my profile '%}{% endif %}</blockquote> " title=" <h4><a href='{% url 'profiles:show' craftsman.slug %}'> Gonzalo Avilez </a></h4>" class="img-circle img-responsive img-thumbnail" src="{% thumbnail craftsman.picture|default:'default_profile.png' 150x150 crop %}">  		
+		      	<img data-toggle="popover" data-placement="auto bottom" data-content=" <blockquote class='lead' style='color:white;'>{% if craftsman.bio%}{{ craftsman.bio }}{% else%}{% trans 'I invite you to see my profile '%}{% endif %}</blockquote> " title=" <h4><a href='{% url 'profiles:show' craftsman.slug %}'>{{craftsman.get_short_name }}</a></h4>" class="img-circle img-responsive img-thumbnail" src="{% thumbnail craftsman.picture|default:'default_profile.png' 150x150 crop %}"> 
 		    </div>
 		  </div>
 		</div>
