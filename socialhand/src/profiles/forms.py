@@ -55,6 +55,9 @@ class ProfileForm(forms.ModelForm):
                         <img class="img-responsive" src="{{ MEDIA_URL }}{{ user.profile.background_3 }}">
                     {% endif %}
                     <hr class="custom">""", ),
+            Field('fb_link'),
+            Field('tw_link'),
+            Field('insta_link'),
 
             Submit('update', 'Update', css_class="btn-success"),
             
@@ -62,7 +65,8 @@ class ProfileForm(forms.ModelForm):
 
     class Meta:
         model = models.Profile
-        fields = ['picture', 'bio', 'market','background_1','background_2','background_3']    
+
+        fields = ['picture', 'bio', 'market','background_1','background_2','background_3','fb_link','tw_link','insta_link',]    
 
 
 # form for add a new product 
@@ -88,7 +92,7 @@ class ShopFor(forms.ModelForm):
 
     class Meta:
         model = Product
-        fields =['name','slug', 'category', 'image', 'description', 'price','stock' ]
+        fields =['name','slug', 'category', 'image', 'description', 'price','stock', ]
 
 
 # postform fue agregado para auxiliar la creacion de shopfor 

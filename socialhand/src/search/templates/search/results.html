@@ -1,5 +1,5 @@
-{% extends 'base.html' %}
-{% load staticfiles %}
+{% extends "base.html" %}
+{% load static %}
 {% load i18n %}
 
 
@@ -11,18 +11,18 @@
 {% endblock head %}
 
 {% block container %}
-  <div class="page-header">
-    <div class="row">
+  <div class="page-header" style="margin-top: 60px;">
+    <div class="container-fluid">
       <div class="col-md-3">
         <h1></h1>
       </div>
-      <div class="col-md-9">
+      <div class="col-md-6">
         <form role="search" action="{% url 'search' %}">
           <input type="hidden" name="type" value="{{ active }}">
           <div class="input-group">
-            <input type="text" class="form-control" name="q" placeholder= value="{{ querystring }}">
+            <input type="text" class="form-control input-lg" name="q" placeholder= value="{{ querystring }}">
             <span class="input-group-btn">
-              <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+              <button type="submit" class="btn-primary btn-lg"><span class="glyphicon glyphicon-search"></span></button>
             </span>
           </div>
         </form>
@@ -30,10 +30,10 @@
     </div>
   </div>
   <div class="row results">
-    <div class="col-md-3">
+    <div class="col-md-3 col-sm-offset-1">
       {% include 'search/partial_results_menu.html' with active=active count=count querystring=querystring %}
     </div>
-    <div class="col-md-9">
+    <div class="col-md-8">
       {% if active == 'products' %}
         {% include 'search/partial_products_results.html' with results=results %}
       {% elif active == 'products' %}

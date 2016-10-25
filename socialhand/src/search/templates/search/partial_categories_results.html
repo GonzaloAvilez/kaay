@@ -1,6 +1,6 @@
 {% load i18n %}
 
-<h2>{% trans 'categories' %}</h2>
+<h2 class="text-center">{% trans 'categories' %}</h2>
 {% block container %}
 {% if results %}
   <ul class="feed-results">
@@ -18,6 +18,6 @@
     {% endfor %}
   </ul>
 {% else %}
-  <h4 class="no-result"></h4>
+  <h4 class="no-result">{% trans 'Category not found' %} :(</h4>
 {% endif %}
 {% endblock container %}
