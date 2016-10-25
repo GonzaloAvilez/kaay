@@ -8,6 +8,7 @@ from django.utils import timezone
 
 from embed_video.fields import EmbedVideoField
 from django.core.urlresolvers import reverse
+from django.core.validators import URLValidator
 from django.utils.translation import gettext_lazy as _
   
  
@@ -35,6 +36,19 @@ class BaseProfile(models.Model):
                                     upload_to = 'profile_background/%Y-%m-%d',
                                     null = True,
                                     blank = True,)
+    fb_link = models.URLField(_('facebook'),
+                            validators =[URLValidator()],
+                            null=True,
+                            blank=True,)
+    tw_link = models.URLField(_('Twitter'),
+                            validators = [URLValidator()],
+                            null=True,
+                            blank=True,)
+    insta_link=models.URLField(_('instagram'),
+                            validators=[URLValidator()],
+                            null=True,
+                            blank=True,)
+
     bio = models.CharField(_('Our history'), max_length=400, blank=True, null=True,
         help_text=("Relata un poco sobre tu trabajo: cuánto tiempo llevas haciéndolo, cómo empezó, dónde nació tu creatividad, etc"))
 

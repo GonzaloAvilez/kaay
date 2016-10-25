@@ -1489,11 +1489,11 @@ a.socialIcon:hover, .socialHoverClass {
   -webkit-transform: rotate(360deg);
   -ms--transform: rotate(360deg);
   transform: rotate(360deg);
-  -webkit-transition: all 0.2s;
-  -moz-transition: all 0.2s;
-  -o-transition: all 0.2s;
-  -ms-transition: all 0.2s;
-  transition: all 0.2s;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  -ms-transition: all 0.5s;
+  transition: all 0.5s;
 
 }
 .social-circle i {
@@ -1628,8 +1628,21 @@ blockquote p {
   z-index: 200;
 }
 
-/*#sensi-video{
-    background-image: url("/static/site/img/plata.jpg") ;
-    background-position: center center;
-    background-size: cover;
-}*/
+/* search template */
+
+.list-group-item.active {
+  z-index: 2;
+  color: #ffffff;
+  background-color: #ff851b;
+  border-color: #ff851b;
+}
+
+.badge {
+  padding: 4px 8px;
+  background-color: #00b8ff;
+  border-radius: 2px;
+}
+
+.list-group-item.active>.badge {
+  color: #ff4136;
+}
