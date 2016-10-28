@@ -12,7 +12,8 @@
 
 {% block navbar-left %}
   <li><a class="page-scroll" href="#presentation">{% trans 'What´s this?' %}</a></li>
-  <li><a class="page-scroll" href="#portafolio">{% trans 'Handcrafted'%}</a></li>
+  <li><a class="page-scroll" href="#concepts">{% trans 'Handcrafted'%}</a></li>
+  <li><a class="page-scroll" href="#contact">{% trans 'Contact'%}</a></li>
   {% include "_navbar.html" with active_link="home" %}
   <li><p class="text-center lead"><font color="white"> Sitio en construcción</font></p></li>
 {% endblock %}
@@ -43,7 +44,6 @@
               </video></div>
               <div class="container-fluid">
                 <div class="carousel-caption carousel-description">
-                  <!-- <h1 style="font-family:Lobster;"><font color="white">{% include "_brandname.html" %}</font></h1> -->
                   <h1>{% trans 'Handmade'%}</h1>
                   <p>{% trans 'Products by a handcrafted way'%}</p>      
                 </div>
@@ -123,9 +123,9 @@
 </div>
 
 <section id="presentation">
-    <div class="container text-page">
+    <div class="container img-presentation">
       <div class="col-md-4 col-md-offset-4">
-        <img class="img-responsive"  alt="" src="{% static "/static/site/img/creative.png" %}" style="display: block; margin-left: auto; margin-right: auto;">
+        <img class="img-responsive"  alt="" src="{% static "/static/site/img/hand.png" %}" style="display: block; margin-left: auto; margin-right: auto;">
         <h2 class="text-center article-title" style="font-size:300%;">{% trans 'Welcome' %}</h2>
         <p class="text-center lead">{% trans 'Käay is a platform where you can find a community of mexican craftsmen,  Who show and share with us a bit of their work ... a bit of their life. '%}</p>
         
@@ -141,8 +141,8 @@
       <div class="img img2" ></div>
 </div>
 
-<section id="aditional" >
- <div id="icons" class="text-page">
+<section id="concepts" >
+ <div id="icons" class="img-concept">
             <div class="container">
                 <div class="row ">
                     <!-- Icons -->                  
@@ -167,16 +167,9 @@
         </div>
 </section>
 
-
-
-<div class="no-padding prlx prlx3">
-      <div class="img img3" ></div>
-  </div>
-
 </div><!-- /.end  principal div_container-fluid -->
 
 
-<hr class="custom">
 <div id="band"class="justified-gallery inverse-frame" style="background-color: black">  
     <a class="portfolio-box image-frame ">
     <img  src="{% static "/static/site/img/soldar.jpg" %}"></a>
@@ -188,22 +181,32 @@
     <img  src="{% static "/static/site/img/a.jpg" %}"></a>
 </div>
 
+
 <hr class="custom">
 
 
+<section id="contact">
+<div class="container-fluid">
+<!-- <div class="no-padding prlx prlx3"> -->
+ <!--  <div class="img img3" ></div> -->
+   
+    <div class="col-md-10 col-md-offset-1 text-center">
+     <h1 class="contact-quotes">{% trans 'Feel Free to Contact us.'%} </h1>
+      <form role="form" action="" method="post">
+        {% csrf_token %}
+        {% crispy form %}
+      </form>
+      <!-- alternative button -->
+    <!--   <a class="btn btn-default"  href="javascript:$('form').submit()"   role="button">{% trans 'Send Message' %}</a> -->
+    </div>
+<!-- </div> -->
+</div>
+</section>
+
+
+
+
   
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-from .storage import OverwriteStorage
+
 
 class Category(models.Model):
 	name = models.CharField(max_length=200, db_index=True)

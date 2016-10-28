@@ -27,10 +27,12 @@ urlpatterns =  [
     # url(r'^search/', views.notes, name='search'),
     # Python Social Auth URLs
     url('', include('social.apps.django_app.urls', namespace='social')),
+    # Home URL
     url(r'^$', TemplateView.as_view(template_name="home.html"), name="home"),
+    # Logout URL for social Auth
     url(r'^users/logout/$', 'django.contrib.auth.views.logout', {'next_page': '/'}, name="user-logout"),
     url(r'^search/$', search_views.search, name='search'),
-
+    url(r'^contact/$',views.contact, name='contact'),
 ]
 
 # User-uploaded files like profile pics need to be served in development

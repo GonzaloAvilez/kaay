@@ -60,12 +60,10 @@ class ProfileForm(forms.ModelForm):
             Field('insta_link'),
 
             Submit('update', 'Update', css_class="btn-success"),
-            
             )
 
     class Meta:
         model = models.Profile
-
         fields = ['picture', 'bio', 'market','background_1','background_2','background_3','fb_link','tw_link','insta_link',]    
 
 

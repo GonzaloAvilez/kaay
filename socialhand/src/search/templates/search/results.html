@@ -16,13 +16,13 @@
       <div class="col-md-3">
         <h1></h1>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-9">
         <form role="search" action="{% url 'search' %}">
           <input type="hidden" name="type" value="{{ active }}">
           <div class="input-group">
-            <input type="text" class="form-control input-lg" name="q" placeholder= value="{{ querystring }}">
+            <input type="text" class="form-control" name="q" placeholder= value="{{ querystring }}">
             <span class="input-group-btn">
-              <button type="submit" class="btn-primary btn-lg"><span class="glyphicon glyphicon-search"></span></button>
+              <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button>
             </span>
           </div>
         </form>

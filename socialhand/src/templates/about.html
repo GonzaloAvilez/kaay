@@ -12,18 +12,18 @@
 <!-- Benefits of the Django application -->
 {% block container %}
 
-<div id="sec1" class="text-page">
+<div id="sec1" class="about-padding">
 <div class=" no-padding prlx prlx3">
   <div class="img img3" ></div>
   <div class="container-fluid">
-      <div class="col-md-12 text-center">
+      <div class="col-md-12 text-center about-padding">
          <h1 style="font-family:Lobster;" ><font color="white">{% include "_brandname.html" %}</font></h1>
-        <p class="lead"><i><strong><font color="white"> {% trans 'Our secret ingredient: Our culture, ancestor traditions and creativity' %}</font></strong></i></p>
+        <p class="lead"><i><strong><font color="white"> {% trans 'Our hands, Our culture, ancestral traditions and creativity' %}</font></strong></i></p>
       </div>
   </div>
 </div>
 
-<div id="sec2" class="text-page">
+<div id="sec2" class="about-padding">
   <div class="container-fluid">
       <div class="col-md-12 text-center">
         <!-- <h2>Cónoce nuestro equipo</h2> -->
@@ -70,9 +70,9 @@
           <h2>{% trans 'Our location' %}</h2>
           <address>
             <strong>Käay Co.</strong><br>
-            San José La Pilita<br>
-            Metepec, Edo. Méx<br>
-            C.P. 52149<br>
+           Av plateros, La Florida<br>
+           Taxco de Alarcón, Gro<br>
+            C.P. 40201<br>
             México<br>
             <abbr>{% trans 'Contact:' %}</abbr> +52 722 437 9591
           </address>
@@ -91,8 +91,7 @@
 
    function init_map() {
      //latitude and longitude of kaay
-	 var myLocation = new google.maps.LatLng(19.2618739,-99.5821426);
-
+	 var myLocation = new google.maps.LatLng(18.564664,-99.604135);
      var mapOptions = {
           center: myLocation,
           zoom: 16
