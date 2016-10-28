@@ -135,12 +135,13 @@ SOCIAL_AUTH_PIPELINE = (
 'social.pipeline.social_auth.social_uid', 
 'social.pipeline.social_auth.auth_allowed', 
 'social.pipeline.social_auth.social_user', 
-'social.pipeline.social_auth.associate_by_email', 
+# 'social.pipeline.social_auth.associate_by_email', 
 'social.pipeline.user.get_username', 
 'social.pipeline.user.create_user', 
 'social.pipeline.social_auth.associate_user', 
 'social.pipeline.social_auth.load_extra_data', 
 'social.pipeline.user.user_details', 
+'social.pipeline.mail.mail_validation',
 )
 # Facebook Keys
 SOCIAL_AUTH_FACEBOOK_KEY = '657778311046259'
@@ -153,6 +154,10 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '913879562571-3prerlijc0i0ahp0plta7juieev02c7l.a
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'H7RVg5PlMgil9GxK0K0TvPn1'
 
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = "/"
+SOCIAL_AUTH_FACEBOOK_SCOPE =['email']
+SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
+    'fields': 'id,name,email', 
+}
 SOCIAL_AUTH_ADMIN_USER_SEARCH_FIELDS = ['username', 'first_name', 'last_name', 'email'] 
 USER_FIELDS = ['email',]
 ROOT_URLCONF = 'socialhand.urls'

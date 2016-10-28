@@ -233,8 +233,11 @@ body>.navbar-transparent {
 }
 
 
-.text-page {
-    padding: 80px 0;
+.img-presentation {
+    padding: 30px 0;
+}
+.img-concept, .about-padding {
+   padding: 80px 0;
 }
 
 /*about us-section-location*/
@@ -1608,15 +1611,16 @@ blockquote p {
     width: 100%;
 }
 .img1 {
-    height: 100vh;
-    top: -40vh;
+  height: 100vh;
+  top: -40vh;
 /*   z-index: 1;
 */} 
-.img2, .img3 {
-    height: 100vh;
-    top: -30vh;
+.img2, .img3{
+  height: 100vh;
+  top: -30vh;
 /*   z-index: 1;
 */}  
+
 .img2 {
     background-image: url("/static/site/img/carpintero.jpg") ;
 }
@@ -1628,7 +1632,7 @@ blockquote p {
   z-index: 200;
 }
 
-/* search template */
+/******** search template **********/
 
 .list-group-item.active {
   z-index: 2;
@@ -1645,4 +1649,34 @@ blockquote p {
 
 .list-group-item.active>.badge {
   color: #ff4136;
+}
+
+/***************/
+/********* ContactForm ***************/
+#contact{
+  background-color: #222;
+  background-image: url("/static/site/img/mexican_colors.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 60px 0;
+}
+.form-group {
+  margin-bottom: 30px;
+}
+
+.input-contact{
+  background-color: rgba(0, 0, 0, 0.25);
+  color: white;
+}
+
+a.button, input[type="submit"].btn-contact {
+    background-color: transparent;
+    border: 2px solid #fff;
+    
+}
+
+.contact-quotes{
+text-shadow: 2px 1px 0 rgba(0,0,0,.4);
+padding-bottom: 40px;
 }
