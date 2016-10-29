@@ -8,7 +8,7 @@
 
 {% block container %}
 <div id="fb-root"></div>
-
+ 
 
 <!--======== Text over fullscreen carousel ===================-->
 <div class="overlay">  
@@ -56,7 +56,7 @@
         </div>
     {% else %}
     <div class="item slides active">
-            <img class="slide-image" src=" {{ MEDIA_URL }}{{ "profile_background/black_wood.jpg" }}" alt="">
+            <img class="slide-image" src=" {{ MEDIA_URL }}{{ "profile_background/wood.jpg" }}" alt="">
             </div>
     {% endif %}
       {% if  show_user.profile.background_2%}
@@ -200,7 +200,8 @@
   
 {% for product in products %}
   <a href="{{ product.get_absolute_url }}"class="portfolio-box image-frame ">
-    <img  src="{% if product.image %}{{ product.image.url }}{%else %}{% static 'site/img/noimage.png' %}{% endif %}"   >
+   
+      <img title="our product" src="{% if product.image %}{% thumbnail product.image 450x450 crop %}{%else %}{% static 'image/noimage.png' %}{% endif %}">                
     <div class="portfolio-box-caption">
       <div class="portfolio-box-caption-content">
         <div class="project-category text-faded">

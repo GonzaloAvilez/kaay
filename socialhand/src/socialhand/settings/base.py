@@ -231,7 +231,7 @@ CART_SESSION_ID = 'cart'
 
 #Contact Us features
 
-EMAIL_BACKEND = "djrill.mail.backends.djrill.DjrillBackend"
+# EMAIL_BACKEND = "djrill.mail.backends.djrill.DjrillBackend"
 
 # MANDRILL_API_KEY='n6MKcMYN9KTbSPrZcl8sKA'
 # DEFAULT_FROM_EMAIL= "g.avilez.ig@gmail.com"
@@ -242,12 +242,13 @@ EMAIL_BACKEND = "djrill.mail.backends.djrill.DjrillBackend"
 # EMAIL_HOST_USER= 'IKAAY'
 
 
+EMAIL_BACKEND ='django.core.mail.backends.smtp.EmailBackend' 
 # DEFAULT_FROM_EMAIL = "g.avilez.ig@gmail.com"
-# EMAIL_USE_TLS = True
-# EMAIL_HOST = 'smtp.gmail.com'
-# EMAIL_PORT = 587
-# EMAIL_HOST_USER = 'g.avilez.ig@gmail.com'
-# EMAIL_HOST_PASSWORD = 'aiig890905hgrvgn04'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'g.avilez.ig@gmail.com'
+EMAIL_HOST_PASSWORD = 'aiig890905hgrvgn04'
 
 
 
