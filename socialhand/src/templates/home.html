@@ -2,6 +2,7 @@
 {% load i18n %}
 {% load staticfiles %}
 {% load crispy_forms_tags %}
+{% load thumbnail %}
 
 {% block title %}{{ block.super }}Mercado artesanal{% endblock %}
 {% block navbar-brand %}
@@ -38,7 +39,7 @@
         <div class="carousel-inner">
           <div class="item slides active">
             <div class="slide-1">
-              <video loop="loop" preload="auto" id="poster"autoplay class="video-playing" poster="poster" style="min-height: 100%;" >
+              <video loop="loop" preload="auto" id="poster"autoplay class="video-playing"  style="min-height: 100%;" >
                   <source src="{{ MEDIA_URL }}b.mp4" type="video/mp4" >
                   <source src="{{ MEDIA_URL }}telar4.webm" type="video/ogv">
               </video></div>
@@ -171,14 +172,14 @@
 
 
 <div id="band"class="justified-gallery inverse-frame" style="background-color: black">  
+    <a class="portfolio-box image-frame "> 
+    <img  src="{% thumbnail "home/plata.jpg" 350x350 crop %}">   </a>
     <a class="portfolio-box image-frame ">
-    <img  src="{% static "/static/site/img/soldar.jpg" %}"></a>
+    <img  src="{% thumbnail "home/platos.jpg" 350x350 crop %}"> </a>
     <a class="portfolio-box image-frame ">
-    <img  src="{% static "/static/site/img/platos.jpg" %}"></a>
-    <a class="portfolio-box image-frame ">
-    <img  src="{% static "/static/site/img/b.jpg" %}"></a>
+    <img  src="{% thumbnail "home/barro.jpg" 350x350 crop %}"> </a>
      <a class="portfolio-box image-frame ">
-    <img  src="{% static "/static/site/img/a.jpg" %}"></a>
+    <img  src="{% thumbnail "home/madera.jpg" 350x350 crop %}"> </a>
 </div>
 
 
@@ -222,7 +223,6 @@
 <script src="{% static 'site/js/scrolling-nav.js' %}"></script>
 <script src="{% static 'site/js/jquery.easing.min.js' %}"></script>
 <script src="{% static 'site/js/parallax-background.js' %}"></script>
-
 <script src = "{%static 'site/js/jquery.justifiedGallery.js' %}"></script>
 <script>
     $("#simple").justifiedGallery({

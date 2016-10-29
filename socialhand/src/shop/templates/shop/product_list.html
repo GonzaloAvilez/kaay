@@ -1,11 +1,8 @@
 {% load static %}
 {% load el_pagination_tags %}
-
-
-
+{% load thumbnail %}
 
 {% paginate products %}
-
 <div  id="b" class="justified-gallery" style="background-color: black;" > 
   {% for product  in products %}
       {% if product.category == category %} 
@@ -26,7 +23,8 @@
       {% else %}      
         {% if not category %}   
             <a href="{{ product.get_absolute_url }}"class="portfolio-box  image-frame">
-              <img  src="{% if product.image %}{{ product.image.url }}{%else %}{% static 'image/noimage.png' %}{% endif %}">
+              
+               <img title="profile picture" src="{% if product.image %}{% thumbnail product.image 400x400 crop %}{%else %}{% static 'image/noimage.png' %}{% endif %}">  
                 <div class="portfolio-box-caption">
                   <div class="portfolio-box-caption-content">
                     <div class="project-category text-faded">
@@ -43,17 +41,14 @@
       {% endif %}
   {% endfor %}   
 </div>  
-           
+        
 {% show_more %}
-
-
 
 {% block scripts %}
 <script  src="{% static 'site/js/jquery.js' %}" ></script>     
-      <script src="{% static 'site/js/el-pagination.js' %}"></script>
-      <script src="{% static 'site/js/el-pagination-endless.js' %}"></script>     
-        <script>$.endlessPaginate({paginateOnScroll: true});</script>
+<script src="{% static 'site/js/el-pagination.js' %}"></script>    
 <script src = "{%static 'site/js/jquery.justifiedGallery.js' %}"></script>
+<script>$.endlessPaginate({paginateOnScroll: true});</script>
 <script>
     $(function(){
     var i=0;
@@ -74,9 +69,5 @@
     
     });
 </script>
-
-
-
-
 
 {% endblock scripts %}
