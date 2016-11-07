@@ -50,7 +50,7 @@
 			<th>Status</th>
 			<td>{% if order.paid %}Paid{% else %}Pending payment{% endif %}</td>
 		</tr>
-
+ 
 	</table>
 	<div class="module">
 		<div class="tabular inline-related last-related">
@@ -82,3 +82,25 @@
 		</div>
 	</div>
 {% endblock %}
+
+
+{% block scripts %}
+ <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+<script src = "{%static 'site/js/jquery.geocomplete.js' %}"></script>
+<script>
+      $(function(){
+        $("#geocomplete").geocomplete({
+          map: ".map_canvas",
+          details: "form",
+          types: ["geocode", "establishment"],
+        });
+
+        $("#find").click(function(){
+          $("#geocomplete").trigger("geocode");
+        });
+      });
+    </script>
+
+{% endblock scripts %}

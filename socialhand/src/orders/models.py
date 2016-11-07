@@ -5,13 +5,20 @@ from shop.models import Product
 from django.utils.translation import gettext_lazy as _
 
 
+
 class Order(models.Model):
 	first_name = models.CharField(_('First name'),max_length=50)
 	last_name = models.CharField(_('Last name'),max_length=50)
 	email = models.EmailField(_('E-mail'),)
 	address = models.CharField(_('Address'), max_length=250)
-	postal_code = models.CharField(_('postal code'), max_length=20)
-	city = models.CharField(_('City'), max_length=100)
+	formatted_address = models.CharField(_('format Address'), max_length=250, null=True)
+	route = models.CharField(_('route'),max_length=100,blank=True,null=True)
+	postal_code = models.CharField(_('postal code'), max_length=20, null=True)
+	city = models.CharField(_('City'), max_length=100, null=True)
+	locality = models.CharField(_('locality'), max_length=100, null=True)
+	sublocality = models.CharField(_('sublocality'), max_length=100, null=True)
+	country = models.CharField(_('country'), max_length=50, blank=True, null=True)
+	country_short = models.CharField(_('country code'),max_length=50, blank=True, null=True)
 	created = models.DateTimeField( auto_now_add=True)
 	updated = models.DateTimeField( auto_now=True)
 	paid = models.BooleanField( default=False)

@@ -34,8 +34,8 @@
 {% endfor %} -->
    
 <div id="categories" class="container-fluid">
-    <div class="btn-group btn-group-lg dropdown-menu"> 
-    <button type="button" class="btn-default btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{% trans 'Categories'%}<span class="caret "></span></button>
+    <div class="btn-group btn-group-lg dropdown-menu">
+    <button  class="btn-default btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{% if category.name %}{{ category.name }}{% else %}{% trans 'Select one'%}{% endif %}<span class="caret "></span></button>
         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
             <li {% if not category %}class="selected"{% endif %}>
                 <a href="{% url "shop:product_list" %}" class=" ">{% trans 'All' %}</a>
@@ -65,4 +65,11 @@
 <script src="{% static 'site/js/el-pagination-endless.js' %}"></script> 
 <script>$.endlessPaginate({paginateOnScroll: true});
 </script>
+<script >$(function(){ 
+  $(".dropdown-menu li a").click(function(){   
+    $(".btn:first-child").text($(this).text());
+     $(".btn:first-child").val($(this).text());
+  });});
+</script>
+
 {% endblock scripts %}

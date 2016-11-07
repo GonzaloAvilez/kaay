@@ -8,7 +8,7 @@
 	{% if category %}{{ category.title }}{% else %}Products{% endif %}
 {% endblock %}
 
- 
+
 {% block container %}
 <br><br>
 <div id="detail"class="justified-gallery" style="background-color: black;">  
@@ -17,57 +17,42 @@
 	</div>
 </div>
 <div class="container-fluid"> 
-</br>
-	 
+</br> 
 	 {% if product.author == user %}
-
 	 <div class="col-md-4" style="float: left;">
 	 	<a class="btn btn-primary"  href="{% url 'shop:product_edit' product.id product.slug %}"><span class="glyphicon glyphicon-pencil"></span></a>	
-	 	<a class="btn btn-primary" href="{% url 'shop:product_remove' product.id product.slug %}"><span class="glyphicon glyphicon-remove"></span></a>
+	 	<!-- first -->
+	 	<button type="button" class="btn btn-primary" data-toggle="popover"  data-trigger="focus" data-placement="right" data-content="<div class='lead text-center'>{% trans 'Are you sure you want to delete this file?'%}</div><div class='text-center'><a class='btn btn-danger' href='{% url 'shop:product_remove' product.id product.slug %}'><span class='glyphicon glyphicon-remove'></span></a><a class='btn btn-primary'  href='{% url 'shop:product_edit' product.id product.slug %}'><span class='glyphicon glyphicon-ok'></span></a></div>">
+    	<span class="glyphicon glyphicon-trash"></span></button>
+    	<!-- second -->
+		<div class="popover-markup"> 
+		    <a class="trigger btn btn-primary"><span class="glyphicon glyphicon-trash"></span></a>
+		    <div class="content hide">
+		      <div class="lead text-center">
+		        {% trans 'Are you sure you want to delete this file?'%}
+		      </div>
+		      <div class="text-center">
+			    <a class="btn btn-danger" href="{% url 'shop:product_remove' product.id product.slug %}"><span class="glyphicon glyphicon-remove"></span></a>
+			    <a class="btn btn-primary"  href="{% url 'shop:product_edit' product.id product.slug %}"><span class="glyphicon glyphicon-ok"></span></a>	
+			  </div>
+		    </div>
+		</div>
 	 </div>
-	 <div class=" text-right col-md-4 col-md-offset-4" style="float: right;">
-		
-		<span class="count">
-		<span class="total">{{ total_views }}</span>{% trans 'View'%}
-		{{ total_views|pluralize }}
-		</span>
-	 </div>
+	<div class=" text-right col-md-4 col-md-offset-4" style="float: right;">
+	  <span class="count">
+		<span class="total">{{ total_views }}</span>
+		{% trans 'View'%}{{ total_views|pluralize }}
+	  </span>
+	</div>
 	 </br></br>
 	 {% endif %}
-
-
-	 	<!-- </br></br>
-		<font color="blue">
-		{{ product.description|linebreaks }}
-		</br>author:{{product.author}}
-		<br/>id:{{product.id}}
-		 <br/>pk: {{product.pk}}  
-		 <br/>image: {{product.image}}
-		 	<div class="product-detail">
-				<p class="price">${{ product.price }}</p>
-			</div>
-		</font>  -->
-		
-		<div class="col-md-offset-6">
-		
-		<form class="form-inline" style="float: right;" action="{% url 'cart:cart_add' product.id%}" method="post">
+	<div class="col-md-offset-6">
+	  <form class="form-inline" style="float: right;" action="{% url 'cart:cart_add' product.id%}" method="post">
 		<div class="form-group  ">
-		{% crispy cart_form %}
-		</div>
-		
-			
-		</form>
-		</div>
-
-		<!-- <form class="form-inline"style="float:left;"action="{% url 'cart:cart_add' product.id%}"method="post">
-			<div class="form-group  ">
-			{{ cart_form }}
-			{% csrf_token %}
-			{% trans 'Add to cart' as cart %}
-			<input type="submit" value="{{cart}}">
-			</div>
-		</form> ORIGINAL FORM-->
-	
+			{% crispy cart_form %}
+		</div>					
+	  </form>
+	</div>	
 </div>		
 
 <hr class="custom">	
@@ -85,7 +70,7 @@
 		  <div id="collapse1" class="panel-collapse collapse">
 		    <div class="panel-body text-center">
 		      <h3 style="font-family:Lobster;" ><font color="black">{{craftsman.get_short_name }}</font></h3>
-		      	<img data-toggle="popover" data-placement="auto bottom" data-content=" <blockquote class='lead' style='color:white;'>{% if craftsman.bio%}{{ craftsman.bio }}{% else%}{% trans 'I invite you to see my profile '%}{% endif %}</blockquote> " title=" <h4><a href='{% url 'profiles:show' craftsman.slug %}'>{{craftsman.get_short_name }}</a></h4>" class="img-circle img-responsive img-thumbnail" src="{% thumbnail craftsman.picture|default:'default_profile.png' 150x150 crop %}"> 
+		      	<img data-toggle="popover"  data-placement="auto bottom" data-content=" <blockquote class='lead' >{% if craftsman.bio%}{{ craftsman.bio }}{% else%}{% trans 'I invite you to see my profile '%}{% endif %}</blockquote> " title=" <h4><a href='{% url 'profiles:show' craftsman.slug %}'>{{craftsman.get_short_name }}</a></h4>" class="img-circle img-responsive img-thumbnail" src="{% thumbnail craftsman.picture|default:'default_profile.png' 150x150 crop %}"> 
 		    </div>
 		  </div>
 		</div>
@@ -107,8 +92,7 @@
 	      <div id="collapse2" class="collapse collapse">
 	      	<div class="panel-body">
 	      	  <h3  style="font-family:Lobster;" ><font color="black">{{ product.name }}</font></h3>
-	      		<p class="lead">{{product.description}}</p>
-	      		
+	      		<p class="lead">{{product.description}}</p>    		
 	      	</div>
 	      </div>
 	 	</div>
@@ -118,15 +102,11 @@
 </div> 
 
 
-
 {% endblock container %}
 
 
-
-
-
-
 {% block scripts %}
+<script src="https://code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
 <script src = "{%static 'site/js/jquery.justifiedGallery.js' %}"></script>
 <script>
     $("#detail").justifiedGallery({
@@ -145,5 +125,15 @@
 	$("[data-toggle=popover]")
 	.popover({html:true})
 </script>
-
+ <script>
+  $('.popover-markup>.trigger').popover({
+    html: true,
+    title: function () {
+        return $(this).parent().find('.head').html();
+    },
+    content: function () {
+        return $(this).parent().find('.content').html();
+    }
+});
+  </script>
 {% endblock scripts %}

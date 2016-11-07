@@ -86,6 +86,7 @@ INSTALLED_APPS = (
     'authtools',
     'crispy_forms',
     'easy_thumbnails',
+    'localflavor',
     
     'el_pagination',
     'social.apps.django_app.default',
