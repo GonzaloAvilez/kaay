@@ -252,6 +252,12 @@ body>.navbar-transparent {
     height: 300px
 }
 
+.map_canvas {
+    width: 450px;
+    height: 200px;
+    margin: 10px 20px 10px 0;
+}
+
 .img-dim {
     opacity: 0.5;
     box-shadow: inset 0px 0px 64px 64px #EA1717, 0px 0px 4px 4px #EA1717;
@@ -376,8 +382,8 @@ body>.navbar-transparent {
         background-repeat: no-repeat;
       }
       .fade-carousel .slides .slide-1 {
-/*                background-image: url("/static/site/img/barro.jpg");
-*/
+                background-image: url("/static/site/img/barro.jpg");
+
       }
       .fade-carousel .slides .slide-2 {        
         background-image: url("/static/site/img/bordando.jpg");
@@ -684,7 +690,7 @@ form p input {
 /* display error field empty inside form "hacer pedido"*/
 ul.errorlist {
    float:left;
-   color:#e50000;
+   color:#EC9C4C;
    clear:both;
    font-size:13px;
    margin:0; 
@@ -842,7 +848,7 @@ ul.errorlist {
     margin-top:10px;
 }*/
 
-.order-form {
+.i {
     float:left;
     padding-left: 20px;
 }
@@ -1537,8 +1543,17 @@ a.socialIcon:hover, .socialHoverClass {
     border-radius:16px;
     padding:10px 20px;
     margin:20px -20px 0;
-
 }
+.panel-default>.panel-heading a h4{
+  color: white;
+  text-shadow: 1px 1px 0 rgba(0,0,0,.5);
+  text-decoration:none;
+}
+
+.panel-default>.panel-heading:selection{
+    color: white;
+}
+
 blockquote {
   border-left: 5px solid #fff;
   margin: 1.5em 10px;
@@ -1557,15 +1572,6 @@ blockquote p {
   display: inline;
 }
 
-.panel-default>.panel-heading a h4{
-  color: white;
-  text-shadow: 1px 1px 0 rgba(0,0,0,.3);
-  text-decoration:none;
-}
-
-.panel-default>.panel-heading:selection{
-    color: white;
-}
 
 .popover-title {
   margin: 0;
@@ -1574,23 +1580,32 @@ blockquote p {
   border-bottom: 1px solid #ebebeb;
   border-radius: 4px 4px 0 0;
   background: rgba(255,175,75,1);
+  text-shadow: 1px 1px 0 rgba(0,0,0,.5);
 }
 
 .popover-title h4 a{
   color: white;
   opacity: 1;
 }
+/*
+    .fade.in  {
+        background: rgba(0, 0, 0, 0.6);
+    }
 
-.fade.in  {
-    background: rgba(0, 0, 0, 0.6);
-}
+    .popover.top>.arrow:after{
+      border-top-color: rgba(0, 0, 0, 0.6);
+    }*/
 
-
-
-.popover.top>.arrow:after{
-  border-top-color: rgba(0, 0, 0, 0.6);
-}
-
+/*.popover {
+  background-color: red; 
+  border-color: red;
+}*/
+/*.popover.right>.arrow:after {
+  border-right-color: red;
+}*/
+/*.popover-content {
+  background-color: red;
+}*/
 /*************************/
 .prlx {
     background-color: #0099A9;
@@ -1679,4 +1694,18 @@ a.button, input[type="submit"].btn-contact {
 .contact-quotes{
 text-shadow: 2px 1px 0 rgba(0,0,0,.4);
 padding-bottom: 40px;
+}
+
+/*#pop-custom {
+    background: rgba(255, 255, 255, 0.6);
+}*/
+
+.map_canvas { float: left; }
+    
+.order-form{
+  margin-bottom: 10px;
+}
+
+.btn-order{
+  margin: auto;
 }
