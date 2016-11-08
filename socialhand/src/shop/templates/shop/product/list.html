@@ -35,7 +35,7 @@
    
 <div id="categories" class="container-fluid">
     <div class="btn-group btn-group-lg dropdown-menu">
-    <button  class="btn-default btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{% if category.name %}{{ category.name }}{% else %}{% trans 'Select one'%}{% endif %}<span class="caret "></span></button>
+    <button  class="btn-default btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{% if category.name %}{{ category.name }}{% else %}{% trans 'Categories'%}{% endif %}<span class="caret "></span></button>
         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
             <li {% if not category %}class="selected"{% endif %}>
                 <a href="{% url "shop:product_list" %}" class=" ">{% trans 'All' %}</a>
