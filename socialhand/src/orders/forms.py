@@ -5,10 +5,9 @@ from .models import Order
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Div, Submit, HTML, Button, Row, Field
 from crispy_forms.bootstrap import AppendedText, PrependedText, FormActions, InlineField
-from localflavor.mx.forms import MXZipCodeField
+
  
 class OrderCreateForm(forms.ModelForm):
-	postal_code = MXZipCodeField()
 	def __init__ (self, *args, **kwargs):
 		super(OrderCreateForm,self).__init__ (*args,**kwargs)
 		self.helper = FormHelper()
