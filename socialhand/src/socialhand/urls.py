@@ -33,6 +33,9 @@ urlpatterns =  [
     url(r'^users/logout/$', 'django.contrib.auth.views.logout', {'next_page': '/'}, name="user-logout"),
     url(r'^search/$', search_views.search, name='search'),
     url(r'^contact/$',views.contact, name='contact'),
+    url(r'^api/',include('socialhand.api.urls',namespace='api')),
+    
+
 ]
 
 # User-uploaded files like profile pics need to be served in development
