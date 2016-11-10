@@ -6,7 +6,7 @@ from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Div, Submit, HTML, Button, Row, Field
 from crispy_forms.bootstrap import AppendedText, PrependedText, FormActions, InlineField
 
- 
+  
 class OrderCreateForm(forms.ModelForm):
 	def __init__ (self, *args, **kwargs):
 		super(OrderCreateForm,self).__init__ (*args,**kwargs)
@@ -25,7 +25,7 @@ class OrderCreateForm(forms.ModelForm):
 					Field('route', required=False, css_class="order-form"),
 					Field('country', required=False, css_class="order-form"),
 					Field('country_short', required=False, css_class="order-form"),
-					css_class="col-lg-6 col-xs-12",
+					css_class="col-lg-6 no-padding",
 					),
 				Div(HTML("<h2 class='text-center'>Contact details</h2>"),
 					Field('first_name', required=False, css_class="order-form"),

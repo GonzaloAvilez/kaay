@@ -86,8 +86,8 @@ INSTALLED_APPS = (
     'authtools',
     'crispy_forms',
     'easy_thumbnails',
-    'localflavor',
-    
+    'rest_framework',
+
     'el_pagination',
     'social.apps.django_app.default',
     'embed_video',  
@@ -144,6 +144,13 @@ SOCIAL_AUTH_PIPELINE = (
 'social.pipeline.user.user_details', 
 'social.pipeline.mail.mail_validation',
 )
+
+REST_FRAMEWORK = {
+'DEFAULT_PERMISSION_CLASSES': [
+'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+]
+}
+
 # Facebook Keys
 SOCIAL_AUTH_FACEBOOK_KEY = '657778311046259'
 SOCIAL_AUTH_FACEBOOK_SECRET = '95a709bc0b55e58dcb010d0ba45fcb54'
@@ -203,7 +210,7 @@ USE_TZ = True
 
 
 STATIC_URL = "/static/"
-STATIC_ROOT = join(BASE_DIR, '')
+# STATIC_ROOT = join(BASE_DIR, '')
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = join(BASE_DIR, 'media')
