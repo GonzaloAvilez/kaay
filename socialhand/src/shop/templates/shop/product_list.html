@@ -1,7 +1,7 @@
 {% load static %}
 {% load el_pagination_tags %}
 {% load thumbnail %}
-
+ 
 {% paginate products %}
 <div  id="b" class="justified-gallery" style="background-color: black;" > 
   {% for product  in products %}
@@ -68,4 +68,27 @@
     });
 </script>
 
+<script >
+  var back = ["#DF01D7","#8E44AD","#AEA8D3","#F62459","#DB0A5B","#D64541","#D2527F","#522770","#61AEFF","#EBABD6","#543BC4","#ff21e9","#F88400","#FFDA00","#BF4B9C"]; 
+  $('.portfolio-box-caption').each(function() {   
+    // First random color
+    var rand1 = back[Math.floor(Math.random() * back.length)];
+    // Second random color
+    var rand2 = back[Math.floor(Math.random() * back.length)];  
+    var grad = $(this);   
+    // Convert Hex color to RGB
+    function convertHex(hex,opacity){
+        hex = hex.replace('#','');
+        r = parseInt(hex.substring(0,2), 16);
+        g = parseInt(hex.substring(2,4), 16);
+        b = parseInt(hex.substring(4,6), 16);    
+      // Add Opacity to RGB to obtain RGBA
+        result = 'rgba('+r+','+g+','+b+','+opacity/70+')';
+        return result;
+    }    
+    // Gradient rules
+    grad.css('background-color', convertHex(rand1,40) );
+    grad.css("filter", "progid:DXImageTransform.Microsoft.gradient( startColorstr='"+ convertHex(rand1,40) +"', endColorstr='"+ convertHex(rand2,40) +"',GradientType=0 )");        
+  })
+</script>
 {% endblock scripts %}

@@ -11,7 +11,7 @@ from django.core.urlresolvers import reverse_lazy
 from os.path import dirname, join, exists
 from django.utils.translation import gettext_lazy as _
  
-
+ 
 
 # Build paths inside the project like this: join(BASE_DIR, "directory")
 BASE_DIR = dirname(dirname(dirname(__file__)))
@@ -250,22 +250,22 @@ CART_SESSION_ID = 'cart'
 # EMAIL_HOST_USER= 'IKAAY'
 
 
-EMAIL_BACKEND ='django.core.mail.backends.smtp.EmailBackend' 
-# DEFAULT_FROM_EMAIL = "g.avilez.ig@gmail.com"
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_BACKEND ='django.core.mail.backends.smtp.EmailBackend' 
+# DEFAULT_FROM_EMAIL = 'g.avilez.ig@gmail.com'
+# EMAIL_USE_TLS = True
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 587
+# EMAIL_HOST_USER = 'g.avilez.ig@gmail.com'
+# EMAIL_HOST_PASSWORD = 'aiig890905hgrvgn04'
+
+
+
+EMAIL_BACKEND = "sgbackend.SendGridBackend"
+SENDGRID_USER = "g.avilez.ig"
+SENDGRID_PASSWORD = "aiig890905"
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'g.avilez.ig@gmail.com'
-EMAIL_HOST_PASSWORD = 'aiig890905hgrvgn04'
-
-
-
-# EMAIL_BACKEND = "sgbackend.SendGridBackend"
-# SENDGRID_USER = "g.avilez.ig"
-# SENDGRID_PASSWORD = "gonzalito"
-
-
-
+EMAIL_USE_TLS = True
+# SENDGRID_API_KEY ='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'
 
 
 # django-paypal settings
