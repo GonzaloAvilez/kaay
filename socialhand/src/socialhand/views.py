@@ -7,7 +7,7 @@ from django.core.mail import EmailMessage
 
 # Elasticsearch 
 # from .forms import PostSearchForm
-
+ 
 
 class HomePage(generic.TemplateView):
     template_name = "home.html"
@@ -42,8 +42,8 @@ class HomePage(generic.TemplateView):
 	    		email = EmailMessage(
 	    			"New contact form submission",
 	    			content,
-	    			"ikaay.com.mx"+'',
-	    			['g.avilez.ig@gmail.com'],
+	    			"from@example.com"+'',
+	    			['g_avilez@ikaay.com.mx'],
 	    			headers = {'Reply to':contact_email})
 	    		email.send()
 	    		# return redirect('get')

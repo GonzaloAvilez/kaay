@@ -2,13 +2,13 @@
 #    DJANGO_SETTINGS_MODULE=socialhand.settings.production
 from .base import *             # NOQA
 import logging.config
-
+ 
 # For security and performance reasons, DEBUG is turned off
 DEBUG = False
 TEMPLATE_DEBUG = False
 
 # Must mention ALLOWED_HOSTS in production!
-# ALLOWED_HOSTS = ["socialhand.com"]
+ALLOWED_HOSTS = ["kaayi.pythonanywhere.com"]
 
 # Cache the templates in memory for speed-up
 loaders = [
