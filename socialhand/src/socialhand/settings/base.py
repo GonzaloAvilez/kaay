@@ -18,7 +18,7 @@ BASE_DIR = dirname(dirname(dirname(__file__)))
 STATICFILES_DIRS = [join(BASE_DIR, 'static')]
 
 
-EL_PAGINATION_PER_PAGE=8
+EL_PAGINATION_PER_PAGE=7
 
 
 
