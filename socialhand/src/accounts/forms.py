@@ -25,11 +25,22 @@ class LoginForm(AuthenticationForm):
         self.helper.layout = Layout(
             Field('username', placeholder="Introduce tu Email", autofocus=""),
             Field('password', placeholder="Introduce tu contraseña"),
-            HTML('<a href="{}">Forgot Password?</a>'.format(
-                reverse("accounts:password-reset"))),
             Field('remember_me'),
+
+            HTML(""" <div class="text-center no-padding ">
+            <ul class="social-network social-circle">  
+            <li><a href="{% url 'social:begin' 'facebook' %}" class="icoFacebook ico-background" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}" class="icoTwitter ico-background" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="{% url 'social:begin' 'google-oauth2' %}" class="icoGoogle ico-background" title="Google +"><i class="fa fa-google-plus"></i></a></li> 
+            </ul></div><br> """),
+
+            
             Submit('sign_in', 'Log in',
                    css_class="btn btn-lg btn-primary btn-block"),
+            
+            HTML('<br><div class="text-right"><a class="text-info" href="{}">Forgot Password?</a></div>'.format(
+                reverse("accounts:password-reset"))),
+
             )
 
 
