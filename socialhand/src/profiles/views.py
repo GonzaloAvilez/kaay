@@ -7,7 +7,7 @@ from django.contrib.auth.mixins import AccessMixin
 from . import forms
 from . import models
 from django.http import HttpResponse
-
+ 
 from django.utils import timezone
 from django.shortcuts import render
 from .models import Post, Video
@@ -15,6 +15,7 @@ from .forms import ShopFor, PostForm
 import shop.models  
 from shop.models import Product
 from django.contrib.auth.decorators import login_required
+from authtools.models import User 
 from django.views.generic import ListView, DetailView
 from .models import Video
   
@@ -22,6 +23,8 @@ class ShowProfile(AccessMixin,TemplateView):
     template_name = "profiles/show_profile.html"  
     http_method_names = ['get', 'post' ]
     def get(self, request, *args, **kwargs):
+        # name=self.kwargs.get('name')
+        # u = get_object_or_404(User,name=name)
         slug = self.kwargs.get('slug')
         if slug:
             profile = get_object_or_404(models.Profile, slug=slug)
@@ -47,8 +50,10 @@ class ShowProfile(AccessMixin,TemplateView):
     #     context['products'] =Product.objects.filter(available=True)
     #     return  context
 
-
-
+class UserProfileView(DetailView):
+    model = User
+    slug_field = "name"
+    template_name = "profiles/show_profile.html"
 
 class EditProfile(LoginRequiredMixin,TemplateView):
     template_name = "profiles/edit_profile.html"

@@ -8,4 +8,7 @@ urlpatterns = [
     url(r'^(?P<slug>[\w\-]+)$', views.ShowProfile.as_view(),
         name='show'),
     url(r'^me/add$', views.post_new, name='post_new_product'),
+   	
+   	url(r'^profile/(?P<slug>[\w+^\s]+)/$', views.UserProfileView.as_view(), name='profile_view'), 
+   	url(r'^profile/id/(?P<pk>\d+)/$', views.UserProfileView.as_view()),
 ]

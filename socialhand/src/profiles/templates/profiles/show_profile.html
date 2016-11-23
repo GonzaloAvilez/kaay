@@ -27,7 +27,7 @@
         <h1 style="font-family:Lobster;" ><font color="white">{{ show_user.profile.get_short_name }}</font></h1>
         <img title="profile picture" class="img-circle img-responsive img-thumbnail" src="{% thumbnail show_user.profile.picture|default:'default_profile.png' 150x150 crop %}">   
         </div> 
-      </div>        
+      </div>         
     </div>       
 </div>  <!-- /overlay -->
 
@@ -49,26 +49,28 @@
       </ol>
     <div class="carousel-inner">
     {% if  show_user.profile.background_1%}
-
         <div class="item slides active">
-            <img class="slide-image" src=" {{ MEDIA_URL }}{{show_user.profile.background_1}}" alt="">
-
+          <div class="slide-1" style="background-image: url({{ MEDIA_URL }}{{show_user.profile.background_1}});">
+          </div>
         </div>
     {% else %}
-    <div class="item slides active">
-            <img class="slide-image" src=" {{ MEDIA_URL }}{{ "profile_background/wood.jpg" }}" alt="">
-            </div>
+        <div class="item slides active">
+          <div class="slide-1" style="background-image: url({{ MEDIA_URL }}{{"profile_background/wood.jpg"}});">
+          </div> 
+        </div>
     {% endif %}
-      {% if  show_user.profile.background_2%}
-        <div class="item">
-            <img class="slide-image"  src=" {{ MEDIA_URL }}{{show_user.profile.background_2}}" alt="">
+    {% if  show_user.profile.background_2%}
+        <div class="item slides">
+          <div class="slide-2" style="background-image: url({{ MEDIA_URL }}{{show_user.profile.background_2}});">
+          </div>
         </div>
-        {% endif %}
-      {% if  show_user.profile.background_3%}
-        <div class="item">
-            <img class="slide-image"  src=" {{ MEDIA_URL }}{{show_user.profile.background_3}}" alt="">
+    {% endif %}
+    {% if  show_user.profile.background_3%}
+        <div class="item slides">
+          <div class="slide-3" style="background-image: url({{ MEDIA_URL }}{{show_user.profile.background_3}});">
+          </div>
         </div>
-        {% endif %}
+    {% endif %}
     </div>
         <!-- <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
         <a class="right carousel-control" href="#carousel-example-generic" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a> -->
@@ -248,5 +250,29 @@
     margins : 15
     });
 </script>
+<script >
+  var back = ["#DF01D7","#8E44AD","#AEA8D3","#F62459","#DB0A5B","#D64541","#D2527F","#522770","#61AEFF","#EBABD6","#543BC4","#ff21e9","#F88400","#FFDA00","#BF4B9C"]; 
+  $('.portfolio-box-caption').each(function() {   
+    // First random color
+    var rand1 = back[Math.floor(Math.random() * back.length)];
+    // Second random color
+    var rand2 = back[Math.floor(Math.random() * back.length)];  
+    var grad = $(this);   
+    // Convert Hex color to RGB
+    function convertHex(hex,opacity){
+        hex = hex.replace('#','');
+        r = parseInt(hex.substring(0,2), 16);
+        g = parseInt(hex.substring(2,4), 16);
+        b = parseInt(hex.substring(4,6), 16);    
+      // Add Opacity to RGB to obtain RGBA
+        result = 'rgba('+r+','+g+','+b+','+opacity/70+')';
+        return result;
+    }    
+    // Gradient rules
+    grad.css('background-color', convertHex(rand1,40) );
+    grad.css("filter", "progid:DXImageTransform.Microsoft.gradient( startColorstr='"+ convertHex(rand1,40) +"', endColorstr='"+ convertHex(rand2,40) +"',GradientType=0 )");        
+  })
+</script>
+
 
 {% endblock scripts %}
