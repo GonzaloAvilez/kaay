@@ -5,7 +5,7 @@ from django.shortcuts import render, get_object_or_404
 from paypal.standard.forms import PayPalPaymentsForm
 from orders.models import Order
 from django.views.decorators.csrf import csrf_exempt
-
+ 
 
 def payment_process(request):
 	order_id = request.session.get('order_id')

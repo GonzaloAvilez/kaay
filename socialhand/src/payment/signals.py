@@ -10,7 +10,7 @@ import weasyprint
 from io import BytesIO
 
 from django.core.mail import send_mail
-
+ 
 
 def payment_notification(sender, **kwargs):
 	ipn_obj = sender
@@ -21,26 +21,32 @@ def payment_notification(sender, **kwargs):
 		order.paid = True
 		order.save()
 		# create invoice e-mail
-		subject = 'My Shop - Invoice no. {}'.format(order.id)
+		subject = 'iKaay - Invoice payment_notificationo. {}'.format(order.id)
 		message = 'Please, find attached the invoice for your recent purchase.'
 		email = EmailMessage(subject,
 							message,
-							'g.avilez.ig@gmail.com',
+							'info@ikaay.com.mx',
 							[order.email])
 		# generate PDF
-		html = render_to_string('orders/order/pdf.html', {'order': order})
+		html = render_to_string('orders/order/pdf.html',
+					 			{'order': order})
 		out = BytesIO()
 		stylesheets=[weasyprint.CSS(settings.STATIC_ROOT + 'css/pdf.css')]
-		weasyprint.HTML(string=html).write_pdf(out,stylesheets=stylesheets)
+		weasyprint.HTML(string=html,
+			 			base_url=request.build_absolute_uri(),
+			 			).write_pdf(out,
+			 						stylesheets=stylesheets)
 		# attach PDF file
-		email.attach('order_{}.pdf'.format(order.id), out.getvalue(),'application/pdf')
+		email.attach('order_{}.pdf'.format(order.id),
+					out.getvalue(),	
+					'application/pdf')
 		# send e-mail
 		email.send()
 
-		send_mail('HOLA'	,
-				'PAGO',
-				'g.avilez.ig@gmail.com',
-				[order.email])
+		# send_mail('HOLA'	,
+		# 		'PAGO',
+		# 		'g.avilez.ig@gmail.com',
+		# 		[order.email])
 		
 
 valid_ipn_received.connect(payment_notification)

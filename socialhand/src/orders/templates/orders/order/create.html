@@ -40,8 +40,10 @@
 	{% csrf_token %}
 		{% crispy form %}
 		<div class="col-lg-4 col-md-offset-4">
-			<button type="button" class="btn btn-primary btn-block" data-toggle="popover"  data-trigger="focus" data-placement="auto" data-content="<div class='text-center row'><input type='submit' value={% trans 'Pay' %} class='btn btn-primary '><input type='' class='btn btn-warning ' onclick='$(this).parent().hide();' value='review'></div><div class='lead text-center'>{% trans 'Are you sure your details are correct?. Please verify'%}</div>">
+			<button type="button" class="btn btn-primary btn-block" data-toggle="popover"  data-trigger="focus" data-placement="auto" data-content="<div class='text-center row'><input type='submit' value={% trans 'Pay' %} class='btn btn-primary '>
+			</div><div class='lead text-center'>{% trans 'Are you sure your details are correct? Please verify'%}</div>">
 			{% trans 'Order Now' %}
+			<!-- <input type='' class='btn btn-warning ' onclick='$(this).parent().hide();' value='review'> -->
 			</button>
 		</div>
 	</form>

@@ -1,28 +1,48 @@
+{% load staticfiles %}
+{% load thumbnail %}
 <html>
 <head>
 </head>
 <body>
-	<h1>Tu compra</h1>
+
+<!-- <div  style="border: 5px solid purple;padding: 10px;">
+<p>This is the first parent container</p>
+<p class="floatleft" style="border: 5px solid red;float: left; width: 200px;background: white;">
+This is floated content.</p>
+<p class="floatright" style="border: 5px solid green; float: right; width: 200px;background: white;">This is floated content.</p>
+</div> -->
+
+<div class="brand" style="float: left; width:auto; margin-right: 40px; margin-bottom: 50px; transform: rotate(45deg);">
+	 <img class="img-responsive" alt="second hand" src="{% thumbnail "home/hand.png" 200x200 crop %}">
+</div>
+<div align="center" style="display: inline-block; float:right; margin-top: -20px; text-align: right">
+	<h1 style="margin-bottom: -10px">Tu compra</h1>
 	<p>
-		ID_# {{ order.id }}</br>
+		ID # {{ order.id }}</br>
 		<span class="secondary">
 		{{ order.created|date:"M d, Y" }}
 		</span>
 	</p>	
 
-<h3>Cargado a cuenta de:</h3>
-<p>
-	{{ order.first_name }} {{ order.last_name }}<br>
-	{{ order.email }}<br>
-	{{ order.address }}<br>
-	{{ order.postal_code }}, {{ order.city }}
-</p>
+	<h3 style="margin-bottom: -10px">Cargado a cuenta de:</h3>
+	<p>
+		{{ order.first_name }} {{ order.last_name }}<br>
+		{{ order.email }}<br>
+		{{ order.route }} {{ order.street_number}} <br>
+		{{ order.sublocality }}, {{ order.postal_code }} <br>
+		{{ order.locality }}, {{ order.administrative_area_level_1 }}<br>
+		{{ order.country }},  {{ order.country_short }}
+	</p>
+</div>
 
-<h3>Artículo(s) comprado(s):</h3>
+<div class="detail" style="display: block; float: left; margin-top: 30px;">
+	<h3>Artículo(s) comprado(s):</h3>
+</div>
 <table>
 	<thead>
 	<tr>
 		<th>Producto</th>
+		<th>SKU</th>
 		<th>Precio unitario</th>
 		<th>Cantidad</th>
 		<th>Costo</th>
@@ -32,13 +52,14 @@
 	{% for item in order.items.all %}
 		<tr class="row{% cycle "1" "2" %}">
 			<td>{{ item.product.name }}</td>
+			<td>{{ item.product.slug }}</td>
 			<td class="num">${{ item.price }}</td>
 			<td class="num">{{ item.quantity }}</td>
 			<td class="num">${{ item.get_cost }}</td>
 		</tr>
 	{% endfor %}
 	<tr class="total">
-		<td colspan="3">Total</td>
+		<td colspan="4">Total</td>
 		<td class="num">${{ order.get_total_cost }}</td>
 	</tr>
 </tbody>
@@ -46,6 +67,5 @@
 		<span class="{% if order.paid %}paid{% else %}pending{% endif %}" >
 		{% if order.paid %}Pagado{% else %}Pago pendiente{% endif %}
 		</span>
-		
 </body>
 </html>

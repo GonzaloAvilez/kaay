@@ -3,7 +3,7 @@
 {% load staticfiles %}
 {% load crispy_forms_tags %}
 {% load thumbnail %}
-
+ 
 {% block title %}{{ block.super }}Mercado artesanal{% endblock %}
 {% block navbar-brand %}
   <a class="navbar-brand page-scroll" href="#cover">
@@ -204,10 +204,39 @@
 </div>
 </section>
 
+<div class="col-md-4">
+  <h2>Tu compra</h2>
+  <p>
+    ID_# {{ order.id }}</br>
+    <span class="secondary">
+    {{ order.created|date:"M d, Y" }}
+    </span>
+  </p>  
 
+<h3>Cargado a cuenta de:</h3>
+<p>
+  {{ order.first_name }} {{ order.last_name }}<br>
+  {{ order.email }}<br>
+  {{ order.address }}<br>
+  {{ order.postal_code }}, {{ order.city }}
+</p>
+ </div>
 
+<div class="col-md-4 col-md-offset-4">
+        <img class="img-responsive"  alt="" src="{% thumbnail "home/hand.png" 200x200 crop %}" style="display: block; margin-left: auto; margin-right: auto;">
+       </div>
 
-  
+<h3>Artículo(s) comprado(s):</h3>
+<table>
+  <thead>
+  <tr>
+    <th>Producto</th>
+    <th>Precio unitario</th>
+    <th>Cantidad</th>
+    <th>Costo</th>
+  </tr>
+</thead>
+<tbody>
 
 
 

@@ -15,17 +15,26 @@
 	<div>
 		<img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "image/noimage.png" %}{% endif %}"  alt="<h3 class='text-center'>{{product.name}} </br>${{ product.price }}</h3>">		
 	</div>
-</div>
+</div> 
 <div class="container-fluid"> 
 </br> 
 	 {% if product.author == user %}
 	 <div class="col-md-4" style="float: left;">
 	 	<a class="btn btn-primary"  href="{% url 'shop:product_edit' product.id product.slug %}"><span class="glyphicon glyphicon-pencil"></span></a>	
 	 	<!-- first -->
-	 	<button type="button" class="btn btn-primary" data-toggle="popover"  data-trigger="focus" data-placement="right" data-content="<div class='lead text-center'>{% trans 'Are you sure you want to delete this file?'%}</div><div class='text-center'><a class='btn btn-danger' href='{% url 'shop:product_remove' product.id product.slug %}'><span class='glyphicon glyphicon-remove'></span></a><a class='btn btn-primary'  href='{% url 'shop:product_edit' product.id product.slug %}'><span class='glyphicon glyphicon-ok'></span></a></div>">
+	 	<button type="button" class="btn btn-primary" data-toggle="popover"  data-trigger="focus" data-placement="right" data-content="<div class='lead text-center'>
+	 	{% trans 'Are you sure you want to delete this file?'%}</div>
+	 	<div class='text-center'>
+	 	<a class='btn btn-primary' href='{% url 'shop:product_remove' product.id product.slug %}'>
+	 	<span class='glyphicon glyphicon-ok'></span>
+	 	</a>
+	 	<a class='btn btn-danger' onclick='$(this).parent().hide();'>
+	 	<span class='glyphicon glyphicon-remove'></span>
+	 	</a>
+	 	</div>">
     	<span class="glyphicon glyphicon-trash"></span></button>
     	<!-- second -->
-		<div class="popover-markup"> 
+		<!-- <div class="popover-markup"> 
 		    <a class="trigger btn btn-primary"><span class="glyphicon glyphicon-trash"></span></a>
 		    <div class="content hide">
 		      <div class="lead text-center">
@@ -36,7 +45,7 @@
 			    <a class="btn btn-primary"  href="{% url 'shop:product_edit' product.id product.slug %}"><span class="glyphicon glyphicon-ok"></span></a>	
 			  </div>
 		    </div>
-		</div>
+		</div> -->
 	 </div>
 	<div class=" text-right col-md-4 col-md-offset-4" style="float: right;">
 	  <span class="count">
@@ -136,4 +145,9 @@
     }
 });
   </script>
+<script>
+	function close_please() {
+    $('#meddelanden').popover('hide');
+}
+</script>
 {% endblock scripts %}

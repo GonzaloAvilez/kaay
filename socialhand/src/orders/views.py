@@ -28,8 +28,11 @@ def order_create(request):
 			
 			# clear the cart
 			cart.clear()
+			#levantar una excepcion si cart esta vacío para informar que 
+			#no hay productos seleccionados o ya fue generada una orden
 			# launch asynchronous task
-			order_created.delay(order.id)
+			#order_created.delay(order.id)
+			order_created(order.id)
 			request.session['order_id'] = order.id 
 			return redirect(reverse('payment:process'))
 
@@ -55,7 +58,9 @@ def admin_order_pdf(request, order_id):
 							{'order': order})
 	response = HttpResponse(content_type='application/pdf')
 	response['Content-Disposition'] = 'filename=\"order_{}.pdf"'.format(order.id)
-	weasyprint.HTML(string=html).write_pdf(response,
-		stylesheets=[weasyprint.CSS(
-			settings.STATIC_ROOT + 'css/pdf.css')])
+	stylesheets=[weasyprint.CSS(settings.STATIC_ROOT + 'css/pdf.css')]
+	weasyprint.HTML(string=html,
+					base_url=request.build_absolute_uri(),
+					).write_pdf(response,
+								stylesheets=stylesheets)
 	return response
