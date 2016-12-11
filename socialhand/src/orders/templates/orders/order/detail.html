@@ -19,7 +19,7 @@
 
 
 {% block content %}
-<h1>Order {{ order.id }}</h1>
+<h2>Order {{ order.id }}</h2>
 <ul class="object-tools">
 	<li>
 		<a href="#" onclick="window.print();">Print order</a>
@@ -39,8 +39,12 @@
 			<td><a href="mailto:{{ order.email }}">{{ order.email }}</a></td>
 		</tr>
 		<tr>
-			<th>Address</th>
-			<td>{{ order.address }}, {{ order.postal_code }} {{ order.city}}</td>
+			<th>Address geolocation</th>
+			<td>{{ order.formatted_address }}</td>
+		</tr>
+		<tr>
+			<th>Address form </th>
+			<td>{{ order.route }}, {{ order.street_number }}, {{ order.sublocality }}, {{ order.postal_code }}, {{ order.administrative_area_level_1 }}, {{ order.locality }} {{ order.country }} {{ order.country_short}}</td>
 		</tr>
 		<tr>
 			<th>Total amount</th>
@@ -81,6 +85,7 @@
 			</table>
 		</div>
 	</div>
+	<br><br><br><br><br>
 {% endblock %}
 
 

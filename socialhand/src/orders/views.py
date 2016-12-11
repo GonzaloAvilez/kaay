@@ -77,7 +77,7 @@ class HelloPDFView(PDFTemplateView):
     	kwargs['order']=get_object_or_404(Order, id=order_id)
         return super(HelloPDFView, self).get_context_data(
             pagesize="b6",
-            title="Hi there!",
+            title="Purchase details",
             **kwargs
         )
     

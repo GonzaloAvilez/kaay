@@ -82,107 +82,83 @@ This is floated content.</p>
 <p class="floatright" style="border: 5px solid green; float: right; width: 200px;background: white;">This is floated content.</p>
 </div> -->
 <table>
-	<thead>
+  <thead>
 	<tr>
 	  <th align="left">
 		<div class="brand" align="center" style="padding-top: -20px;">
-	 	<img  style="padding-top: -90px;" src="{% thumbnail "home/hand.png" 100x100 crop %}">	
+	 	  <img  style="padding-top: -90px;" src="{% thumbnail "home/hand.png" 100x100 crop %}">	
 		</div>
 		<div  style="text-align: center">
-		<h1 style="margin-bottom: -10px">Tu compra</h1>
-		<p>
-		ID # {{ order.id }}</br>
-		<span class="secondary">
-		{{ order.created|date:"M d, Y" }}
-		</span>
-		</p>	
+		  <h1 style="margin-bottom: -10px">
+		  	Tu compra
+		  </h1>
+			<p>ID # {{ order.id }}</br>
+			<span class="secondary">
+			{{ order.created|date:"M d, Y" }}
+			</span>
+			</p>	
 	  </th>
-	  <th align="center">
-	<!-- 	<div  style="display:inline ; width: auto; text-align: right">
-		<h1 style="margin-bottom: -10px">Tu compra</h1>
+	  <th align="right">
+		<h2 style="padding-top:-10px;">
+			Cargado a cuenta de:
+		</h2>
 		<p>
-		ID # {{ order.id }}</br>
-		<span class="secondary">
-		{{ order.created|date:"M d, Y" }}
-		</span>
-		</p>	
- -->
-		<h2 style="padding-top:-10px;">Cargado a cuenta de:</h2>
-		<p>
-		{{ order.first_name }} {{ order.last_name }}<br>
-		{{ order.email }}<br>
-		<h2 style="padding-top:10px; padding-bottom: -15px">Detalles de contacto:</h2>
-		{{ order.route }} {{ order.street_number}} <br>
-		{{ order.sublocality }}, {{ order.postal_code }} <br>
-		{{ order.locality }}, {{ order.administrative_area_level_1 }}<br>
-		{{ order.country }},  {{ order.country_short }}
+			{{ order.first_name }} {{ order.last_name }}<br>
+			{{ order.email }}<br>
+			<h2 style="padding-top:10px;">
+			Detalles de contacto:
+			</h2>
+			{{ order.route }} {{ order.street_number}} <br>
+			{{ order.sublocality }}, {{ order.postal_code }} <br>
+			{{ order.locality }}, {{ order.administrative_area_level_1 }}<br>
+			{{ order.country }},  {{ order.country_short }}
 		</p>
-		</div>
 	  </th>
-	</thead>
+	</tr>
+  </thead>
 </table>
 
-<!-- <div class="brand"  style="display: table-cell ; width:auto; margin-bottom: -50px; transform: rotate(45deg);">
-	 <img alt="second hand" src="{% thumbnail "home/hand.png" 100x100 crop %}">
-</div>
-<div  style="display: table-cell ; width: 50%; text-align: right">
-	<h1 style="margin-bottom: -10px">Tu compra</h1>
-	<p>
-		ID # {{ order.id }}</br>
-		<span class="secondary">
-		{{ order.created|date:"M d, Y" }}
-		</span>
-	</p>	
-
-	<h3 style="margin-bottom: -10px">Cargado a cuenta de:</h3>
-	<p>
-		{{ order.first_name }} {{ order.last_name }}<br>
-		{{ order.email }}<br>
-		{{ order.route }} {{ order.street_number}} <br>
-		{{ order.sublocality }}, {{ order.postal_code }} <br>
-		{{ order.locality }}, {{ order.administrative_area_level_1 }}<br>
-		{{ order.country }},  {{ order.country_short }}
-	</p>
-</div>
- -->
 <div class="detail" style=" padding-top: 10px;">
 	<h3 >Artículo(s) comprado(s):</h3>
 </div>
+
 <table>
-	<thead>
-	<tr>
+  <thead>
+	<tr  style=" border-bottom: 1px solid black; padding-bottom: -2px;"> 
 		<th align="right">Producto</th>
 		<th align="right">SKU</th>
 		<th align="right">Precio unitario</th>
 		<th align="right">Cantidad</th>
 		<th align="right">Costo</th>
 	</tr>
-</thead>
-<tbody>
+  </thead>
+  <tbody>
 	{% for item in order.items.all %}
-		<tr class="row{% cycle "1" "2" %}">
-			<td align="right"><hr>{{ item.product.name }}</td>
-			<td align="right"><hr>{{ item.product.slug }}</td>
-			<td align="right" class="num"><hr>${{ item.price }}</td>
-			<td align="right" class="num"><hr>{{ item.quantity }}</td>
-			<td align="right" class="num"><hr>${{ item.get_cost }}</td>
-		</tr>
-	{% endfor %}
-	<tr class="total">
-		<td colspan="4" align="right"><hr>Total</td>
-		<td class="num"><hr>${{ order.get_total_cost }}</td>
+	<tr style="padding-top: 8px;" > 	
+		<td align="right">{{ item.product.name }}</td>
+		<td align="right">{{ item.product.slug }}</td>
+		<td align="right" class="num">${{ item.price }}</td>
+		<td align="right" class="num">{{ item.quantity }}</td>
+		<td align="right" class="num">${{ item.get_cost }}</td>
 	</tr>
-</tbody>
+	{% endfor %}
+	<tr style=" border-bottom: 1px solid black; padding-bottom: -10px; "></tr>
+	<tr class="total" style=" padding-top: 10px;">
+		<td colspan="4" align="right"><h3>Total:</h3></td>
+		<td class="num">${{ order.get_total_cost }}</td>
+	</tr>
+  </tbody>
 </table>
+
 <div align="center">
-		<span  class="{% if order.paid %}paid{% else %}pending{% endif %}" >
+	<span  class="{% if order.paid %}paid{% else %}pending{% endif %}" >
 		{% if order.paid %}Pagado{% else %}Pago pendiente{% endif %}
-		</span>
+	</span>
 </div>
 {% endblock %}
 
- <div id="page-footer">
-        {%block page_foot%}
-            <hr>
-        {%endblock%}
-    </div>
+<div id="page-footer">
+    {%block page_foot%}
+    <hr>
+    {%endblock%}
+</div>
