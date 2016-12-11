@@ -25,7 +25,7 @@ def payment_notification(sender, **kwargs):
 		message = 'Please, find attached the invoice for your recent purchase.'
 		email = EmailMessage(subject,
 							message,
-							'info@ikaay.com.mx',
+							'pedidos@ikaay.com.mx',
 							[order.email])
 		# generate PDF
 		html = render_to_string('orders/order/pdf.html',
@@ -43,10 +43,10 @@ def payment_notification(sender, **kwargs):
 		# send e-mail
 		email.send()
 
-		# send_mail('HOLA'	,
-		# 		'PAGO',
-		# 		'g.avilez.ig@gmail.com',
-		# 		[order.email])
+		send_mail('HOLA'	,
+				'PAGO',
+				'g.avilez.ig@gmail.com',
+				[order.email])
 		
 
 valid_ipn_received.connect(payment_notification)

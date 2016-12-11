@@ -155,7 +155,15 @@ body>.navbar-transparent {
 /*********************************************/
 /*     custom button_default bootstrap       */
 /*********************************************/
-.btn {
+.btn{
+  border-radius: 20px;
+}
+/*.btn:hover{
+  border-color: transparent;
+}*/
+.btn:not(.btn-default) {
+  border-color: transparent;
+
    /* background-image: none;
     -webkit-box-shadow: 0px 1px 0px #ddd;
     -moz-box-shadow: 0px 1px 0px #ddd;
@@ -191,14 +199,10 @@ body>.navbar-transparent {
 }
 
 
-.btn-primary{
+.btn-primary, .btn-info, .btn-warning, .btn-danger, .btn-success{
   border-color: transparent;
-  background-color: #5DADE2;  
 }
 
-.btn-primary:hover{
-   border-color: transparent;
-}
 
 
 /*end custom button edit profile in showprofile */
@@ -1616,7 +1620,10 @@ padding-bottom: 40px;
 .order-form{
   margin-bottom: 10px;
 }
-
+.order-form-padding{
+  padding: 0;
+}
 .btn-order{
   margin: auto;
 }
+/**********order_PDF************/

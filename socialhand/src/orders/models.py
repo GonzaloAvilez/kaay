@@ -7,6 +7,7 @@ from django.utils.translation import gettext_lazy as _
 
  
 class Order(models.Model):
+	# Contact Details
 	first_name = models.CharField(_('First name'),max_length=50)
 	last_name = models.CharField(_('Last name'),max_length=50)
 	email = models.EmailField(_('E-mail'),)

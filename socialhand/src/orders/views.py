@@ -10,6 +10,8 @@ from cart.cart import Cart
 from .tasks import order_created
 from django.conf import settings
 import weasyprint
+from django.contrib.auth.mixins import LoginRequiredMixin
+from easy_pdf.views import PDFTemplateView
 
 
 
@@ -20,6 +22,7 @@ def order_create(request):
 		form = OrderCreateForm(request.POST)
 		if form.is_valid():
 			order = form.save()
+
 			for item in cart:
 				OrderItem.objects.create(order=order,
 										product=item['product'],
@@ -64,3 +67,18 @@ def admin_order_pdf(request, order_id):
 					).write_pdf(response,
 								stylesheets=stylesheets)
 	return response
+	
+class HelloPDFView(PDFTemplateView):
+    template_name = "orders/order/pdf.html"
+
+
+    def get_context_data(self, **kwargs):
+    	order_id = self.kwargs.get('order_id')
+    	kwargs['order']=get_object_or_404(Order, id=order_id)
+        return super(HelloPDFView, self).get_context_data(
+            pagesize="b6",
+            title="Hi there!",
+            **kwargs
+        )
+    
+    

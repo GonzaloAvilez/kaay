@@ -42,7 +42,7 @@ order_detail.allow_tags = True
 
 def order_pdf(obj):
 	return '<a href="{}">PDF</a>'.format(
-		reverse('orders:admin_order_pdf', args=[obj.id]))
+		reverse('orders:order_pdf', args=[obj.id]))
 order_pdf.allow_tags = True
 order_pdf.short_description = 'PDF bill'
 
